@@ -2,9 +2,9 @@
 
 $conn = mysqli_connect(
     "localhost",
-    "root",
-    "",
-    "caringsquad"
+    "u306816562_caringsquad",
+    "Caringsquad@123",
+    "u306816562_caringsquad"
 );
 
 if(!$conn){
