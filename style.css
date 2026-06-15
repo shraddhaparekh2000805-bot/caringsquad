@@ -150,10 +150,11 @@ ul{
 }
 
 .nav-container{
-    height:90px;
+    min-height:90px;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:20px;
 }
 
 .logo{
@@ -189,12 +190,13 @@ ul{
 
 .nav-links{
     display:flex;
-    gap:28px;
+    gap:18px;
+    flex-wrap:nowrap;
 }
 
 .nav-links a{
     color:#f2f2f2;
-    font-size:14px;
+    font-size:13px;
     font-weight:500;
     transition:var(--transition);
 }
@@ -235,7 +237,9 @@ ul{
 
 .hero{
     position: relative;
-    min-height: 92vh;
+    min-height:700px;
+    height:auto;
+    padding:120px 0;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -251,13 +255,14 @@ ul{
     url("assets/images/hero-bannerr.jpeg");
 
     background-size: cover;
-    background-position: center center;
+    background-position:75% center;
     background-repeat: no-repeat;
 }
 
 /* Content Width */
 .hero-content{
-    max-width: 560px;
+    width:100%;
+    max-width:650px;
     padding-top: 40px;
     position: relative;
     z-index: 2;
@@ -266,7 +271,7 @@ ul{
 /* Main Heading */
 .hero-content h1{
     font-family: 'Cormorant Garamond', serif;
-    font-size: 82px;
+   font-size:clamp(42px,7vw,82px);
     line-height: 0.95;
     font-weight: 600;
     color: #061326;
@@ -281,7 +286,7 @@ ul{
 /* Paragraph */
 .hero-content p{
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
+    font-size:clamp(15px,2vw,18px);
     line-height: 2;
     color: #444;
     max-width: 470px;
@@ -801,6 +806,14 @@ ul{
 @media(max-width:992px){
 
     .navbar,
+    .nav-links{
+        gap:12px;
+    }
+
+    .nav-links a{
+        font-size:12px;
+    }
+
     .header-right{
         display:none;
     }
@@ -824,50 +837,6 @@ ul{
     .membership-container,
     .final-cta-container{
         grid-template-columns:1fr;
-    }
-
-}
-
-@media(max-width:768px){
-
-    .section{
-        padding:80px 0;
-    }
-
-    .section-title h2{
-        font-size:38px;
-    }
-
-    .hero{
-        height:auto;
-        padding:120px 0;
-    }
-
-    .hero-content h1{
-        font-size:48px;
-    }
-
-    .hero-buttons{
-        flex-direction:column;
-    }
-
-    .support-grid,
-    .trust-grid,
-    .why-grid,
-    .testimonial-grid{
-    grid-template-columns: 1fr;
-    }
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-
-    .membership-content,
-    .final-cta-content{
-        padding:40px;
-    }
-
-    .big-cta h2{
-        font-size:42px;
     }
 
 }
@@ -1042,49 +1011,48 @@ ul{
 
 }
 
-@media(max-width:768px){
+@media (max-width:768px){
 
-    .about-hero{
-
-        padding: 120px 0 90px;
+    .hero{
+        min-height:auto;
+        padding:100px 0 70px;
 
         background-image:
         linear-gradient(
-            to bottom,
             rgba(248,244,238,0.92),
-            rgba(248,244,238,0.82)
+            rgba(248,244,238,0.92)
         ),
-        url("assets/images/about-hero.jpeg");
+        url("assets/images/hero-bannerr.jpeg");
 
-        background-position: center;
+        background-position:center;
+        background-size:cover;
+        background-repeat:no-repeat;
     }
 
-    .about-hero-content{
-        max-width: 100%;
+    .hero-content{
+        max-width:100%;
+        text-align:center;
     }
 
-    .about-hero-content h1{
-        font-size: 48px;
-        line-height: 1;
-        letter-spacing: -1px;
+    .hero-content h1{
+        font-size:42px;
+        line-height:1.05;
     }
 
-    .about-hero-content p{
-        font-size: 16px;
-        line-height: 1.9;
-    }
-
-    .about-hero-features{
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .hero-feature{
-        min-height: auto;
+    .hero-content p{
+        font-size:16px;
+        max-width:100%;
+        margin-left:auto;
+        margin-right:auto;
     }
 
     .hero-buttons{
-        flex-direction: column;
+        flex-direction:column;
+        width:100%;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
     }
 
 }
@@ -1219,8 +1187,9 @@ ul{
 ========================================= */
 
 .story-card img{
-    width: 100%;
-    height: 360px;
+    max-width:100%;
+    height:auto;
+    display:block;
     object-fit: cover;
     border-radius: 16px;
     margin-top: 28px;
@@ -3222,7 +3191,7 @@ ul{
 
     .city-guardian-hero{
 
-        padding: 120px;
+        padding:120px 0 80px;
         background-image:
         linear-gradient(
             to bottom,

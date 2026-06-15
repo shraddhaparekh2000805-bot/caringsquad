@@ -182,7 +182,7 @@ $online_expert_panel = isset($_POST['online_expert_panel'])
     /* ============================
        INSERT DOCTOR
     ============================ */
-
+    
     $insert = mysqli_query($conn,"
         INSERT INTO doctors
         (
@@ -1172,10 +1172,7 @@ SECTION A - PERSONAL INFORMATION
 
                     <i class="fa-solid fa-location-dot"></i>
 
-                    <select
-                        name="state"
-                        id="state"
-                    >
+                   <select name="state" id="state">
 
                         <option value="">
                             Select State
