@@ -333,31 +333,31 @@
 
                 <div class="timeline-item">
                     <i class="fa-regular fa-heart"></i>
-                    <h3>2018</h3>
+                    <h3>2020</h3>
                     <p>The beginning</p>
                 </div>
 
                 <div class="timeline-item">
                     <i class="fa-solid fa-users"></i>
-                    <h3>2019</h3>
+                    <h3>2021</h3>
                     <p>First Steps</p>
                 </div>
 
                 <div class="timeline-item">
                     <i class="fa-solid fa-shield-heart"></i>
-                    <h3>2020</h3>
+                    <h3>2022</h3>
                     <p>Expansion</p>
                 </div>
 
                 <div class="timeline-item">
                     <i class="fa-solid fa-location-dot"></i>
-                    <h3>2021</h3>
+                    <h3>2023</h3>
                     <p>New Cities</p>
                 </div>
 
                 <div class="timeline-item">
                     <i class="fa-solid fa-users"></i>
-                    <h3>2022+</h3>
+                    <h3>2024+</h3>
                     <p>Growing Together</p>
                 </div>
 
@@ -366,17 +366,17 @@
             <div class="stats-grid">
 
                 <div class="stat-box">
-                    <h3>10K+</h3>
+                    <h3>1K+</h3>
                     <p>Families Supported</p>
                 </div>
 
                 <div class="stat-box">
-                    <h3>25K+</h3>
+                    <h3>5K+</h3>
                     <p>Service Engagements</p>
                 </div>
 
                 <div class="stat-box">
-                    <h3>2000+</h3>
+                    <h3>200+</h3>
                     <p>Care Professionals</p>
                 </div>
 
@@ -386,7 +386,7 @@
                 </div>
 
                 <div class="stat-box">
-                    <h3>4.9/5</h3>
+                    <h3>4.9</h3>
                     <p>Family Trust Score</p>
                 </div>
 

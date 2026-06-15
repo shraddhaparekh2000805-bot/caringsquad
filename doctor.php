@@ -40,7 +40,7 @@
 
             <div class="logo-text">
                 <h2>CARING SQUAD</h2>
-                <span>Care | Companions | Wellness</span>
+                <span>Care | Companions | Guardians</span>
             </div>
 
         </div>
@@ -160,7 +160,7 @@
 
             </div>
 
-            <a href="joinus.php" class="btn btn-primary">
+            <a href="https://forms.gle/SxGAwKuQ9bsK59LB9" class="btn btn-primary">
                 Apply to Join
             </a>
 

@@ -113,12 +113,12 @@
 
             <div class="trust-item">
                 <i class="fa-regular fa-circle-check"></i>
-                <span>Trusted & Verified Professionals</span>
+                <span>Verified Professionals</span>
             </div>
 
             <div class="trust-item">
                 <i class="fa-solid fa-users"></i>
-                <span>Personalized Care Ecosystem</span>
+                <span>Expert Consultation</span>
             </div>
 
             <div class="trust-item">

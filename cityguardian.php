@@ -41,7 +41,7 @@
 
             <div class="logo-text">
                 <h2>CARING SQUAD</h2>
-                <span>City Guardian Services</span>
+                <span>Care | Companions | Guardians</span>
             </div>
 
         </div>

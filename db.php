@@ -1,15 +1,22 @@
 <?php
 
-$conn = mysqli_connect(
-    "localhost",
-    "u306816562_caringsquad",
-    "Caringsquad@123",
-    "u306816562_caringsquad"
-);
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
 
-if(!$conn){
+    $conn = mysqli_connect(
+        "localhost",
+        "root",
+        "",
+        "caringsquad"
+    );
 
-    die("Database Connection Failed");
+} else {
+
+    $conn = mysqli_connect(
+        "localhost",
+        "u306816562_caringsquad",
+        "Caringsquad@123",
+        "u306816562_caringsquad"
+    );
 
 }
 

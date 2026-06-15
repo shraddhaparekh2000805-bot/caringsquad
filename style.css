@@ -128,14 +128,14 @@ ul{
 }
 
 .btn-secondary{
-    border:1.5px solid var(--gold);
-    color:var(--primary);
-    background:transparent;
+    background: var(--primary);
+    color: var(--white);
 }
 
 .btn-secondary:hover{
-    background:var(--gold);
-    color:var(--white);
+    background: #0b2344;
+    transform:translateY(-2px);
+    color: var(--white);
 }
 
 /* =========================================
@@ -4434,15 +4434,14 @@ ul{
 }
 
 .btn-secondary{
-    border: 1px solid rgba(255,255,255,0.3);
-
-    color: white;
-    background: transparent;
+    background: var(--primary);
+    color: var(--white);
 }
 
 .btn-secondary:hover{
-    background: white;
-    color: var(--primary);
+    background: #0b2344;
+    transform:translateY(-2px);
+    color: var(--white);
 }
 
 .btn-secondary i{

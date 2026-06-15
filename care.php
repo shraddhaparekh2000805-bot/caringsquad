@@ -196,7 +196,7 @@
 
                 <div class="care-service-card">
 
-                    <img src="assets/images/care2.jpeg" alt="">
+                    <img src="assets/images/children.jpeg" alt="">
 
                     <div class="service-icon">
                         <i class="fa-regular fa-heart"></i>
@@ -204,11 +204,10 @@
 
                     <div class="service-content">
 
-                        <h3>Daily Living Assistance</h3>
+                        <h3>Child Care</h3>
 
                         <p>
-                            Help with daily activities so your loved ones
-                            can live with ease.
+                           Providing dependable support for children with supervision, learning, and daily care.
                         </p>
 
                         <a href="#">
@@ -276,7 +275,7 @@
 
                 <div class="care-service-card">
 
-                    <img src="assets/images/care5.jpeg" alt="">
+                    <img src="assets/images/care2.jpeg" alt="">
 
                     <div class="service-icon">
                         <i class="fa-regular fa-comments"></i>
@@ -284,11 +283,11 @@
 
                     <div class="service-content">
 
-                        <h3>Companion Care</h3>
+                        <h3>Daily Living Assistance</h3>
 
                         <p>
-                            Emotional support and companionship
-                            for a happier, healthier life.
+                            Help with daily activities so your loved ones
+                            can live with ease.
                         </p>
 
                         <a href="#">
@@ -442,10 +441,6 @@
 
                     </div>
 
-                </div>
-
-                <div class="process-image">
-                    <img src="assets/images/process-care.jpeg" alt="">
                 </div>
 
             </div>

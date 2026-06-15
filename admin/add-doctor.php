@@ -71,13 +71,112 @@ if(isset($_POST['add_doctor']))
        PROFESSIONAL DETAILS
     ============================ */
 
+    $professional_category = isset($_POST['professional_category'])
+    ? mysqli_real_escape_string($conn, $_POST['professional_category'])
+    : "";
     $language = isset($_POST['language']) ? mysqli_real_escape_string($conn,$_POST['language']) : "";
-    $degree = isset($_POST['degree']) ? mysqli_real_escape_string($conn,$_POST['degree']) : "";
-    $specialization = isset($_POST['specialization']) ? mysqli_real_escape_string($conn,$_POST['specialization']) : "";
+    $degree = isset($_POST['qualification'])
+    ? mysqli_real_escape_string($conn, implode(", ", $_POST['qualification']))
+    : "";
+    $primary_specialization = isset($_POST['primary_specialization'])
+    ? mysqli_real_escape_string($conn, $_POST['primary_specialization'])
+    : "";
+    $sub_specialization = isset($_POST['sub_specialization'])
+    ? mysqli_real_escape_string($conn, $_POST['sub_specialization'])
+    : "";
+    $additional_certifications = isset($_POST['additional_certifications'])
+    ? mysqli_real_escape_string($conn, $_POST['additional_certifications'])
+    : "";
     $experience = isset($_POST['experience']) ? mysqli_real_escape_string($conn,$_POST['experience']) : "";
-    $clinic_name = isset($_POST['clinic_name']) ? mysqli_real_escape_string($conn,$_POST['clinic_name']) : "";
+    $current_organization = isset($_POST['current_organization'])
+    ? mysqli_real_escape_string($conn, $_POST['current_organization'])
+    : "";
+    $current_designation = isset($_POST['current_designation'])
+    ? mysqli_real_escape_string($conn, $_POST['current_designation'])
+    : "";
+    $consultation_mode = isset($_POST['consultation_mode'])
+    ? mysqli_real_escape_string($conn, implode(", ", $_POST['consultation_mode']))
+    : "";
+
+$platform = isset($_POST['platform'])
+    ? mysqli_real_escape_string($conn, implode(", ", $_POST['platform']))
+    : "";
+
+$consultation_languages = isset($_POST['consultation_languages'])
+    ? mysqli_real_escape_string($conn, implode(", ", $_POST['consultation_languages']))
+    : "";
+
+$availability = isset($_POST['availability'])
+    ? mysqli_real_escape_string($conn, implode(", ", $_POST['availability']))
+    : "";
+
+$available_days = isset($_POST['available_days'])
+    ? mysqli_real_escape_string($conn, implode(", ", $_POST['available_days']))
+    : "";
     $clinic_fee = isset($_POST['clinic_fee']) ? mysqli_real_escape_string($conn,$_POST['clinic_fee']) : "";
     $caring_squad_fee = isset($_POST['cs_fee']) ? mysqli_real_escape_string($conn,$_POST['cs_fee']) : "";
+    $license_number = isset($_POST['license_number']) ? mysqli_real_escape_string($conn,$_POST['license_number']) : "";
+$council = isset($_POST['council']) ? mysqli_real_escape_string($conn,$_POST['council']) : "";
+$online_consultation = isset($_POST['online_consultation']) ? mysqli_real_escape_string($conn,$_POST['online_consultation']) : "";
+$home_visit = isset($_POST['home_visit']) ? mysqli_real_escape_string($conn,$_POST['home_visit']) : "";
+$video_whatsapp = isset($_POST['video_whatsapp']) ? mysqli_real_escape_string($conn,$_POST['video_whatsapp']) : "";
+$audio_mobile = isset($_POST['audio_mobile']) ? mysqli_real_escape_string($conn,$_POST['audio_mobile']) : "";
+$priority_fee = isset($_POST['priority_fee']) ? mysqli_real_escape_string($conn,$_POST['priority_fee']) : "";
+$consultation_duration = isset($_POST['consultation_duration']) ? mysqli_real_escape_string($conn,$_POST['consultation_duration']) : "";
+$priority_consultation = isset($_POST['priority_consultation']) ? mysqli_real_escape_string($conn,$_POST['priority_consultation']) : "";
+$response_time = isset($_POST['response_time']) ? mysqli_real_escape_string($conn,$_POST['response_time']) : "";
+$emergency_charges = isset($_POST['emergency_charges']) ? mysqli_real_escape_string($conn,$_POST['emergency_charges']) : "";
+$max_priority_consultation = isset($_POST['max_priority_consultation']) ? mysqli_real_escape_string($conn,$_POST['max_priority_consultation']) : "";
+$followup_available = isset($_POST['followup_available']) ? mysqli_real_escape_string($conn,$_POST['followup_available']) : "";
+$followup_fee = isset($_POST['followup_fee']) ? mysqli_real_escape_string($conn,$_POST['followup_fee']) : "";
+$free_followup_period = isset($_POST['free_followup_period']) ? mysqli_real_escape_string($conn,$_POST['free_followup_period']) : "";
+$report_review = isset($_POST['report_review']) ? mysqli_real_escape_string($conn,$_POST['report_review']) : "";
+$digital_prescription = isset($_POST['digital_prescription']) ? mysqli_real_escape_string($conn,$_POST['digital_prescription']) : "";
+$home_visit_available = isset($_POST['home_visit_available']) ? mysqli_real_escape_string($conn,$_POST['home_visit_available']) : "";
+$service_radius = isset($_POST['service_radius']) ? mysqli_real_escape_string($conn,$_POST['service_radius']) : "";
+$home_visit_fee = isset($_POST['home_visit_fee']) ? mysqli_real_escape_string($conn,$_POST['home_visit_fee']) : "";
+$linkedin_profile = isset($_POST['linkedin_profile']) ? mysqli_real_escape_string($conn,$_POST['linkedin_profile']) : "";
+$website_profile = isset($_POST['website_profile']) ? mysqli_real_escape_string($conn,$_POST['website_profile']) : "";
+$professional_bio = isset($_POST['professional_bio']) ? mysqli_real_escape_string($conn,$_POST['professional_bio']) : "";
+$registration_valid_till = isset($_POST['registration_valid_till'])
+    ? mysqli_real_escape_string($conn, $_POST['registration_valid_till'])
+    : "";
+
+$additional_registrations = isset($_POST['additional_registrations'])
+    ? mysqli_real_escape_string($conn, $_POST['additional_registrations'])
+    : "";
+
+$areas_covered = isset($_POST['areas_covered'])
+    ? mysqli_real_escape_string($conn, $_POST['areas_covered'])
+    : "";
+
+$discounted_home_visit_fee = isset($_POST['discounted_home_visit_fee'])
+    ? mysqli_real_escape_string($conn, $_POST['discounted_home_visit_fee'])
+    : "";
+
+$display_profile = isset($_POST['display_profile'])
+    ? mysqli_real_escape_string($conn, $_POST['display_profile'])
+    : "";
+
+$display_photo = isset($_POST['display_photo'])
+    ? mysqli_real_escape_string($conn, $_POST['display_photo'])
+    : "";
+
+$display_fee = isset($_POST['display_fee'])
+    ? mysqli_real_escape_string($conn, $_POST['display_fee'])
+    : "";
+
+$founding_expert = isset($_POST['founding_expert'])
+    ? mysqli_real_escape_string($conn, $_POST['founding_expert'])
+    : "";
+
+$city_ambassador = isset($_POST['city_ambassador'])
+    ? mysqli_real_escape_string($conn, $_POST['city_ambassador'])
+    : "";
+
+$online_expert_panel = isset($_POST['online_expert_panel'])
+    ? mysqli_real_escape_string($conn, $_POST['online_expert_panel'])
+    : "";
 
 
     /* ============================
@@ -96,11 +195,14 @@ if(isset($_POST['add_doctor']))
             email,
             city,
             state,
+            state_id,
+            profession,
             language,
             degree,
             speciality,
             experience,
             hospital,
+            current_designation,
             clinic_fee,
             caring_squad_fee,
             display_name,
@@ -108,7 +210,47 @@ if(isset($_POST['add_doctor']))
             display_speciality,
             display_experience,
             display_languages,
-            consultation_type
+            consultation_type,
+license_number,
+council,
+online_consultation,
+home_visit,
+consultation_mode,
+platform,
+video_whatsapp,
+audio_mobile,
+priority_fee,
+consultation_duration,
+consultation_languages,
+availability,
+available_days,
+priority_consultation,
+response_time,
+emergency_charges,
+max_priority_consultation,
+followup_available,
+followup_fee,
+free_followup_period,
+report_review,
+digital_prescription,
+home_visit_available,
+service_radius,
+home_visit_fee,
+linkedin_profile,
+website_profile,
+professional_bio,
+registration_valid_till,
+additional_registrations,
+sub_specialization,
+additional_certifications,
+areas_covered,
+discounted_home_visit_fee,
+display_profile,
+display_photo,
+display_fee,
+founding_expert,
+city_ambassador,
+online_expert_panel
         )
 
         VALUES
@@ -122,11 +264,14 @@ if(isset($_POST['add_doctor']))
             '$email',
             '$city',
             '$state',
+            '$state_id',
+            '$professional_category',
             '$language',
             '$degree',
-            '$specialization',
+            '$primary_specialization',
             '$experience',
-            '$clinic_name',
+            '$current_organization',
+            '$current_designation',
             '$clinic_fee',
             '$caring_squad_fee',
             '$display_name',
@@ -134,7 +279,47 @@ if(isset($_POST['add_doctor']))
             '$display_speciality',
             '$display_experience',
             '$display_languages',
-            '$consultation_type'
+            '$consultation_type',
+'$license_number',
+'$council',
+'$online_consultation',
+'$home_visit',
+'$consultation_mode',
+'$platform',
+'$video_whatsapp',
+'$audio_mobile',
+'$priority_fee',
+'$consultation_duration',
+'$consultation_languages',
+'$availability',
+'$available_days',
+'$priority_consultation',
+'$response_time',
+'$emergency_charges',
+'$max_priority_consultation',
+'$followup_available',
+'$followup_fee',
+'$free_followup_period',
+'$report_review',
+'$digital_prescription',
+'$home_visit_available',
+'$service_radius',
+'$home_visit_fee',
+'$linkedin_profile',
+'$website_profile',
+'$professional_bio',
+'$registration_valid_till',
+'$additional_registrations',
+'$sub_specialization',
+'$additional_certifications',
+'$areas_covered',
+'$discounted_home_visit_fee',
+'$display_profile',
+'$display_photo',
+'$display_fee',
+'$founding_expert',
+'$city_ambassador',
+'$online_expert_panel'
         )
     ");
 
@@ -794,329 +979,301 @@ FRONTEND DATA SECTION
 
 </div>
 
+<!-- =====================================
+SECTION A - PERSONAL INFORMATION
+===================================== -->
+
 <div class="form-section" style="margin-top:35px;">
-<!-- SECTION A -->
 
+    <div class="section-top">
 
-                <div class="section-top">
+        <div class="section-title">
 
-                    <div class="section-title">
+            <div class="section-icon">
+                <i class="fa-solid fa-user"></i>
+            </div>
 
-                        <div class="section-icon">
+            <div>
 
-                            <i class="fa-solid fa-user-doctor"></i>
+                <h2>
+                    Personal Information
+                </h2>
 
-                        </div>
+                <p>
+                    Basic details of the healthcare professional
+                </p>
 
-                        <div>
+            </div>
 
-                            <h2>
-                                Basic Doctor Information
-                            </h2>
+        </div>
 
-                            <p>
-                                Fill all  doctor personal details
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="section-badge">
-                        SECTION A
-                    </div>
-
-                </div>
-
-                <!-- SECTION BODY -->
-
-                <div class="section-body">
-
-                    <div class="form-grid">
-
-                        <!-- DR ID -->
-
-<div class="form-group">
-
-    <label>
-        Doctor ID
-        
-    </label>
-
-    <div class="input-box">
-
-        <i class="fa-solid fa-id-card"></i>
-
-        <input
-            type="text"
-            name="doctor_id"
-            
-        >
+        <div class="section-badge">
+            SECTION A
+        </div>
 
     </div>
 
-</div>
+    <div class="section-body">
 
-<!-- FULL NAME -->
+        <div class="form-grid">
 
-<div class="form-group">
+            <!-- Doctor ID -->
 
-    <label>
-        Full Name
-    </label>
+            <div class="form-group">
 
-    <div class="input-box">
+                <label>Doctor ID</label>
 
-        <i class="fa-solid fa-user"></i>
+                <div class="input-box">
 
-        <input
-            type="text"
-            name="full_name"
-            
-        >
+                    <i class="fa-solid fa-id-badge"></i>
 
-    </div>
-
-</div>
-
-                        <!-- GENDER -->
-
-                        <div class="form-group">
-
-                            <label>
-                                Gender
-            
-                            </label>
-
-                            <div class="input-box">
-
-                                <i class="fa-solid fa-venus-mars"></i>
-
-                                <select
-                                    name="gender"
-                                    
-                                >
-
-                                    <option value="">
-                                        Select Gender
-                                    </option>
-
-                                    <option value="Male">
-                                        Male
-                                    </option>
-
-                                    <option value="Female">
-                                        Female
-                                    </option>
-
-                                    <option value="Other">
-                                        Other
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <!-- DOB -->
-
-                        <div class="form-group">
-
-                            <label>
-                                Date of Birth
-                                
-                            </label>
-
-                            <div class="input-box">
-
-                                <i class="fa-solid fa-calendar-days"></i>
-
-                                <input
-                                    type="text"
-                                    name="dob"
-                                    
-                                >
-
-                            </div>
-
-                        </div>
-
-                        <!-- MOBILE -->
-
-                        <div class="form-group">
-
-                            <label>
-                                Mobile Number
-                                
-                            </label>
-
-                            <div class="input-box">
-
-                                <i class="fa-solid fa-phone"></i>
-
-                                <input
-                                    type="text"
-                                    name="mobile"
-                                    
-                                >
-
-                            </div>
-
-                        </div>
-
-                        <!-- WHATSAPP -->
-
-                        <div class="form-group">
-
-                            <label>
-                                Whatsapp Number
-                                
-                            </label>
-
-                            <div class="input-box">
-
-                                <i class="fa-brands fa-whatsapp"></i>
-
-                                <input
-                                    type="text"
-                                    name="whatsapp"
-                                    
-                                >
-
-                            </div>
-
-                        </div>
-
-<!-- EMAIL -->
-
-<div class="form-group">
-
-    <label>
-        Email Address
-        
-    </label>
-
-    <div class="input-box">
-
-        <i class="fa-solid fa-envelope"></i>
-
-        <input
-            type="text"
-            name="email"
-            
-        >
-
-    </div>
-
-</div>
-
-<!-- LANGUAGE -->
-
-<div class="form-group">
-
-    <label>
-        Language Spoken
-        
-    </label>
-
-    <div class="input-box">
-
-        <i class="fa-solid fa-language"></i>
-
-        <input
-            type="text"
-            name="language"
-            
-        >
-
-    </div>
-
-</div>
-
-<!-- STATE -->
-
-<div class="form-group">
-
-    <label>
-        State
-        
-    </label>
-
-    <div class="input-box">
-
-        <i class="fa-solid fa-location-dot"></i>
-
-        <select
-    name="state"
-    id="state"
-    
->
-
-<option value="">
-    Select State
-</option>
-
-<?php
-
-$states = mysqli_query(
-    $conn,
-    "SELECT * FROM states
-     ORDER BY state_name ASC"
-);
-
-while($state = mysqli_fetch_assoc($states))
-{
-?>
-
-<option value="<?php echo $state['id']; ?>">
-
-    <?php echo $state['state_name']; ?>
-
-</option>
-
-<?php } ?>
-
-</select>
-
-    </div>
-
-</div>
-
-<!-- CITY -->
-
-<div class="form-group">
-
-    <label>
-        Current City
-        
-    </label>
-
-    <div class="input-box">
-
-        <i class="fa-solid fa-city"></i>
-
-        <select
-            name="city"
-            id="city"
-            
-        >
-
-            <option value="">
-                Select City
-            </option>
-
-        </select>
-
-    </div>
-
-</div>
-
-                    </div>
+                    <input
+                        type="text"
+                        name="doctor_id"
+                        placeholder="Example: CS001"
+                    >
 
                 </div>
 
             </div>
+
+            <!-- Full Name -->
+
+            <div class="form-group">
+
+                <label>Full Name</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-user-doctor"></i>
+
+                    <input
+                        type="text"
+                        name="full_name"
+                        placeholder="Enter Full Name"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- Gender -->
+
+            <div class="form-group">
+
+                <label>Gender</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-venus-mars"></i>
+
+                    <select name="gender">
+
+                        <option value="">Select Gender</option>
+
+                        <option value="Male">Male</option>
+
+                        <option value="Female">Female</option>
+
+                        <option value="Other">Other</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- Date of Birth -->
+
+            <div class="form-group">
+
+                <label>Date of Birth</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-calendar"></i>
+
+                    <input
+                        type="date"
+                        name="dob"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- Mobile -->
+
+            <div class="form-group">
+
+                <label>Mobile Number</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    <input
+                        type="text"
+                        name="mobile"
+                        placeholder="Enter Mobile Number"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- WhatsApp -->
+
+            <div class="form-group">
+
+                <label>WhatsApp Number</label>
+
+                <div class="input-box">
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                    <input
+                        type="text"
+                        name="whatsapp"
+                        placeholder="Enter WhatsApp Number"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- Email -->
+
+            <div class="form-group">
+
+                <label>Email ID</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter Email Address"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- State -->
+
+            <div class="form-group">
+
+                <label>State</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <select
+                        name="state"
+                        id="state"
+                    >
+
+                        <option value="">
+                            Select State
+                        </option>
+
+                        <?php
+
+                        $states = mysqli_query($conn, "SELECT * FROM states ORDER BY state_name ASC");
+
+                        while($row = mysqli_fetch_assoc($states))
+                        {
+
+                        ?>
+
+                            <option value="<?php echo $row['id']; ?>">
+
+                                <?php echo $row['state_name']; ?>
+
+                            </option>
+
+                        <?php } ?>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- City -->
+
+            <div class="form-group">
+
+                <label>Current City</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-city"></i>
+
+                    <select
+                        name="city"
+                        id="city"
+                    >
+
+                        <option value="">
+                            Select City
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- Country -->
+
+            <div class="form-group">
+
+                <label>Country</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-earth-asia"></i>
+
+                    <input
+                        type="text"
+                        name="country"
+                        value="India"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- Languages Known -->
+
+            <div class="form-group full">
+
+                <label>Languages Known</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-language"></i>
+
+                    <input
+                        type="text"
+                        name="language"
+                        placeholder="Example: English, Hindi, Gujarati"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 <!-- =====================================
 SECTION B
@@ -1167,74 +1324,40 @@ SECTION B
             <div class="form-group full">
 
                 <label>
-                    Profession
-                    
+                    Professional Category <span style="color:red">*</span>
                 </label>
 
                 <div class="input-box">
 
                     <i class="fa-solid fa-stethoscope"></i>
 
-                    <select
-                        name="profession"
-                        
-                    >
+                    <select name="professional_category">
 
-                        <option value="">
-                            Select Profession
-                        </option>
+                        <option value="">Select Professional Category</option>
 
-                        <option value="General Physician">
-                            General Physician
-                        </option>
+<option value="Medical Doctor">Medical Doctor</option>
 
-                        <option value="Specialist Doctor">
-                            Specialist Doctor
-                        </option>
+<option value="Physiotherapist">Physiotherapist</option>
 
-                        <option value="Physiotherapist">
-                            Physiotherapist
-                        </option>
+<option value="Psychologist">Psychologist</option>
 
-                        <option value="Nutritionist">
-                            Nutritionist
-                        </option>
+<option value="Dietician / Nutritionist">Dietician / Nutritionist</option>
 
-                        <option value="Dietician">
-                            Dietician
-                        </option>
+<option value="Occupational Therapist">Occupational Therapist</option>
 
-                        <option value="Psychologist">
-                            Psychologist
-                        </option>
+<option value="Speech Therapist">Speech Therapist</option>
 
-                        <option value="Psychiatrist">
-                            Psychiatrist
-                        </option>
+<option value="Nurse">Nurse</option>
 
-                        <option value="Ayurveda Doctor">
-                            Ayurveda Doctor
-                        </option>
+<option value="Yoga Expert">Yoga Expert</option>
 
-                        <option value="Homeopathy Doctor">
-                            Homeopathy Doctor
-                        </option>
+<option value="Fitness / Rehabilitation Trainer">Fitness / Rehabilitation Trainer</option>
 
-                        <option value="Yoga Expert">
-                            Yoga Expert
-                        </option>
+<option value="Wellness Expert">Wellness Expert</option>
 
-                        <option value="Wellness Coach">
-                            Wellness Coach
-                        </option>
+<option value="Counsellor">Counsellor</option>
 
-                        <option value="Counsellor">
-                            Counsellor
-                        </option>
-
-                        <option value="Other">
-                            Other
-                        </option>
+<option value="Other">Other</option>
 
                     </select>
 
@@ -1242,165 +1365,181 @@ SECTION B
 
             </div>
 
-<!-- Degree -->
+<!-- Qualification -->
 
-<div class="form-group">
+<div class="form-group full">
 
     <label>
-        Degree
-        
+        Qualifications (Select All Applicable)
     </label>
 
-    <div class="input-box">
+    <div class="checkbox-grid">
 
-        <i class="fa-solid fa-graduation-cap"></i>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="MBBS">
+            MBBS
+        </label>
 
-        <select
-            name="degree"
-            
-        >
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="MD">
+            MD
+        </label>
 
-            <option value="">
-                Select Degree
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="MS">
+            MS
+        </label>
 
-            <option value="MBBS">
-                MBBS
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="DNB">
+            DNB
+        </label>
 
-            <option value="MD">
-                MD
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="DM">
+            DM
+        </label>
 
-            <option value="MS">
-                MS
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="MCh">
+            MCh
+        </label>
 
-            <option value="BDS">
-                BDS
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="BPT">
+            BPT
+        </label>
 
-            <option value="MDS">
-                MDS
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="MPT">
+            MPT
+        </label>
 
-            <option value="BAMS">
-                BAMS
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="BDS">
+            BDS
+        </label>
 
-            <option value="BHMS">
-                BHMS
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="MDS">
+            MDS
+        </label>
 
-            <option value="BUMS">
-                BUMS
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="BAMS">
+            BAMS
+        </label>
 
-            <option value="BPT">
-                BPT
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="BHMS">
+            BHMS
+        </label>
 
-            <option value="MPT">
-                MPT
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="GNM">
+            GNM
+        </label>
 
-            <option value="PhD">
-                PhD
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="B.Sc Nursing">
+            B.Sc Nursing
+        </label>
 
-            <option value="Diploma">
-                Diploma
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="M.Sc Nursing">
+            M.Sc Nursing
+        </label>
 
-            <option value="Other">
-                Other
-            </option>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="PhD">
+            PhD
+        </label>
 
-        </select>
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="Fellowship">
+            Fellowship
+        </label>
+
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="Certification">
+            Certification
+        </label>
+
+        <label class="check-item">
+            <input type="checkbox" name="qualification[]" value="Other">
+            Other
+        </label>
 
     </div>
 
 </div>
 
-<!-- SPECIALIZATION -->
+<!-- PRIMARY SPECIALIZATION -->
 
 <div class="form-group">
 
-    <label>
-        Specialization
-        
-    </label>
+    <label>Primary Specialization</label>
 
     <div class="input-box">
 
         <i class="fa-solid fa-heart-pulse"></i>
 
-        <select
-            name="specialization"
-            
+        <select name="primary_specialization">
+
+        <option value="">Select Primary Specialization</option>
+        <option value="General Medicine">General Medicine</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="Dermatology">Dermatology</option>
+        <option value="Neurology">Neurology</option>
+        <option value="Orthopedics">Orthopedics</option>
+        <option value="Pediatrics">Pediatrics</option>
+        <option value="Gynecology">Gynecology</option>
+        <option value="Psychology">Psychology</option>
+        <option value="Psychiatry">Psychiatry</option>
+        <option value="Physiotherapy">Physiotherapy</option>
+        <option value="Nutrition">Nutrition</option>
+        <option value="ENT">ENT</option>
+        <option value="Other">Other</option>
+
+      </select>
+
+ </div>
+
+</div>
+
+<div class="form-group">
+
+    <label>Sub-Specialization</label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-heart-pulse"></i>
+
+        <input type="text"
+               name="sub_specialization"
+               placeholder="Enter Sub-Specialization">
+
+    </div>
+
+</div>
+
+<!-- ADDITIONAL CERTIFICATIONS -->
+
+<div class="form-group full">
+
+    <label>
+        Additional Certifications / Fellowships
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-certificate"></i>
+
+        <input
+            type="text"
+            name="additional_certifications"
+            placeholder="Example: Fellowship in Cardiology, ACLS, BLS, etc."
         >
-
-            <option value="">
-                Select Specialization
-            </option>
-
-            <option value="Cardiologist">
-                Cardiologist
-            </option>
-
-            <option value="Dermatologist">
-                Dermatologist
-            </option>
-
-            <option value="Neurologist">
-                Neurologist
-            </option>
-
-            <option value="Orthopedic">
-                Orthopedic
-            </option>
-
-            <option value="Psychologist">
-                Psychologist
-            </option>
-
-            <option value="Psychiatrist">
-                Psychiatrist
-            </option>
-
-            <option value="Pediatrician">
-                Pediatrician
-            </option>
-
-            <option value="Gynecologist">
-                Gynecologist
-            </option>
-
-            <option value="Physiotherapist">
-                Physiotherapist
-            </option>
-
-            <option value="Nutritionist">
-                Nutritionist
-            </option>
-
-            <option value="General Physician">
-                General Physician
-            </option>
-
-             <option value="General Physician">
-                General Medicine
-            </option>
-
-            <option value="ENT Specialist">
-                ENT Specialist
-            </option>
-
-            <option value="Other">
-                Other
-            </option>
-
-        </select>
 
     </div>
 
@@ -1411,8 +1550,7 @@ SECTION B
             <div class="form-group">
 
                 <label>
-                    Years of Experience
-                    
+                     Total Years of Experience <span style="color:red">*</span>
                 </label>
 
                 <div class="input-box">
@@ -1421,36 +1559,24 @@ SECTION B
 
                     <select
                         name="experience"
-                        
                     >
 
-                        <option value="">
-                            Select Experience
-                        </option>
-
-                        <option value="Fresher">
-                            Fresher
-                        </option>
-
-                        <option value="1-3 Years">
-                            1-3 Years
-                        </option>
-
-                        <option value="3-5 Years">
-                            3-5 Years
-                        </option>
-
-                        <option value="5-10 Years">
-                            5-10 Years
-                        </option>
-
-                        <option value="10-15 Years">
-                            10-15 Years
-                        </option>
-
-                        <option value="15+ Years">
-                            15+ Years
-                        </option>
+                    <option value="">Select Experience</option>
+                    <option value="0">0 Years</option>
+                    <option value="1">1 Year</option>
+                    <option value="2">2 Years</option>
+                    <option value="3">3 Years</option>
+                    <option value="4">4 Years</option>
+                    <option value="5">5 Years</option>
+                    <option value="6">6 Years</option>
+                    <option value="7">7 Years</option>
+                    <option value="8">8 Years</option>
+                    <option value="9">9 Years</option>
+                    <option value="10">10 Years</option>
+                    <option value="11+">11+ Years</option>
+                    <option value="15+">15+ Years</option>
+                    <option value="20+">20+ Years</option>
+                    <option value="25+">25+ Years</option>
 
                     </select>
 
@@ -1458,28 +1584,49 @@ SECTION B
 
             </div>
 
-            <!-- CURRENT CLINIC -->
+            <!-- CURRENT ORGANIZATION -->
 
-            <div class="form-group">
+<div class="form-group">
 
-                <label>
-                    Current Clinic / Hospital / Practice Name
-                    
-                </label>
+    <label>
+        Current Organization
+    </label>
 
-                <div class="input-box">
+    <div class="input-box">
 
-                    <i class="fa-solid fa-hospital"></i>
+        <i class="fa-solid fa-hospital"></i>
 
-                    <input
-                        type="text"
-                        name="clinic_name"
-                        
-                    >
+        <input
+            type="text"
+            name="current_organization"
+            placeholder="Enter Organization Name"
+        >
 
-                </div>
+    </div>
 
-            </div>
+</div>
+
+<!-- CURRENT DESIGNATION -->
+
+<div class="form-group">
+
+    <label>
+        Current Designation
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-user-tie"></i>
+
+        <input
+            type="text"
+            name="current_designation"
+            placeholder="Enter Designation"
+        >
+
+    </div>
+
+</div>
 
             <!-- LICENSE NUMBER -->
 
@@ -1526,6 +1673,49 @@ SECTION B
                 </div>
 
             </div>
+
+            <!-- REGISTRATION VALID TILL -->
+
+<div class="form-group">
+
+    <label>
+        Registration Valid Till
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-calendar-days"></i>
+
+        <input
+            type="date"
+            name="registration_valid_till"
+        >
+
+    </div>
+
+</div>
+
+<!-- ADDITIONAL REGISTRATIONS -->
+
+<div class="form-group">
+
+    <label>
+        Additional Registrations
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-id-card"></i>
+
+        <input
+            type="text"
+            name="additional_registrations"
+            placeholder="Enter Additional Registrations (Optional)"
+        >
+
+    </div>
+
+</div>
 
         </div>
 
@@ -1779,8 +1969,7 @@ SECTION B
             <div class="form-group">
 
                 <label>
-                    Standard Clinic Consultation Fee (₹)
-                    
+                   Standard Consultation Charges (₹)
                 </label>
 
                 <div class="input-box">
@@ -1802,8 +1991,7 @@ SECTION B
             <div class="form-group">
 
                 <label>
-                    Preferred Caring Squad Consultation Fee (₹)
-                    
+                   Discounted Consultation Charges for Caring Squad Members (₹)
                 </label>
 
                 <div class="input-box">
@@ -1825,8 +2013,7 @@ SECTION B
             <div class="form-group">
 
                 <label>
-                    Priority Consultation Fee (₹)
-                    
+                    Priority Consultation Charges (₹)
                 </label>
 
                 <div class="input-box">
@@ -1953,8 +2140,7 @@ SECTION B
             <div class="form-group full">
 
                 <label>
-                    Standard Availability for Online Consultation
-                    
+                    Available Days
                 </label>
 
                 <div class="checkbox-grid">
@@ -2003,8 +2189,7 @@ SECTION B
             <div class="form-group full">
 
                 <label>
-                    Available Days for Online Consultation
-                    
+                    Available Time Slots
                 </label>
 
                 <div class="checkbox-grid">
@@ -2576,8 +2761,7 @@ SECTION B
             <div class="form-group">
 
                 <label>
-                    Available for Home Visits?
-                    
+                    Interested in Home Visit Services?
                 </label>
 
                 <div class="input-box">
@@ -2612,8 +2796,7 @@ SECTION B
             <div class="form-group">
 
                 <label>
-                    Service Radius
-                    
+                    Service Radius (KM)  
                 </label>
 
                 <div class="input-box">
@@ -2621,10 +2804,8 @@ SECTION B
                     <i class="fa-solid fa-location-dot"></i>
 
                     <select
-                        name="service_radius"
-                        
+                        name="service_radius"   
                     >
-
                         <option value="">
                             Select Radius
                         </option>
@@ -2655,13 +2836,34 @@ SECTION B
 
             </div>
 
+            <!-- AREAS / CITIES COVERED -->
+
+<div class="form-group">
+
+    <label>
+        Areas / Cities Covered
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-location-dot"></i>
+
+        <input
+            type="text"
+            name="areas_covered"
+            placeholder="Example: Ahmedabad, Gandhinagar, Rajkot"
+        >
+
+    </div>
+
+</div>
+
             <!-- HOME VISIT FEE -->
 
             <div class="form-group full">
 
                 <label>
-                    Home Visit Consultation Fee (₹)
-                    
+                    Home Visit Consultation Charges (₹)             
                 </label>
 
                 <div class="input-box">
@@ -2677,6 +2879,28 @@ SECTION B
                 </div>
 
             </div>
+
+            <!-- DISCOUNTED HOME VISIT CHARGES -->
+
+<div class="form-group">
+
+    <label>
+        Discounted Charges for Caring Squad Members (₹)
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+
+        <input
+            type="number"
+            name="discounted_home_visit_fee"
+            placeholder="Enter Discounted Charges"
+        >
+
+    </div>
+
+</div>
 
         </div>
 
@@ -2734,7 +2958,6 @@ SECTION B
 
                 <label>
                     Upload Professional Photograph
-                   <!--  -->
                 </label>
 
                 <div class="input-box">
@@ -2752,13 +2975,34 @@ SECTION B
 
             </div>
 
+            <!-- RESUME / CV -->
+
+<div class="form-group">
+
+    <label>
+        Resume / CV
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-file"></i>
+
+        <input
+            type="file"
+            name="resume_cv"
+            accept=".pdf,.doc,.docx"
+        >
+
+    </div>
+
+</div>
+
             <!-- DEGREE CERTIFICATES -->
 
             <div class="form-group">
 
                 <label>
-                    Upload Degree Certificate(s)
-                    <!--  -->
+                    Qualification Certificate(s)
                 </label>
 
                 <div class="input-box">
@@ -2781,8 +3025,7 @@ SECTION B
             <div class="form-group">
 
                 <label>
-                    Upload Registration Certificate / License
-                   <!--  -->
+                    Registration Certificate
                 </label>
 
                 <div class="input-box">
@@ -2799,12 +3042,34 @@ SECTION B
 
             </div>
 
+            <!-- ADDITIONAL CERTIFICATIONS FILE -->
+
+<div class="form-group">
+
+    <label>
+        Additional Certifications
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-award"></i>
+
+        <input
+            type="file"
+            name="additional_certificates"
+            multiple
+        >
+
+    </div>
+
+</div>
+
             <!-- GOVERNMENT ID -->
 
             <div class="form-group">
 
                 <label>
-                    Upload Government ID Proof
+                   Government ID Proof
                    <!--  -->
                 </label>
 
@@ -2911,12 +3176,10 @@ SECTION B
 </div>
 
 <!-- =====================================
-     SECTION H
+     SECTION H - VISIBILITY & PROFESSIONAL GROWTH
 ===================================== -->
 
 <div class="form-section" style="margin-top:35px;">
-
-    <!-- SECTION TOP -->
 
     <div class="section-top">
 
@@ -2924,18 +3187,18 @@ SECTION B
 
             <div class="section-icon">
 
-                <i class="fa-solid fa-handshake-angle"></i>
+                <i class="fa-solid fa-eye"></i>
 
             </div>
 
             <div>
 
                 <h2>
-                    About You
+                    Visibility & Professional Growth
                 </h2>
 
                 <p>
-                    Share your motivation and support for Caring Squad mission
+                    Control your public profile and growth opportunities on Caring Squad.
                 </p>
 
             </div>
@@ -2948,132 +3211,161 @@ SECTION B
 
     </div>
 
-    <!-- SECTION BODY -->
-
     <div class="section-body">
 
         <div class="form-grid">
 
-            <!-- WHY JOIN CARING SQUAD -->
+            <!-- DISPLAY PROFILE -->
 
-            <div class="form-group full">
+            <div class="form-group">
 
                 <label>
-                    Why Would You Like To Join Caring Squad?
-                    
+                    Display My Profile Publicly
                 </label>
 
-                <div class="checkbox-grid">
+                <div class="input-box">
 
-                    <label class="check-item">
-                        <input type="checkbox" name="join_reason[]" value="Healthcare Accessibility Mission">
-                        Healthcare Accessibility Mission
-                    </label>
+                    <i class="fa-solid fa-eye"></i>
 
-                    <label class="check-item">
-                        <input type="checkbox" name="join_reason[]" value="Additional Patient Reach">
-                        Additional Patient Reach
-                    </label>
+                    <select name="display_profile">
 
-                    <label class="check-item">
-                        <input type="checkbox" name="join_reason[]" value="Online Consultation Opportunities">
-                        Online Consultation Opportunities
-                    </label>
+                        <option value="">Select</option>
 
-                    <label class="check-item">
-                        <input type="checkbox" name="join_reason[]" value="Home Visit Opportunities">
-                        Home Visit Opportunities
-                    </label>
+                        <option value="Yes">Yes</option>
 
-                    <label class="check-item">
-                        <input type="checkbox" name="join_reason[]" value="Flexible Practice">
-                        Flexible Practice
-                    </label>
+                        <option value="No">No</option>
 
-                    <label class="check-item">
-                        <input type="checkbox" name="join_reason[]" value="Digital Presence">
-                        Digital Presence
-                    </label>
-
-                    <label class="check-item">
-                        <input type="checkbox" name="join_reason[]" value="Professional Networking">
-                        Professional Networking
-                    </label>
-
-                    <label class="check-item">
-                        <input type="checkbox" name="join_reason[]" value="Community Service">
-                        Community Service
-                    </label>
-
-                    <label class="check-item">
-                        <input type="checkbox" name="join_reason[]" value="Treat the remote patient">
-                        Treat the remote patient
-                    </label>
-
-                    <label class="check-item">
-                        <input type="checkbox" name="join_reason[]" value="Other">
-                        Other
-                    </label>
+                    </select>
 
                 </div>
 
             </div>
 
-            <!-- SPECIAL CONSULTATION FEE -->
+            <!-- DISPLAY PHOTO -->
 
-            <div class="form-group full">
+            <div class="form-group">
 
                 <label>
-                    Would you be willing to offer a special Caring Squad consultation fee to support healthcare accessibility?
-                    
+                    Display My Photograph
                 </label>
 
-                <div class="form-grid">
+                <div class="input-box">
 
-                    <div class="input-box">
+                    <i class="fa-solid fa-camera"></i>
 
-                        <i class="fa-solid fa-heart"></i>
+                    <select name="display_photo">
 
-                        <select
-                            name="special_consultation_fee"
-                            
-                        >
+                        <option value="">Select</option>
 
-                            <option value="">
-                                Select Option
-                            </option>
+                        <option value="Yes">Yes</option>
 
-                            <option value="Yes">
-                                Yes
-                            </option>
+                        <option value="No">No</option>
 
-                            <option value="No">
-                                No
-                            </option>
+                    </select>
 
-                            <option value="If Yes, then how much">
-                                If Yes, then how much
-                            </option>
+                </div>
 
-                            <option value="Depends on Case">
-                                Depends on Case
-                            </option>
+            </div>
 
-                        </select>
+            <!-- DISPLAY FEES -->
 
-                    </div>
+            <div class="form-group">
 
-                    <div class="input-box">
+                <label>
+                    Display My Consultation Fees
+                </label>
 
-                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                <div class="input-box">
 
-                        <input
-                            type="number"
-                            name="special_fee_amount"
-                            placeholder="Enter Special Consultation Fee Amount"
-                        >
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
 
-                    </div>
+                    <select name="display_fee">
+
+                        <option value="">Select</option>
+
+                        <option value="Yes">Yes</option>
+
+                        <option value="No">No</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- FOUNDING EXPERT -->
+
+            <div class="form-group">
+
+                <label>
+                    Interested in Founding Expert Program?
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-star"></i>
+
+                    <select name="founding_expert">
+
+                        <option value="">Select</option>
+
+                        <option value="Yes">Yes</option>
+
+                        <option value="No">No</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- CITY AMBASSADOR -->
+
+            <div class="form-group">
+
+                <label>
+                    Interested in Becoming a City Ambassador?
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-city"></i>
+
+                    <select name="city_ambassador">
+
+                        <option value="">Select</option>
+
+                        <option value="Yes">Yes</option>
+
+                        <option value="No">No</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <!-- ONLINE EXPERT PANEL -->
+
+            <div class="form-group">
+
+                <label>
+                    Interested in Online Expert Panel?
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <select name="online_expert_panel">
+
+                        <option value="">Select</option>
+
+                        <option value="Yes">Yes</option>
+
+                        <option value="No">No</option>
+
+                    </select>
 
                 </div>
 
