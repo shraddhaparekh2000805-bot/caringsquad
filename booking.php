@@ -38,10 +38,11 @@ if(!empty($search)){
     $search = mysqli_real_escape_string($conn, $search);
 
     $where .= " AND (
-        name LIKE '%$search%' OR
-        speciality LIKE '%$search%' OR
-        degree LIKE '%$search%'
-    )";
+    display_name LIKE '%$search%' OR
+    display_speciality LIKE '%$search%' OR
+    display_degree LIKE '%$search%'
+)";
+
 }
 
 /* SPECIALITY FILTER */
@@ -50,7 +51,7 @@ if(isset($speciality) && $speciality != ''){
 
     $speciality = mysqli_real_escape_string($conn, $speciality);
 
-    $where .= " AND speciality LIKE '%$speciality%'";
+    $where .= " AND display_speciality LIKE '%$speciality%'";
 }
 
 /* =========================================
@@ -222,6 +223,13 @@ $query = mysqli_query(
     font-size:17px;
     font-weight:600;
     margin-bottom:14px;
+}
+
+.doctor-description{
+    margin-top:1px;
+    font-size:14px;
+    line-height:1.7;
+    color:#666;
 }
 
 .doctor-meta{
@@ -708,8 +716,8 @@ if(mysqli_num_rows($query) > 0){
 <div class="doctor-card">
 
     <div class="doctor-image">
-        <img src="uploads/<?php echo $doctor['image']; ?>">
-             alt="<?php echo $doctor['name']; ?>">
+        <img src="uploads/doctors/<?php echo $doctor['image']; ?>">
+             alt="<?php echo $doctor['display_name']; ?>">
     </div>
 
     <div class="doctor-info">
@@ -724,6 +732,10 @@ if(mysqli_num_rows($query) > 0){
 
         <div class="doctor-speciality">
             <?php echo $doctor['display_speciality']; ?>
+        </div>
+
+        <div class="doctor-description">
+            <?php echo nl2br($doctor['professional_bio']); ?>
         </div>
 
         <div class="doctor-meta">
@@ -749,7 +761,7 @@ if(mysqli_num_rows($query) > 0){
     <div class="fee-row">
         <span>Standard Consultation Fee</span>
         <strong class="standard-fee">
-            ₹<?php echo $doctor['fee']; ?>
+            ₹<?php echo $doctor['clinic_fee']; ?>
         </strong>
     </div>
 

@@ -14,8 +14,104 @@ if(!isset($_SESSION['admin']))
 $success = "";
 $error = "";
 
-if(isset($_POST['add_doctor']))
+if(isset($_POST['save_frontend']))
 {
+    $doctor_id = mysqli_real_escape_string($conn,$_POST['doctor_id']);
+
+    $display_name = mysqli_real_escape_string($conn,$_POST['display_name']);
+    $display_degree = mysqli_real_escape_string($conn,$_POST['display_degree']);
+    $display_speciality = mysqli_real_escape_string($conn,$_POST['display_speciality']);
+    $display_experience = mysqli_real_escape_string($conn,$_POST['display_experience']);
+    $display_languages = mysqli_real_escape_string($conn,$_POST['display_languages']);
+    $consultation_type = mysqli_real_escape_string($conn,$_POST['consultation_type']);
+    $clinic_fee = mysqli_real_escape_string(
+    $conn,
+    $_POST['clinic_fee']
+);
+
+$cs_fee = mysqli_real_escape_string(
+    $conn,
+    $_POST['cs_fee']
+);
+
+$professional_bio = mysqli_real_escape_string(
+    $conn,
+    $_POST['professional_bio']
+);
+
+$doctor_photo = "";
+
+if(isset($_FILES['doctor_photo']) && $_FILES['doctor_photo']['name'] != "")
+{
+    $uploadDir = "../uploads/doctors/";
+
+    if(!is_dir($uploadDir))
+    {
+        mkdir($uploadDir, 0777, true);
+    }
+
+    $doctor_photo =
+        time().'_'.basename($_FILES['doctor_photo']['name']);
+
+    move_uploaded_file(
+        $_FILES['doctor_photo']['tmp_name'],
+        $uploadDir.$doctor_photo
+    );
+}
+
+    $check = mysqli_query(
+        $conn,
+        "SELECT id FROM doctors WHERE dr_id='$doctor_id'"
+    );
+
+    if(mysqli_num_rows($check) > 0)
+    {
+        $error = "Doctor ID already exists.";
+    }
+    else
+    {
+        $insert = mysqli_query(
+            $conn,
+            "INSERT INTO doctors
+            (
+                dr_id,
+                display_name,
+                display_degree,
+                display_speciality,
+                display_experience,
+                display_languages,
+                consultation_type,
+                clinic_fee,
+                caring_squad_fee,
+                image,
+                professional_bio
+            )
+            VALUES
+            (
+                '$doctor_id',
+                '$display_name',
+                '$display_degree',
+                '$display_speciality',
+                '$display_experience',
+                '$display_languages',
+                '$consultation_type',
+                '$clinic_fee',
+                '$cs_fee',
+                '$doctor_photo',
+                '$professional_bio'
+            )"
+        );
+
+        if($insert)
+{
+    echo "INSERT SUCCESS";
+}
+else
+{
+    die("MYSQL ERROR: " . mysqli_error($conn));
+}
+    }
+}
 
     /* ============================
        BASIC INFORMATION
@@ -30,7 +126,6 @@ if(isset($_POST['add_doctor']))
     $email = isset($_POST['email']) ? mysqli_real_escape_string($conn,$_POST['email']) : "";
     $city = isset($_POST['city']) ? mysqli_real_escape_string($conn,$_POST['city']) : "";
     $state_id = isset($_POST['state']) ? (int)$_POST['state'] : 0;
-
 
     /* ============================
        FRONTEND DATA
@@ -113,8 +208,6 @@ $availability = isset($_POST['availability'])
 $available_days = isset($_POST['available_days'])
     ? mysqli_real_escape_string($conn, implode(", ", $_POST['available_days']))
     : "";
-    $clinic_fee = isset($_POST['clinic_fee']) ? mysqli_real_escape_string($conn,$_POST['clinic_fee']) : "";
-    $caring_squad_fee = isset($_POST['cs_fee']) ? mysqli_real_escape_string($conn,$_POST['cs_fee']) : "";
     $license_number = isset($_POST['license_number']) ? mysqli_real_escape_string($conn,$_POST['license_number']) : "";
 $council = isset($_POST['council']) ? mysqli_real_escape_string($conn,$_POST['council']) : "";
 $online_consultation = isset($_POST['online_consultation']) ? mysqli_real_escape_string($conn,$_POST['online_consultation']) : "";
@@ -137,7 +230,6 @@ $service_radius = isset($_POST['service_radius']) ? mysqli_real_escape_string($c
 $home_visit_fee = isset($_POST['home_visit_fee']) ? mysqli_real_escape_string($conn,$_POST['home_visit_fee']) : "";
 $linkedin_profile = isset($_POST['linkedin_profile']) ? mysqli_real_escape_string($conn,$_POST['linkedin_profile']) : "";
 $website_profile = isset($_POST['website_profile']) ? mysqli_real_escape_string($conn,$_POST['website_profile']) : "";
-$professional_bio = isset($_POST['professional_bio']) ? mysqli_real_escape_string($conn,$_POST['professional_bio']) : "";
 $registration_valid_till = isset($_POST['registration_valid_till'])
     ? mysqli_real_escape_string($conn, $_POST['registration_valid_till'])
     : "";
@@ -158,13 +250,15 @@ $display_profile = isset($_POST['display_profile'])
     ? mysqli_real_escape_string($conn, $_POST['display_profile'])
     : "";
 
-$display_photo = isset($_POST['display_photo'])
-    ? mysqli_real_escape_string($conn, $_POST['display_photo'])
-    : "";
+$display_photo_visibility =
+isset($_POST['display_photo_visibility'])
+? mysqli_real_escape_string($conn,$_POST['display_photo_visibility'])
+: "";
 
-$display_fee = isset($_POST['display_fee'])
-    ? mysqli_real_escape_string($conn, $_POST['display_fee'])
-    : "";
+$display_fee_visibility =
+isset($_POST['display_fee_visibility'])
+? mysqli_real_escape_string($conn,$_POST['display_fee_visibility'])
+: "";
 
 $founding_expert = isset($_POST['founding_expert'])
     ? mysqli_real_escape_string($conn, $_POST['founding_expert'])
@@ -182,146 +276,103 @@ $online_expert_panel = isset($_POST['online_expert_panel'])
     /* ============================
        INSERT DOCTOR
     ============================ */
-    
-    $insert = mysqli_query($conn,"
-        INSERT INTO doctors
-        (
-            dr_id,
-            name,
-            gender,
-            dob,
-            mobile,
-            whatsapp,
-            email,
-            city,
-            state,
-            state_id,
-            profession,
-            language,
-            degree,
-            speciality,
-            experience,
-            hospital,
-            current_designation,
-            clinic_fee,
-            caring_squad_fee,
-            display_name,
-            display_degree,
-            display_speciality,
-            display_experience,
-            display_languages,
-            consultation_type,
-license_number,
-council,
-online_consultation,
-home_visit,
-consultation_mode,
-platform,
-video_whatsapp,
-audio_mobile,
-priority_fee,
-consultation_duration,
-consultation_languages,
-availability,
-available_days,
-priority_consultation,
-response_time,
-emergency_charges,
-max_priority_consultation,
-followup_available,
-followup_fee,
-free_followup_period,
-report_review,
-digital_prescription,
-home_visit_available,
-service_radius,
-home_visit_fee,
-linkedin_profile,
-website_profile,
-professional_bio,
-registration_valid_till,
-additional_registrations,
-sub_specialization,
-additional_certifications,
-areas_covered,
-discounted_home_visit_fee,
-display_profile,
-display_photo,
-display_fee,
-founding_expert,
-city_ambassador,
-online_expert_panel
-        )
 
-        VALUES
-        (
-            '$doctor_id',
-            '$full_name',
-            '$gender',
-            '$dob',
-            '$mobile',
-            '$whatsapp',
-            '$email',
-            '$city',
-            '$state',
-            '$state_id',
-            '$professional_category',
-            '$language',
-            '$degree',
-            '$primary_specialization',
-            '$experience',
-            '$current_organization',
-            '$current_designation',
-            '$clinic_fee',
-            '$caring_squad_fee',
-            '$display_name',
-            '$display_degree',
-            '$display_speciality',
-            '$display_experience',
-            '$display_languages',
-            '$consultation_type',
-'$license_number',
-'$council',
-'$online_consultation',
-'$home_visit',
-'$consultation_mode',
-'$platform',
-'$video_whatsapp',
-'$audio_mobile',
-'$priority_fee',
-'$consultation_duration',
-'$consultation_languages',
-'$availability',
-'$available_days',
-'$priority_consultation',
-'$response_time',
-'$emergency_charges',
-'$max_priority_consultation',
-'$followup_available',
-'$followup_fee',
-'$free_followup_period',
-'$report_review',
-'$digital_prescription',
-'$home_visit_available',
-'$service_radius',
-'$home_visit_fee',
-'$linkedin_profile',
-'$website_profile',
-'$professional_bio',
-'$registration_valid_till',
-'$additional_registrations',
-'$sub_specialization',
-'$additional_certifications',
-'$areas_covered',
-'$discounted_home_visit_fee',
-'$display_profile',
-'$display_photo',
-'$display_fee',
-'$founding_expert',
-'$city_ambassador',
-'$online_expert_panel'
-        )
-    ");
+if(isset($_POST['add_doctor']))
+{
+
+$doctorCheck = mysqli_query(
+    $conn,
+    "SELECT id FROM doctors WHERE dr_id='$doctor_id'"
+);
+
+if(mysqli_num_rows($doctorCheck)==0)
+{
+    $error = "Please save Frontend Data first.";
+}
+else
+{
+
+$insert = mysqli_query($conn,"
+UPDATE doctors SET
+
+name='$full_name',
+gender='$gender',
+dob='$dob',
+mobile='$mobile',
+whatsapp='$whatsapp',
+email='$email',
+city='$city',
+state='$state',
+state_id='$state_id',
+
+profession='$professional_category',
+language='$language',
+degree='$degree',
+speciality='$primary_specialization',
+experience='$experience',
+
+hospital='$current_organization',
+current_designation='$current_designation',
+
+license_number='$license_number',
+council='$council',
+
+online_consultation='$online_consultation',
+home_visit='$home_visit',
+
+consultation_mode='$consultation_mode',
+platform='$platform',
+
+video_whatsapp='$video_whatsapp',
+audio_mobile='$audio_mobile',
+
+priority_fee='$priority_fee',
+consultation_duration='$consultation_duration',
+consultation_languages='$consultation_languages',
+
+availability='$availability',
+available_days='$available_days',
+
+priority_consultation='$priority_consultation',
+response_time='$response_time',
+
+emergency_charges='$emergency_charges',
+max_priority_consultation='$max_priority_consultation',
+
+followup_available='$followup_available',
+followup_fee='$followup_fee',
+free_followup_period='$free_followup_period',
+
+report_review='$report_review',
+digital_prescription='$digital_prescription',
+
+home_visit_available='$home_visit_available',
+service_radius='$service_radius',
+home_visit_fee='$home_visit_fee',
+
+linkedin_profile='$linkedin_profile',
+website_profile='$website_profile',
+professional_bio='$professional_bio',
+
+registration_valid_till='$registration_valid_till',
+additional_registrations='$additional_registrations',
+
+sub_specialization='$sub_specialization',
+additional_certifications='$additional_certifications',
+
+areas_covered='$areas_covered',
+discounted_home_visit_fee='$discounted_home_visit_fee',
+
+display_profile='$display_profile',
+display_photo='$display_photo_visibility',
+display_fee='$display_fee_visibility',
+
+founding_expert='$founding_expert',
+city_ambassador='$city_ambassador',
+online_expert_panel='$online_expert_panel'
+
+WHERE dr_id='$doctor_id'
+");
 
     if($insert)
     {
@@ -331,7 +382,7 @@ online_expert_panel
     {
         $error = mysqli_error($conn);
     }
-
+}
 }
 
 ?>
@@ -355,7 +406,6 @@ online_expert_panel
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- FONT AWESOME -->
 
@@ -798,7 +848,6 @@ online_expert_panel
         <?php } ?>
 
 <form method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="add_doctor" value="1">
 
 <!-- =====================================
 FRONTEND DATA SECTION
@@ -838,6 +887,26 @@ FRONTEND DATA SECTION
 
         <div class="form-grid">
 
+          <!-- Doctor ID -->
+
+            <div class="form-group">
+
+                <label>Doctor ID</label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-id-badge"></i>
+
+                    <input
+                        type="text"
+                        name="doctor_id"
+                        placeholder="Example: CS001"
+                    >
+
+                </div>
+
+            </div>
+
             <!-- Display Name -->
 
             <div class="form-group">
@@ -851,7 +920,7 @@ FRONTEND DATA SECTION
                     <input
                         type="text"
                         name="display_name"
-                        placeholder=""
+                        placeholder="Enter name"
                         >
 
                 </div>
@@ -871,7 +940,7 @@ FRONTEND DATA SECTION
                     <input
                         type="text"
                         name="display_degree"
-                        placeholder=""
+                        placeholder="Enter degree"
                         >
 
                 </div>
@@ -891,7 +960,7 @@ FRONTEND DATA SECTION
                     <input
                         type="text"
                         name="display_speciality"
-                        placeholder=""
+                        placeholder="Enter specialization"
                         >
 
                 </div>
@@ -911,7 +980,7 @@ FRONTEND DATA SECTION
                     <input
                         type="text"
                         name="display_experience"
-                        placeholder=""
+                        placeholder="Enter experience"
                         >
 
                 </div>
@@ -931,7 +1000,7 @@ FRONTEND DATA SECTION
                     <input
                         type="text"
                         name="display_languages"
-                        placeholder=""
+                        placeholder="Enter language"
                         >
 
                 </div>
@@ -972,6 +1041,106 @@ FRONTEND DATA SECTION
                 </div>
 
             </div>
+
+             <!-- STANDARD FEES -->
+
+           <div class="form-group">
+    <label>Standard Consultation Fee (₹)</label>
+
+    <div class="input-box">
+        <i class="fa-solid fa-indian-rupee-sign"></i>
+
+        <input
+            type="text"
+            name="clinic_fee"
+            placeholder="Enter Standard Fee"
+            required
+        >
+    </div>
+</div>
+
+<!-- CARING SQUAD FEES -->
+
+<div class="form-group">
+    <label>Caring Squad Fee (₹)</label>
+
+    <div class="input-box">
+        <i class="fa-solid fa-money-bill"></i>
+
+        <input
+            type="text"
+            name="cs_fee"
+            placeholder="Enter Caring Squad Fee"
+            required
+        >
+    </div>
+</div>
+
+<!-- DOCTOR PHOTO -->
+
+<div class="form-group">
+
+    <label>Doctor Photo</label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-camera"></i>
+
+        <input
+            type="file"
+            name="doctor_photo"
+            accept="image/*"
+            required
+        >
+
+    </div>
+
+</div>
+
+<!-- PROFESSIONAL BIO / INTRODUCTION -->
+
+<div class="form-group full">
+
+    <label>
+        Professional Bio / Introduction
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-user-doctor"></i>
+
+        <textarea
+            name="professional_bio"
+            rows="6"
+            placeholder="Enter Professional Bio"
+            style="
+                width:100%;
+                border:1px solid #e5ddd2;
+                border-radius:16px;
+                background:#fcfbf9;
+                padding:18px 18px 18px 50px;
+                font-size:14px;
+                font-family:inherit;
+                outline:none;
+                resize:none;
+            "
+        ></textarea>
+
+    </div>
+
+</div>
+
+    <div style="margin-top:25px; text-align:right;">
+
+    <button
+        type="submit"
+        name="save_frontend"
+        class="submit-btn"
+    >
+        Save Frontend Data
+    </button>
+
+</div>
 
         </div>
 
@@ -1016,26 +1185,6 @@ SECTION A - PERSONAL INFORMATION
     <div class="section-body">
 
         <div class="form-grid">
-
-            <!-- Doctor ID -->
-
-            <div class="form-group">
-
-                <label>Doctor ID</label>
-
-                <div class="input-box">
-
-                    <i class="fa-solid fa-id-badge"></i>
-
-                    <input
-                        type="text"
-                        name="doctor_id"
-                        placeholder="Example: CS001"
-                    >
-
-                </div>
-
-            </div>
 
             <!-- Full Name -->
 
@@ -1240,26 +1389,6 @@ SECTION A - PERSONAL INFORMATION
                         type="text"
                         name="country"
                         value="India"
-                    >
-
-                </div>
-
-            </div>
-
-            <!-- Languages Known -->
-
-            <div class="form-group full">
-
-                <label>Languages Known</label>
-
-                <div class="input-box">
-
-                    <i class="fa-solid fa-language"></i>
-
-                    <input
-                        type="text"
-                        name="language"
-                        placeholder="Example: English, Hindi, Gujarati"
                     >
 
                 </div>
@@ -1954,50 +2083,6 @@ SECTION B
                     <input
                         type="text"
                         name="audio_mobile"
-                        
-                    >
-
-                </div>
-
-            </div>
-
-            <!-- STANDARD FEE -->
-
-            <div class="form-group">
-
-                <label>
-                   Standard Consultation Charges (₹)
-                </label>
-
-                <div class="input-box">
-
-                    <i class="fa-solid fa-indian-rupee-sign"></i>
-
-                    <input
-                        type="text"
-                        name="clinic_fee"
-                        
-                    >
-
-                </div>
-
-            </div>
-
-            <!-- CARING SQUAD FEE -->
-
-            <div class="form-group">
-
-                <label>
-                   Discounted Consultation Charges for Caring Squad Members (₹)
-                </label>
-
-                <div class="input-box">
-
-                    <i class="fa-solid fa-money-bill"></i>
-
-                    <input
-                        type="text"
-                        name="cs_fee"
                         
                     >
 
@@ -2857,32 +2942,10 @@ SECTION B
 
             <!-- HOME VISIT FEE -->
 
-            <div class="form-group full">
-
-                <label>
-                    Home Visit Consultation Charges (₹)             
-                </label>
-
-                <div class="input-box">
-
-                    <i class="fa-solid fa-indian-rupee-sign"></i>
-
-                    <input
-                        type="text"
-                        name="home_visit_fee"
-                        
-                    >
-
-                </div>
-
-            </div>
-
-            <!-- DISCOUNTED HOME VISIT CHARGES -->
-
 <div class="form-group">
 
     <label>
-        Discounted Charges for Caring Squad Members (₹)
+        Home Visit Consultation Charges (₹)
     </label>
 
     <div class="input-box">
@@ -2890,14 +2953,35 @@ SECTION B
         <i class="fa-solid fa-indian-rupee-sign"></i>
 
         <input
-            type="number"
-            name="discounted_home_visit_fee"
-            placeholder="Enter Discounted Charges"
+            type="text"
+            name="home_visit_fee"
         >
 
     </div>
 
 </div>
+
+            <!-- DISCOUNTED HOME VISIT CHARGES -->
+
+            <div class="form-group full">
+
+                <label>
+                    Discounted Charges for Caring Squad Members (₹)             
+                </label>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-indian-rupee-sign"></i>
+
+                    <input
+                        type="number"
+                        name="discounted_home_visit_fee"
+                        placeholder="Enter Discounted Charges"  
+                    >
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -2948,29 +3032,6 @@ SECTION B
     <div class="section-body">
 
         <div class="form-grid">
-
-            <!-- PROFESSIONAL PHOTO -->
-
-            <div class="form-group">
-
-                <label>
-                    Upload Professional Photograph
-                </label>
-
-                <div class="input-box">
-
-                    <i class="fa-solid fa-camera"></i>
-
-                    <input
-                        type="file"
-                        name="doctor_photo"
-                        accept="image/*"
-                        
-                    >
-
-                </div>
-
-            </div>
 
             <!-- RESUME / CV -->
 
@@ -3132,40 +3193,6 @@ SECTION B
 
             </div>
 
-            <!-- PROFESSIONAL BIO -->
-
-            <div class="form-group full">
-
-                <label>
-                    Professional Bio / Introduction
-                    
-                </label>
-
-                <div class="input-box">
-
-                    <i class="fa-solid fa-user-doctor"></i>
-
-                    <textarea
-                        name="professional_bio"
-                        rows="6"
-                        
-                        style="
-                            width:100%;
-                            border:1px solid #e5ddd2;
-                            border-radius:16px;
-                            background:#fcfbf9;
-                            padding:18px 18px 18px 50px;
-                            font-size:14px;
-                            font-family:inherit;
-                            outline:none;
-                            resize:none;
-                        "
-                    ></textarea>
-
-                </div>
-
-            </div>
-
         </div>
 
     </div>
@@ -3250,7 +3277,7 @@ SECTION B
 
                     <i class="fa-solid fa-camera"></i>
 
-                    <select name="display_photo">
+                    <select name="display_photo_visibility">
 
                         <option value="">Select</option>
 
@@ -3276,7 +3303,7 @@ SECTION B
 
                     <i class="fa-solid fa-indian-rupee-sign"></i>
 
-                    <select name="display_fee">
+                    <select name="display_fee_visibility">
 
                         <option value="">Select</option>
 

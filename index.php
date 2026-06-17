@@ -158,7 +158,7 @@
                 </div>
 
                 <div class="support-card">
-                    <img src="assets/images/childern.jpeg" alt="">
+                    <img src="assets/images/children.jpeg" alt="">
                     <h4>Children</h4>
                 </div>
 
@@ -568,6 +568,11 @@
                     <li><i class="fa-brands fa-whatsapp"></i>+91 81404 69546</li>
                     <li><i class="fa-solid fa-envelope"></i> info@caringsquad.in</li>
                     <li><i class="fa-solid fa-location-dot"></i> STC, Ambli T Junction, Ambli, Ahmedabad</li>
+                    <li>
+                       <a href="admin/login.php" class="admin-footer-link">
+                            Admin Panel
+                        </a>
+                    </li>
                 </ul>
 
             </div>

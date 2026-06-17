@@ -107,7 +107,7 @@
                         Explore Services
                     </a>
 
-                    <a href="#" class="btn btn-secondary">
+                    <a href="booking.php" class="btn btn-secondary">
                         Book Consultation
                     </a>
 
@@ -472,7 +472,7 @@
 
                     <div class="final-buttons">
 
-                        <a href="#" class="btn btn-primary">
+                        <a href="booking.php" class="btn btn-primary">
                             Book Consultation
                         </a>
 

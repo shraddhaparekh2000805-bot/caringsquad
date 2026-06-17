@@ -36,9 +36,18 @@ if(isset($_GET['toggle_id'])){
 
     mysqli_query(
         $conn,
-        "UPDATE doctors
-        SET status='$newStatus'
-        WHERE id='$id'"
+        "UPDATE doctors SET
+
+display_name='$display_name',
+display_degree='$display_degree',
+display_speciality='$display_speciality',
+display_experience='$display_experience',
+display_languages='$display_languages',
+consultation_type='$consultation_type',
+clinic_fee='$clinic_fee',
+caring_squad_fee='$caring_squad_fee'
+
+WHERE id='$id'"
     );
 
     header("Location: dashboard.php");
@@ -302,7 +311,7 @@ ul{
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:1400px;
+    min-width:1200px;
 }
 
 table thead{
@@ -315,6 +324,7 @@ table th{
     text-align:left;
     font-size:14px;
     font-weight:600;
+    white-space:nowrap;
 }
 
 table td{
@@ -324,18 +334,14 @@ table td{
     vertical-align:top;
 }
 
-.doctor-info{
-    display:flex;
-    align-items:center;
-    gap:14px;
+.doctor-thumb{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+    border:1px solid #ddd;
 }
 
-.doctor-info img{
-    width:70px;
-    height:70px;
-    border-radius:16px;
-    object-fit:cover;
-}
 
 .status{
     padding:8px 14px;
@@ -410,10 +416,16 @@ table td{
     align-items:center;
     justify-content:center;
     z-index:9999;
+    overflow-y:auto;
+    padding:20px;
 }
 
 .edit-modal-content{
-    width:500px;
+    width:650px;
+    max-width:95%;
+    max-height:90vh;
+    overflow-y:auto;
+
     background:#fff;
     border-radius:22px;
     padding:35px;
@@ -580,24 +592,23 @@ Logout
 <table>
 
 <thead>
-
 <tr>
+    <th>Sr No</th>
+    <th>Doctor ID</th>
+    <th>Photo</th>
 
-<th>S.No</th>
-<th>Dr. ID</th>
-<th>Doctor</th>
-<th>Speciality</th>
-<th>Experience</th>
-<th>Rating</th>
-<th>Language</th>
-<th>Fee</th>
-<th>Hospital</th>
-<th>City</th>
-<th>Status</th>
-<th style="width:320px;">Actions</th>
+    <th>Display Name</th>
+    <th>Degree</th>
+    <th>Speciality</th>
+    <th>Experience</th>
+    <th>Languages</th>
+    <th>Consultation Type</th>
+
+    <th>Caring Squad Fee</th>
+    <th>Status</th>
+    <th>Actions</th>
 
 </tr>
-
 </thead>
 
 <tbody>
@@ -619,36 +630,20 @@ while($doctor = mysqli_fetch_assoc($recentDoctors)){
 </td>
 
 <td>
-
-<div class="doctor-info">
-
-<img src="../uploads/<?php echo $doctor['image']; ?>">
-
-<div>
-
-<h4><?php echo $doctor['name']; ?></h4>
-
-<span><?php echo $doctor['degree']; ?></span>
-
-</div>
-
-</div>
-
+    <img
+        src="../uploads/doctors/<?php echo $doctor['image']; ?>"
+        class="doctor-thumb"
+    >
 </td>
 
-<td><?php echo $doctor['speciality']; ?></td>
-
-<td><?php echo $doctor['experience']; ?></td>
-
-<td>⭐ <?php echo $doctor['rating']; ?></td>
-
-<td><?php echo $doctor['language']; ?></td>
-
-<td>₹<?php echo $doctor['fee']; ?></td>
-
-<td><?php echo $doctor['hospital']; ?></td>
-
-<td><?php echo $doctor['city']; ?></td>
+<td><?php echo $doctor['display_name']; ?></td>
+<td><?php echo $doctor['display_degree']; ?></td>
+<td><?php echo $doctor['display_speciality']; ?></td>
+<td><?php echo $doctor['display_experience']; ?></td>
+<td><?php echo $doctor['display_languages']; ?></td>
+<td><?php echo $doctor['consultation_type']; ?></td>
+<td>₹<?php echo $doctor['clinic_fee']; ?></td>
+<td>₹<?php echo $doctor['caring_squad_fee']; ?></td>
 
 <td>
 
@@ -668,10 +663,14 @@ while($doctor = mysqli_fetch_assoc($recentDoctors)){
 class="edit-btn"
 onclick="openEditModal(
 '<?php echo $doctor['id']; ?>',
-'<?php echo addslashes($doctor['name']); ?>',
-'<?php echo addslashes($doctor['speciality']); ?>',
-'<?php echo addslashes($doctor['fee']); ?>',
-'<?php echo addslashes($doctor['city']); ?>'
+'<?php echo addslashes($doctor['display_name']); ?>',
+'<?php echo addslashes($doctor['display_degree']); ?>',
+'<?php echo addslashes($doctor['display_speciality']); ?>',
+'<?php echo addslashes($doctor['display_experience']); ?>',
+'<?php echo addslashes($doctor['display_languages']); ?>',
+'<?php echo addslashes($doctor['consultation_type']); ?>',
+'<?php echo addslashes($doctor['clinic_fee']); ?>',
+'<?php echo addslashes($doctor['caring_squad_fee']); ?>'
 )"
 >
 Edit
@@ -733,41 +732,35 @@ Delete
 
 <h2 style="margin-bottom:25px;">Edit Doctor</h2>
 
-<form action="update-doctor.php" method="POST">
+<form action="dashboard.php" method="POST">
 
 <input type="hidden" name="id" id="edit_id">
 
 <div class="form-group">
 
-<label>Doctor Name</label>
+<label>Display Name</label>
+<input type="text" name="display_name" id="edit_display_name">
 
-<input type="text" name="name" id="edit_name" required>
-
-</div>
-
-<div class="form-group">
+<label>Degree</label>
+<input type="text" name="display_degree" id="edit_display_degree">
 
 <label>Speciality</label>
+<input type="text" name="display_speciality" id="edit_display_speciality">
 
-<input type="text" name="speciality" id="edit_speciality" required>
+<label>Experience</label>
+<input type="text" name="display_experience" id="edit_display_experience">
 
-</div>
+<label>Languages</label>
+<input type="text" name="display_languages" id="edit_display_languages">
 
-<div class="form-group">
+<label>Consultation Type</label>
+<input type="text" name="consultation_type" id="edit_consultation_type">
 
-<label>Consultation Fee</label>
+<label>Standard Fee</label>
+<input type="text" name="clinic_fee" id="edit_clinic_fee">
 
-<input type="text" name="fee" id="edit_fee" required>
-
-</div>
-
-<div class="form-group">
-
-<label>City</label>
-
-<input type="text" name="city" id="edit_city" required>
-
-</div>
+<label>Caring Squad Fee</label>
+<input type="text" name="caring_squad_fee" id="edit_caring_squad_fee">
 
 <button type="submit" class="save-btn">
 
@@ -783,24 +776,30 @@ Save Changes
 
 <script>
 
-function openEditModal(id,name,speciality,fee,city){
-
+function openEditModal(
+id,
+display_name,
+display_degree,
+display_speciality,
+display_experience,
+display_languages,
+consultation_type,
+clinic_fee,
+caring_squad_fee
+)
+{
     document.getElementById('editModal').style.display='flex';
 
     document.getElementById('edit_id').value=id;
 
-    document.getElementById('edit_name').value=name;
-
-    document.getElementById('edit_speciality').value=speciality;
-
-    document.getElementById('edit_fee').value=fee;
-
-    document.getElementById('edit_city').value=city;
-}
-
-function closeEditModal(){
-
-    document.getElementById('editModal').style.display='none';
+    document.getElementById('edit_display_name').value=display_name;
+    document.getElementById('edit_display_degree').value=display_degree;
+    document.getElementById('edit_display_speciality').value=display_speciality;
+    document.getElementById('edit_display_experience').value=display_experience;
+    document.getElementById('edit_display_languages').value=display_languages;
+    document.getElementById('edit_consultation_type').value=consultation_type;
+    document.getElementById('edit_clinic_fee').value=clinic_fee;
+    document.getElementById('edit_caring_squad_fee').value=caring_squad_fee;
 }
 
 </script>
