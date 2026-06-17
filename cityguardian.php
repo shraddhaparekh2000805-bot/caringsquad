@@ -35,15 +35,9 @@
 
         <div class="logo">
 
-            <div class="logo-icon">
-                <i class="fa-regular fa-heart"></i>
+             <div class="logo">
+                <img class="site-logo" src="assets/images/caringsquad-logo.png" alt="Caring Squad">
             </div>
-
-            <div class="logo-text">
-                <h2>CARING SQUAD</h2>
-                <span>Care | Companions | Guardians</span>
-            </div>
-
         </div>
 
         <nav class="navbar">

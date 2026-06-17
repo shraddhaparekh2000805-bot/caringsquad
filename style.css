@@ -150,7 +150,7 @@ ul{
 }
 
 .nav-container{
-    height:90px;
+    height:70px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -162,7 +162,7 @@ ul{
 }
 
 .site-logo{
-    height:80px;
+    height:55px;
     width:auto;
     display:block;
 }

@@ -32,18 +32,9 @@
 
         <div class="container nav-container">
 
-            <div class="logo">
-
-                <div class="logo-icon">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-                <div class="logo-text">
-                    <h2>CARING SQUAD</h2>
-                    <span>Care | Companions | Guardians</span>
-                </div>
-
-            </div>
+           <div class="logo">
+    <img class="site-logo" src="assets/images/caringsquad-logo.png" alt="Caring Squad">
+</div>
 
             <nav class="navbar">
 

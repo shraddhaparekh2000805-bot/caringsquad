@@ -28,7 +28,7 @@
         <div class="container nav-container">
 
             <div class="logo">
-                <img src="assets/images/caringsquad-logo.png" alt="Caring Squad Logo" class="site-logo">
+                <img class="site-logo" src="assets/images/caringsquad-logo.png" alt="Caring Squad">
             </div>
 
             <nav class="navbar">

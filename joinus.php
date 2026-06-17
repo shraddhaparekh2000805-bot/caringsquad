@@ -35,17 +35,8 @@
     <div class="container nav-container">
 
         <div class="logo">
-
-            <div class="logo-icon">
-                <i class="fa-regular fa-heart"></i>
+                <img class="site-logo" src="assets/images/caringsquad-logo.png" alt="Caring Squad">
             </div>
-
-            <div class="logo-text">
-                <h2>CARING SQUAD</h2>
-                <span>Care | Consultation | Wellness</span>
-            </div>
-
-        </div>
 
         <nav class="navbar">
                 <ul class="nav-links">
