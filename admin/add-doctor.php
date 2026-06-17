@@ -459,20 +459,17 @@ WHERE dr_id='$doctor_id'
         }
 
         .sidebar-logo{
-            margin-bottom: 45px;
+            text-align:center;
+            margin-bottom:40px;
         }
 
-        .sidebar-logo h2{
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 38px;
-            color: #d6af78;
+        .brand-logo{
+            width:220px;
+            max-width:100%;
+            display:block;
+            margin:0 auto 10px;
         }
 
-        .sidebar-logo p{
-            color: #ccc;
-            font-size: 13px;
-            margin-top: 5px;
-        }
 
         .sidebar-menu li{
             margin-bottom: 12px;
@@ -765,13 +762,14 @@ WHERE dr_id='$doctor_id'
 
         <div class="sidebar-logo">
 
-            <h2>Caring Squad</h2>
+    <img
+        src="../assets/images/caringsquad-logo.png"
+        alt="Caring Squad"
+        class="brand-logo"
+    >
 
-            <p>
-                Admin Dashboard
-            </p>
+</div>
 
-        </div>
 
         <ul class="sidebar-menu">
 

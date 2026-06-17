@@ -28,14 +28,7 @@
         <div class="container nav-container">
 
             <div class="logo">
-                <div class="logo-icon">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-                <div class="logo-text">
-                    <h2>CARING SQUAD</h2>
-                    <span>Care | Companions | Guardians</span>
-                </div>
+                <img src="assets/images/caringsquad-logo.png" alt="Caring Squad Logo" class="site-logo">
             </div>
 
             <nav class="navbar">
@@ -570,7 +563,7 @@
                     <li><i class="fa-solid fa-location-dot"></i> STC, Ambli T Junction, Ambli, Ahmedabad</li>
                     <li>
                        <a href="admin/login.php" class="admin-footer-link">
-                            Admin Panel
+                            Admin Login
                         </a>
                     </li>
                 </ul>

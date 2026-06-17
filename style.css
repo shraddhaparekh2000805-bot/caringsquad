@@ -159,32 +159,12 @@ ul{
 .logo{
     display:flex;
     align-items:center;
-    gap:12px;
 }
 
-.logo-icon{
-    width:46px;
-    height:46px;
-    border:1px solid rgba(255,255,255,0.2);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:var(--gold);
-    font-size:20px;
-}
-
-.logo-text h2{
-    color:var(--gold);
-    font-size:22px;
-    font-family:var(--heading-font);
-    font-weight:600;
-}
-
-.logo-text span{
-    color:#d2d2d2;
-    font-size:11px;
-    letter-spacing:1px;
+.site-logo{
+    height:80px;
+    width:auto;
+    display:block;
 }
 
 .nav-links{

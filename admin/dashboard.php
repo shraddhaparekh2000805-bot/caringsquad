@@ -4,6 +4,36 @@ session_start();
 
 include '../db.php';
 
+if(isset($_POST['update_doctor'])){
+
+    $id = (int)$_POST['id'];
+
+    $display_name = mysqli_real_escape_string($conn,$_POST['display_name']);
+    $display_degree = mysqli_real_escape_string($conn,$_POST['display_degree']);
+    $display_speciality = mysqli_real_escape_string($conn,$_POST['display_speciality']);
+    $display_experience = mysqli_real_escape_string($conn,$_POST['display_experience']);
+    $display_languages = mysqli_real_escape_string($conn,$_POST['display_languages']);
+    $consultation_type = mysqli_real_escape_string($conn,$_POST['consultation_type']);
+    $clinic_fee = mysqli_real_escape_string($conn,$_POST['clinic_fee']);
+    $caring_squad_fee = mysqli_real_escape_string($conn,$_POST['caring_squad_fee']);
+
+    mysqli_query($conn,"
+        UPDATE doctors SET
+        display_name='$display_name',
+        display_degree='$display_degree',
+        display_speciality='$display_speciality',
+        display_experience='$display_experience',
+        display_languages='$display_languages',
+        consultation_type='$consultation_type',
+        clinic_fee='$clinic_fee',
+        caring_squad_fee='$caring_squad_fee'
+        WHERE id='$id'
+    ");
+
+    header("Location: dashboard.php");
+    exit();
+}
+
 if(!isset($_SESSION['admin'])){
 
     header("Location: login.php");
@@ -36,18 +66,9 @@ if(isset($_GET['toggle_id'])){
 
     mysqli_query(
         $conn,
-        "UPDATE doctors SET
-
-display_name='$display_name',
-display_degree='$display_degree',
-display_speciality='$display_speciality',
-display_experience='$display_experience',
-display_languages='$display_languages',
-consultation_type='$consultation_type',
-clinic_fee='$clinic_fee',
-caring_squad_fee='$caring_squad_fee'
-
-WHERE id='$id'"
+        "UPDATE doctors
+         SET status='$newStatus'
+         WHERE id='$id'"
     );
 
     header("Location: dashboard.php");
@@ -178,11 +199,6 @@ ul{
     max-width:100%;
     display:block;
     margin:0 auto 10px;
-}
-
-.sidebar-logo p{
-    color:#ccc;
-    font-size:13px;
 }
 
 .sidebar-menu li{
@@ -487,8 +503,6 @@ table td{
         class="brand-logo"
     >
 
-    <p>Admin Dashboard</p>
-
 </div>
 
 <ul class="sidebar-menu">
@@ -762,7 +776,7 @@ Delete
 <label>Caring Squad Fee</label>
 <input type="text" name="caring_squad_fee" id="edit_caring_squad_fee">
 
-<button type="submit" class="save-btn">
+<button type="submit" name="update_doctor" class="save-btn">
 
 Save Changes
 
@@ -787,6 +801,7 @@ consultation_type,
 clinic_fee,
 caring_squad_fee
 )
+
 {
     document.getElementById('editModal').style.display='flex';
 
@@ -800,6 +815,11 @@ caring_squad_fee
     document.getElementById('edit_consultation_type').value=consultation_type;
     document.getElementById('edit_clinic_fee').value=clinic_fee;
     document.getElementById('edit_caring_squad_fee').value=caring_squad_fee;
+}
+
+function closeEditModal()
+{
+    document.getElementById('editModal').style.display = 'none';
 }
 
 </script>

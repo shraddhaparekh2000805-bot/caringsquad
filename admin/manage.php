@@ -183,6 +183,18 @@ body{
     padding:30px 22px;
 }
 
+.sidebar-logo{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.brand-logo{
+    width:220px;
+    max-width:100%;
+    display:block;
+    margin:0 auto 10px;
+}
+
 .sidebar h2{
     font-family:'Cormorant Garamond',serif;
     color:#d6af78;
@@ -465,43 +477,52 @@ td{
 
 <body>
 
-<div class="sidebar">
+<aside class="sidebar">
 
-    <h2>Caring Squad</h2>
+<div class="sidebar-logo">
 
-    <ul>
-
-        <li>
-            <a href="dashboard.php">
-                <i class="fa-solid fa-house"></i>
-                Dashboard
-            </a>
-        </li>
-
-        <li>
-            <a href="add-doctor.php">
-                <i class="fa-solid fa-user-plus"></i>
-                Add Doctor
-            </a>
-        </li>
-
-        <li>
-            <a href="manage.php" class="active">
-                <i class="fa-solid fa-user-doctor"></i>
-                Manage Doctors
-            </a>
-        </li>
-
-        <li>
-            <a href="logout.php">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Logout
-            </a>
-        </li>
-
-    </ul>
+    <img
+        src="../assets/images/caringsquad-logo.png"
+        alt="Caring Squad"
+        class="brand-logo"
+    >
 
 </div>
+
+<ul class="sidebar-menu">
+
+<li>
+<a href="dashboard.php">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="add-doctor.php">
+<i class="fa-solid fa-user-plus"></i>
+Add Doctor
+</a>
+</li>
+
+<li>
+<a href="manage.php"  class="active">
+<i class="fa-solid fa-hospital-user"></i>
+Manage Doctors
+</a>
+</li>
+
+<li>
+<a href="logout.php">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+</ul>
+
+</aside>
+
 
 <div class="main">
 
