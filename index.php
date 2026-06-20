@@ -110,9 +110,10 @@
                 to the <span>Right Care Expert</span>
             </h1>
 
+            <h4>India's Expert Care Network</h4>
+
             <p>
-                Personalized care, trusted companions and
-                reliable guardianship for the people who matter most.
+                A trusted ecosystem of Care, Companionship, Guardianship and Expert Healthcare guidance.
             </p>
 
             <div class="hero-buttons">
