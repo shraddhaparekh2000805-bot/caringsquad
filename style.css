@@ -250,7 +250,7 @@ ul{
 
 /* Content Width */
 .hero-content{
-    max-width: 560px;
+    max-width: 760px;
     padding-top: 40px;
     position: relative;
     z-index: 2;
@@ -259,7 +259,7 @@ ul{
 /* Main Heading */
 .hero-content h1{
     font-family: 'Cormorant Garamond', serif;
-    font-size: 82px;
+    font-size: 70px;
     line-height: 0.95;
     font-weight: 600;
     color: #061326;

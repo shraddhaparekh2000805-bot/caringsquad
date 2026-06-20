@@ -105,10 +105,9 @@
         <div class="hero-content">
 
             <h1>
-                Care.<br>
-                Companions.<br>
-                Guardians.<br>
-                <span>Always There.</span>
+                Connecting Every Indian<br>
+                
+                to the <span>Right Care Expert</span>
             </h1>
 
             <p>
