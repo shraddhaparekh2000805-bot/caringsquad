@@ -537,7 +537,7 @@ Logout
             <strong><?php echo $totalDoctors; ?></strong>
         </span>
 
-        <a href="bulk_import_doctors.php" class="bulk-import-btn">
+        <a href="bulk_import.php" class="bulk-import-btn">
             <i class="fa-solid fa-file-excel"></i>
             Bulk Import
         </a>

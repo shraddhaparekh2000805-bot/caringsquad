@@ -234,7 +234,7 @@
         <div class="container">
 
     <div class="section-title doctor-category-title">
-        <h2>Doctors</h2>
+        <h2>Expert Doctors</h2>
     </div>
 
     <div class="doctor-list-grid">
@@ -244,37 +244,13 @@
             <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="uploads/vijay.jpeg" alt="Doctor">
+                    <img src="uploads/mayurr.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3 class="doctor-page-name">
-                        Dr. Vijay Makwana
-                    </h3>
-
-                    <div class="doctor-page-degree">
-                       MBBS, MD(Internal Medicine)
-                    </div>
-
-                    <div class="doctor-page-specialization">
-                       General Physician | 10+ Years
-                    </div>
-
-                    <div class="doctor-meta">
-                        
-                        <b><p>Expert Consultation For</p></b>
-                        <p>Fever, Diabities, BP Management, General Health</p>
-                        <P>Available in Hindi, Gujarati
-                        <h4>₹500</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
-
-                </div>
-
+                
             </div>
 
             <!-- CARD -->
@@ -282,36 +258,13 @@
             <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="uploads/vijay.jpeg" alt="Doctor">
+                    <img src="uploads/vijayy.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3 class="doctor-page-name">
-                        Dr. Vijay Makwana
-                    </h3>
-
-                    <div class="doctor-page-degree">
-                       MBBS, MD(Internal Medicine)
-                    </div>
-
-                    <div class="doctor-page-specialization">
-                       General Physician
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>10+ Years Experience</p>
-                        <p>Hindi, Gujarati</p>
-                        <p>for description</p>
-                        <h4>₹500</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
-
-                </div>
-
+                
             </div>
 
             <!-- CARD -->
@@ -319,71 +272,13 @@
             <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="uploads/vijay.jpeg" alt="Doctor">
+                    <img src="uploads/nirmall.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3 class="doctor-page-name">
-                        Dr. Vijay Makwana
-                    </h3>
-
-                    <div class="doctor-page-degree">
-                       MBBS, MD(Internal Medicine)
-                    </div>
-
-                    <div class="doctor-page-specialization">
-                       General Physician
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>10+ Years Experience</p>
-                        <p>Hindi, Gujarati</p>
-                        <h4>₹500</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
-
-                </div>
-
-            </div>
-
-            <!-- CARD -->
-
-           <div class="doctor-card doctor-page-card">
-
-                <div class="doctor-image">
-                    <img src="uploads/.jpeg" alt="Doctor">
-                </div>
-
-                <div class="doctor-card-content">
-
-                    <h3 class="doctor-page-name">
-                        Dr. Vijay Makwana
-                    </h3>
-
-                    <div class="doctor-page-degree">
-                       MBBS, MD(Internal Medicine)
-                    </div>
-
-                    <div class="doctor-page-specialization">
-                       General Physician
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>10+ Years Experience</p>
-                        <p>Hindi, Gujarati</p>
-                        <h4>₹500</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
-                        Book Consultation
-                    </a>
-
-                </div>
-
+                
             </div>
 
             <!-- CARD -->
@@ -391,38 +286,77 @@
             <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="uploads/.jpeg" alt="Doctor">
+                    <img src="uploads/ishaa.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3 class="doctor-page-name">
-                        Dr. Vijay Makwana
-                    </h3>
-
-                    <div class="doctor-page-degree">
-                       MBBS, MD(Internal Medicine)
-                    </div>
-
-                    <div class="doctor-page-specialization">
-                       General Physician
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>10+ Years Experience</p>
-                        <p>Hindi, Gujarati</p>
-                        <h4>₹500</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
+                
+            </div>
 
+            <!-- CARD -->
+
+            <div class="doctor-card doctor-page-card">
+
+                <div class="doctor-image">
+                    <img src="uploads/kevel.jpeg" alt="Doctor">
                 </div>
+                
+                <a href="#" class="btn btn-primary">
+                        Book Consultation
+                    </a>
+                
+            </div>
 
+            <!-- CARD -->
+
+            <div class="doctor-card doctor-page-card">
+
+                <div class="doctor-image">
+                    <img src="uploads/ajitt.jpeg" alt="Doctor">
+                </div>
+                
+                <a href="#" class="btn btn-primary">
+                        Book Consultation
+                    </a>
+                
+            </div>
+
+            <!-- CARD -->
+
+            <div class="doctor-card doctor-page-card">
+
+                <div class="doctor-image">
+                    <img src="uploads/daxa.jpeg" alt="Doctor">
+                </div>
+                
+                <a href="#" class="btn btn-primary">
+                        Book Consultation
+                    </a>
+                
+            </div>
+
+            <!-- CARD -->
+
+            <div class="doctor-card doctor-page-card">
+
+                <div class="doctor-image">
+                    <img src="uploads/shabir.jpeg" alt="Doctor">
+                </div>
+                
+                <a href="#" class="btn btn-primary">
+                        Book Consultation
+                    </a>
+                
             </div>
 
         </div>  
+
+        <div class="view-more-wrapper">
+    <a href="booking.php" class="view-more-btn-section">
+        View More →
+    </a>
 
 </section>
 
@@ -433,45 +367,22 @@
     <div class="container">
 
     <div class="section-title doctor-category-title">
-        <h2>Physiotherapists</h2>
+        <h2>Expert Physiotherapists</h2>
     </div>
 
     <div class="doctor-list-grid">
 
             <!-- CARD -->
 
-             <div class="doctor-card doctor-page-card">
+            <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="uploads/.jpeg" alt="Doctor">
+                    <img src="uploads/kalpitha.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3 class="doctor-page-name">
-                        Dr. Vijay Makwana
-                    </h3>
-
-                    <div class="doctor-page-degree">
-                       MBBS, MD(Internal Medicine)
-                    </div>
-
-                    <div class="doctor-page-specialization">
-                       General Physician
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>10+ Years Experience</p>
-                        <p>Hindi, Gujarati</p>
-                        <h4>₹500</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
-
-                </div>
-
             </div>
 
             <!-- CARD -->
@@ -479,107 +390,13 @@
             <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="uploads/.jpeg" alt="Doctor">
+                    <img src="uploads/yogesh.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3 class="doctor-page-name">
-                        Dr. Vijay Makwana
-                    </h3>
-
-                    <div class="doctor-page-degree">
-                       MBBS, MD(Internal Medicine)
-                    </div>
-
-                    <div class="doctor-page-specialization">
-                       General Physician
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>10+ Years Experience</p>
-                        <p>Hindi, Gujarati</p>
-                        <h4>₹500</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
-
-                </div>
-
-            </div>
-
-            <!-- CARD -->
-
-             <div class="doctor-card doctor-page-card">
-
-                <div class="doctor-image">
-                    <img src="uploads/.jpeg" alt="Doctor">
-                </div>
-
-                <div class="doctor-card-content">
-
-                    <h3 class="doctor-page-name">
-                        Dr. Vijay Makwana
-                    </h3>
-
-                    <div class="doctor-page-degree">
-                       MBBS, MD(Internal Medicine)
-                    </div>
-
-                    <div class="doctor-page-specialization">
-                       General Physician
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>10+ Years Experience</p>
-                        <p>Hindi, Gujarati</p>
-                        <h4>₹500</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
-                        Book Consultation
-                    </a>
-
-                </div>
-
-            </div>
-
-            <!-- CARD -->
-
-             <div class="doctor-card doctor-page-card">
-
-                <div class="doctor-image">
-                    <img src="uploads/.jpeg" alt="Doctor">
-                </div>
-
-                <div class="doctor-card-content">
-
-                    <h3 class="doctor-page-name">
-                        Dr. Vijay Makwana
-                    </h3>
-
-                    <div class="doctor-page-degree">
-                       MBBS, MD(Internal Medicine)
-                    </div>
-
-                    <div class="doctor-page-specialization">
-                       General Physician
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>10+ Years Experience</p>
-                        <p>Hindi, Gujarati</p>
-                        <h4>₹500</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
-                        Book Consultation
-                    </a>
-
-                </div>
-
+                
             </div>
 
             <!-- CARD -->
@@ -587,40 +404,67 @@
             <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="uploads/.jpeg" alt="Doctor">
+                    <img src="uploads/pallavi.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3 class="doctor-page-name">
-                        Dr. Vijay Makwana
-                    </h3>
-
-                    <div class="doctor-page-degree">
-                       MBBS, MD(Internal Medicine)
-                    </div>
-
-                    <div class="doctor-page-specialization">
-                       General Physician
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>10+ Years Experience</p>
-                        <p>Hindi, Gujarati</p>
-                        <h4>₹500</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
+                
+            </div>
 
+            <!-- CARD -->
+
+            <div class="doctor-card doctor-page-card">
+
+                <div class="doctor-image">
+                    <img src="uploads/anamika.jpeg" alt="Doctor">
                 </div>
+                
+                <a href="#" class="btn btn-primary">
+                        Book Consultation
+                    </a>
+                
+            </div>
+
+            <!-- CARD -->
+
+            <div class="doctor-card doctor-page-card">
+
+                <div class="doctor-image">
+                    <img src="uploads/jeenal.jpeg" alt="Doctor">
+                </div>
+                
+                <a href="#" class="btn btn-primary">
+                        Book Consultation
+                    </a>
+                
+            </div>
+
+             <!-- CARD -->
+
+            <div class="doctor-card doctor-page-card">
+
+                <div class="doctor-image">
+                    <img src="uploads/triptii.jpeg" alt="Doctor">
+                </div>
+                
+                <a href="#" class="btn btn-primary">
+                        Book Consultation
+                    </a>
+                
+            </div>
 
             </div>
 
         </div>
 
     </div>
+
+    <div class="view-more-wrapper">
+    <a href="booking.php" class="view-more-btn-section">
+        View More →
+    </a>
 
 </section>
 
@@ -638,162 +482,84 @@
 
             <!-- CARD -->
 
-            <div class="doctor-card">
+            <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="assets/images/dr.amit.jpeg" alt="Doctor">
+                    <img src="uploads/heenaa.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3>Dr. Amit Patel</h3>
-
-                    <span>General Physician</span>
-
-                    <div class="doctor-rating">
-                        ★ 4.8 (125)
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>10+ Years Experience</p>
-                        <h4>₹499</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
-
-                </div>
-
+                
             </div>
 
             <!-- CARD -->
 
-            <div class="doctor-card">
+            <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="assets/images/dr.neha.jpeg" alt="Doctor">
+                    <img src="uploads/chandana.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3>Dr. Neha Mehta</h3>
-
-                    <span>Psychologist</span>
-
-                    <div class="doctor-rating">
-                        ★ 4.9 (98)
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>8+ Years Experience</p>
-                        <h4>₹599</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
-
-                </div>
-
+                
             </div>
 
-            <!-- CARD -->
+            <!-- CARD 
 
-            <div class="doctor-card">
+            <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="assets/images/dr.kinjal.jpeg" alt="Doctor">
+                    <img src="uploads/.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3>Dr. Kinjal Trivedi</h3>
-
-                    <span>Orthopedic Surgeon</span>
-
-                    <div class="doctor-rating">
-                        ★ 4.8 (141)
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>12+ Years Experience</p>
-                        <h4>₹699</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
-
-                </div>
-
+                
             </div>
 
-            <!-- CARD -->
+            <!-- CARD 
 
-            <div class="doctor-card">
+            <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="assets/images/dr.amit.jpeg" alt="Doctor">
+                    <img src="uploads/.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3>Dr. Amit Patel</h3>
-
-                    <span>General Physician</span>
-
-                    <div class="doctor-rating">
-                        ★ 4.8 (125)
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>10+ Years Experience</p>
-                        <h4>₹499</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
-
-                </div>
-
+                
             </div>
 
-            <!-- CARD -->
+            <!-- CARD 
 
-            <div class="doctor-card">
+            <div class="doctor-card doctor-page-card">
 
                 <div class="doctor-image">
-                    <img src="assets/images/dr.riya.jpeg" alt="Doctor">
+                    <img src="uploads/.jpeg" alt="Doctor">
                 </div>
-
-                <div class="doctor-card-content">
-
-                    <h3>Dr. Riya Shah</h3>
-
-                    <span>Dermatologist</span>
-
-                    <div class="doctor-rating">
-                        ★ 4.7 (86)
-                    </div>
-
-                    <div class="doctor-meta">
-                        <p>7+ Years Experience</p>
-                        <h4>₹499</h4>
-                    </div>
-
-                    <a href="#" class="btn btn-primary">
+                
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
-
-                </div>
-
+                
             </div>
 
         </div>
 
     </div>
+
+</div> -->
+
+<div class="view-more-wrapper">
+    <a href="booking.php" class="view-more-btn-section">
+        View More →
+    </a>
 
 </section>
 
@@ -1031,5 +797,32 @@
 </footer>
 
 <script src="script.js"></script>
+
+<script>
+
+document.querySelectorAll('.view-more-btn').forEach(btn=>{
+
+    btn.addEventListener('click',function(){
+
+        const wrapper =
+        this.closest('.consultation-wrapper');
+
+        const text =
+        wrapper.querySelector('.consultation-text');
+
+        wrapper.classList.toggle('expanded');
+        text.classList.toggle('expanded');
+
+        if(text.classList.contains('expanded')){
+            this.innerHTML='View Less';
+        }else{
+            this.innerHTML='View More';
+        }
+
+    });
+
+});
+
+</script>
 
 </body>

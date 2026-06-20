@@ -80,7 +80,7 @@ ul{
 
 .section-title{
     text-align:center;
-    margin-bottom:90px;
+    margin-bottom:60px;
     position:relative;
 }
 
@@ -885,10 +885,7 @@ ul{
     url("assets/images/about-hero.jpeg");
 
     background-size: cover;
-
-    /* IMPORTANT CHANGE */
     background-position: right center;
-
     background-repeat: no-repeat;
 }
 
@@ -912,7 +909,7 @@ ul{
 /* Main Heading */
 .about-hero-content h1{
     font-family: var(--heading-font);
-    font-size: 92px;
+    font-size: 82px;
     line-height: 0.92;
     font-weight: 600;
     letter-spacing: -2px;
@@ -1557,10 +1554,7 @@ ul{
     url("assets/images/care-hero.jpeg");
 
     background-size: cover;
-
-    /* IMPORTANT FIX */
     background-position: 72% center;
-
     background-repeat: no-repeat;
 }
 
@@ -1594,7 +1588,7 @@ ul{
 
 .care-hero-content h1{
     font-family: var(--heading-font);
-    font-size: 88px;
+    font-size: 82px;
     line-height: 0.95;
     color: var(--primary);
     margin-bottom: 34px;
@@ -2537,7 +2531,7 @@ ul{
 
 .companion-hero-content h1{
     font-family: var(--heading-font);
-    font-size: 76px;
+    font-size: 82px;
     line-height: 0.96;
     color: var(--primary);
     margin-bottom: 28px;
@@ -2989,7 +2983,7 @@ ul{
 
 .city-hero-content h1{
     font-family: var(--heading-font);
-    font-size: 78px;
+    font-size: 82px;
     line-height: 0.95;
     color: var(--primary);
     margin-bottom: 26px;
@@ -3298,7 +3292,7 @@ ul{
 
 .doctor-hero-content h1{
     font-family: var(--heading-font);
-    font-size: 88px;
+    font-size: 82px;
     line-height: 0.92;
     margin-bottom: 28px;
     color: var(--primary);
@@ -3508,8 +3502,8 @@ ul{
 }
 
 .doctor-card{
-    flex: 0 0 calc((100% - 110px) / 5);
-    min-width: calc((100% - 110px) / 5);
+    flex: 0 0 calc((100% - 172px) / 4);
+    min-width: calc((100% - 172px) / 4);
     min-height: 430px;
     max-height: 430px;
 }
@@ -3544,7 +3538,7 @@ ul{
 ========================================= */
 
 .doctor-card{
-    background: #fff;
+    background: white;
     border-radius: 18px;
     border: 1px solid #eee2d3;
     padding: 10px;
@@ -3564,8 +3558,8 @@ ul{
 
 .doctor-image{
     width: 100%;
-    height: 200px;
-    margin-bottom: 18px;
+    height: 400px;
+    margin-bottom: 12px;
     border-radius: 10px;
     overflow: hidden;
     background: #f3f3f3;
@@ -3913,7 +3907,7 @@ ul{
 }
 
 .booking-hero-content h1{
-    font-size: 88px;
+    font-size: 82px;
     line-height: 0.95;
     letter-spacing: -2px;
     font-weight: 500;
@@ -4293,7 +4287,7 @@ ul{
 
 .join-hero-content h1{
     font-family: 'Cormorant Garamond', serif;
-    font-size: 102px;
+    font-size: 82px;
     font-weight: 600;
     line-height: 0.92;
     letter-spacing: -1px;
@@ -4852,25 +4846,25 @@ ul{
 .doctor-card-content .doctor-page-specialization{
     font-size: 12px;
     color: #000;
-    font-weight: 500;
-    margin-bottom: 10px;
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
 .doctor-card-content p{
     color:#000;
-    font-size:14px;
+    font-size:12px;
 }
 
 .doctor-card-content h4{
     color:#000;
-    font-size:14px;
+    font-size:12px;
 }
 
 .doctor-meta{
     display:flex;
     flex-direction:column;
     gap:6px;
-    margin-bottom:14px;
+    margin-bottom: 8px;
 }
 
 .doctor-meta p{
@@ -4897,4 +4891,90 @@ ul{
     justify-content: center;
     font-size: 14px;
     border-radius: 8px;
+    margin-top: 7px;
 }
+
+/* ==========================
+   Consultation Section
+========================== */
+
+.consultation-wrapper{
+    margin-bottom:6px;
+}
+
+.consultation-text{
+    font-size:12px;
+    line-height:1.6;
+    color:#000;
+
+    max-height:42px;
+    overflow:hidden;
+    position:relative;
+
+    transition:0.4s ease;
+}
+
+.consultation-text.expanded{
+    max-height:500px;
+}
+
+/* gradient now sits BELOW text */
+.consultation-fade{
+    height:28px;
+    margin-top:-12px;
+
+    display:flex;
+    justify-content:flex-end;
+    align-items:flex-end;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(255,255,255,1) 80%
+    );
+}
+
+.consultation-wrapper.expanded .consultation-fade{
+    margin-top:5px;
+    background:none;
+    height:auto;
+}
+
+.view-more-btn{
+    background:transparent;
+    border:none;
+
+    color:#c99645;
+    font-size:12px;
+    font-weight:700;
+
+    cursor:pointer;
+    padding:0;
+}
+
+.view-more-btn:hover{
+    text-decoration:underline;
+}
+
+/* View More below cards */
+
+.view-more-wrapper{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:20px;
+}
+
+.view-more-btn-section{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 20px;
+
+    color:#c89d4f;
+    text-decoration:none;
+    font-weight:600;
+
+    transition:all .3s ease;
+}
+
