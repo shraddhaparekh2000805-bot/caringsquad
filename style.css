@@ -214,25 +214,38 @@ ul{
 ========================================= */
 
 .hero{
-    position: relative;
-    min-height: 92vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+}
 
-    /* YOUR IMAGE */
-    background-image:
-    linear-gradient(
-        to right,
-        rgba(248,244,238,0.96) 28%,
-        rgba(248,244,238,0.78) 42%,
-        rgba(248,244,238,0.08) 60%
-    ),
-    url("assets/images/hero-bannerr.jpeg");
+.hero-slider{
+    position:absolute;
+    inset:0;
+    z-index:1;
+}
 
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+.hero-slide{
+    position:absolute;
+    inset:0;
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    opacity:0;
+    transition:opacity 1.5s ease;
+}
+
+.hero-slide.active{
+    opacity:1;
+}
+
+.hero-container{
+    position:relative;
+    z-index:2;
 }
 
 /* Content Width */

@@ -63,6 +63,43 @@
 
     <section class="hero">
 
+    <div class="hero-slider">
+
+        <div class="hero-slide active"
+            style="background-image:
+            linear-gradient(
+            to right,
+            rgba(248,244,238,0.96) 28%,
+            rgba(248,244,238,0.78) 42%,
+            rgba(248,244,238,0.08) 60%
+            ),
+            url('assets/images/hero1.jpeg');">
+        </div>
+
+        <div class="hero-slide"
+            style="background-image:
+            linear-gradient(
+            to right,
+            rgba(248,244,238,0.96) 28%,
+            rgba(248,244,238,0.78) 42%,
+            rgba(248,244,238,0.08) 60%
+            ),
+            url('assets/images/hero2.jpeg');">
+        </div>
+
+        <div class="hero-slide"
+            style="background-image:
+            linear-gradient(
+            to right,
+            rgba(248,244,238,0.96) 28%,
+            rgba(248,244,238,0.78) 42%,
+            rgba(248,244,238,0.08) 60%
+            ),
+            url('assets/images/hero3.jpg');">
+        </div>
+
+    </div>
+
     <div class="container hero-container">
 
         <div class="hero-content">
@@ -73,7 +110,7 @@
                 Guardians.<br>
                 <span>Always There.</span>
             </h1>
-            
+
             <p>
                 Personalized care, trusted companions and
                 reliable guardianship for the people who matter most.
@@ -580,6 +617,33 @@
 
     <!-- JS -->
     <script src="script.js"></script>
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const slides =
+    document.querySelectorAll(".hero-slide");
+
+    let current = 0;
+
+    setInterval(() => {
+
+        slides[current].classList.remove("active");
+
+        current++;
+
+        if(current >= slides.length){
+            current = 0;
+        }
+
+        slides[current].classList.add("active");
+
+    }, 5000);
+
+});
+
+</script>
 
 </body>
 </php>

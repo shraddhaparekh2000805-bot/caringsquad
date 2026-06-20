@@ -17,7 +17,7 @@ if(isset($_POST['admin_login'])){
 
     /* STATIC ADMIN LOGIN */
 
-    $admin_email = "admin@caringsquad.com";
+    $admin_email = "admin@caringsquad.in";
     $admin_password = "caringsquad";
 
     if($email == $admin_email && $password == $admin_password){

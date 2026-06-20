@@ -77,7 +77,7 @@ $query = mysqli_query(
     $conn,
     "SELECT * FROM doctors
     $where
-    ORDER BY id DESC
+    ORDER BY id ASC
     LIMIT $start,$limit"
 );
 
