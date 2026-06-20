@@ -462,7 +462,7 @@
 
             <div class="hero-buttons">
 
-                <a href="#" class="btn btn-primary">
+                <a href="booking.php" class="btn btn-primary">
                     Book Consultation
                 </a>
 

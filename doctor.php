@@ -677,7 +677,7 @@
 
             <div class="final-buttons">
 
-                <a href="https://forms.gle/SxGAwKuQ9bsK59LB9" class="btn btn-primary">
+                <a href="booking.php" class="btn btn-primary">
                     Book a Consultation
                 </a>
 
