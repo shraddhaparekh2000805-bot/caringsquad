@@ -735,15 +735,13 @@ if(mysqli_num_rows($query) > 0){
 
         <div class="doctor-meta">
 
-            <span>
-                <i class="fa-solid fa-briefcase"></i>
-                <?php echo $doctor['display_experience']; ?>
-            </span>
+            <div class="doctor-speciality">
+            <?php echo $doctor['display_experience']; ?>
+        </div>
 
-            <span>
-                <i class="fa-solid fa-language"></i>
-                <?php echo $doctor['display_languages']; ?>
-            </span>
+        <div class="doctor-description">
+            <?php echo nl2br($doctor['display_language']); ?>
+        </div>
 
         </div>
 
