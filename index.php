@@ -50,12 +50,24 @@
                 </div>
             </div>
 
-            <div class="mobile-menu">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+            <div class="mobile-menu" id="mobileMenuBtn">
+    <i class="fa-solid fa-bars"></i>
+</div>
 
         </div>
     </header>
+
+    <div class="mobile-nav" id="mobileNav">
+
+    <a href="index.php">Home</a>
+    <a href="about.php">Our Story</a>
+    <a href="doctor.php">Expert Consultation</a>
+    <a href="care.php">Care</a>
+    <a href="companion.php">Companion</a>
+    <a href="travel.php">Travel Companion</a>
+    <a href="cityguardian.php">City Guardian</a>
+
+</div>
 
     <!-- ========================= -->
     <!-- HERO SECTION -->

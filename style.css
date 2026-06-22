@@ -209,6 +209,28 @@ ul{
     cursor:pointer;
 }
 
+.mobile-nav{
+    display:none;
+    background:#061326;
+    padding:15px 25px;
+}
+
+.mobile-nav.active{
+    display:block;
+}
+
+.mobile-nav a{
+    display:block;
+    color:#fff;
+    padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,.1);
+    font-size:15px;
+}
+
+.mobile-nav a:last-child{
+    border-bottom:none;
+}
+
 /* =========================================
    HERO SECTION
 ========================================= */
@@ -874,6 +896,15 @@ ul{
         font-size:42px;
     }
 
+}
+
+.ecosystem-grid{
+    grid-template-columns:1fr !important;
+}
+
+.ecosystem-card{
+    height:520px;
+    width:100%;
 }
 
 /* ===========================================================================================================================
@@ -5273,6 +5304,22 @@ ul{
     .why-care-content,
     .process-content{
         padding:20px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .ecosystem-grid{
+        display:grid !important;
+        grid-template-columns:1fr !important;
+        gap:20px !important;
+    }
+
+    .ecosystem-card{
+        width:100% !important;
+        height:auto !important;
+        min-height:500px;
     }
 
 }
