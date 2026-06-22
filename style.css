@@ -3566,8 +3566,8 @@ ul{
 }
 
 .doctor-card{
-    flex: 0 0 calc((100% - 130px) / 4);
-    min-width: calc((100% - 130px) / 4);
+    flex: 0 0 calc((100% - 172px) / 4);
+    min-width: calc((100% - 172px) / 4);
     min-height: 430px;
     max-height: 430px;
 }
@@ -3607,9 +3607,6 @@ ul{
     border: 1px solid #eee2d3;
     padding: 10px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
     flex-direction: column;
     transition: 0.3s;
 }
@@ -3750,11 +3747,11 @@ ul{
     height:38px;
     width:80%;
     font-size:12px;
-    position: relative;
+
     border-radius:10px;
     font-size:13px;
     font-weight:600;
-    z-index: 20;
+
     transition:.3s;
 }
 .book-btn:hover{
@@ -4055,7 +4052,7 @@ ul{
 }
 
 .search-btn i{
-    margin-left: 20px;
+    margin-left: 8px;
 }
 
 /* =========================================
@@ -5116,10 +5113,7 @@ ul{
 @media (max-width: 1400px){
 
     .container{
-        width:100%;
-        max-width: 1400px;
-        margin: auto;
-        padding: 0 15px;
+        width:95%;
     }
 
 }
@@ -5128,9 +5122,7 @@ ul{
 @media (max-width: 1200px){
 
     .container{
-        width: 90%;
-        max-width: 1400px;
-        margin: auto;
+        width:95%;
     }
 
     .section-title h2{
