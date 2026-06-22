@@ -21,15 +21,11 @@ $start = ($page - 1) * $limit;
 ========================================= */
 
 $search = isset($_GET['search']) ? $_GET['search'] : '';
-$speciality = isset($_GET['speciality']) ? trim($_GET['speciality']) : '';
+$consultation_type = $_GET['consultation_type'] ?? '';
+$languages = $_GET['languages'] ?? '';
+$experience = $_GET['experience'] ?? '';
 
-/* FIX SPECIALITY ARRAY ERROR */
-
-if(is_array($speciality)){
-    $speciality = $speciality[0];
-}
-
-$where = "WHERE 1";
+$where = "WHERE status='Active'";
 
 /* SEARCH */
 
@@ -47,11 +43,104 @@ if(!empty($search)){
 
 /* SPECIALITY FILTER */
 
-if(isset($speciality) && $speciality != ''){
+if(!empty($speciality)){
 
-    $speciality = mysqli_real_escape_string($conn, $speciality);
+    if(is_array($speciality)){
 
-    $where .= " AND display_speciality LIKE '%$speciality%'";
+        $conditions = [];
+
+        foreach($speciality as $sp){
+
+            $sp = mysqli_real_escape_string($conn,$sp);
+
+            $conditions[] =
+            "display_speciality LIKE '%$sp%'";
+        }
+
+        $where .= " AND (" . implode(" OR ", $conditions) . ")";
+    }
+    else{
+
+        $speciality =
+        mysqli_real_escape_string($conn,$speciality);
+
+        $where .=
+        " AND display_speciality LIKE '%$speciality%'";
+    }
+}
+
+/* CONSULTATION TYPE FILTER */
+
+if(!empty($consultation_type)){
+
+    if(is_array($consultation_type)){
+
+        $conditions = [];
+
+        foreach($consultation_type as $type){
+
+            $type = mysqli_real_escape_string($conn,$type);
+
+            $conditions[] =
+            "consultation_type LIKE '%$type%'";
+        }
+
+        $where .= " AND (" . implode(" OR ",$conditions) . ")";
+    }
+}
+
+/* LANGUAGE FILTER */
+
+if(!empty($languages)){
+
+    $conditions = [];
+
+    foreach($languages as $lang){
+
+        $lang = mysqli_real_escape_string($conn,$lang);
+
+        $conditions[] =
+        "display_languages LIKE '%$lang%'";
+    }
+
+    $where .= " AND (" . implode(" OR ",$conditions) . ")";
+}
+
+/* EXPERIENCE FILTER */
+
+if(!empty($experience)){
+
+    $expConditions = [];
+
+    foreach($experience as $exp){
+
+        if($exp == '0-5'){
+            $expConditions[] =
+            "CAST(display_experience AS UNSIGNED) BETWEEN 0 AND 5";
+        }
+
+        if($exp == '5-10'){
+            $expConditions[] =
+            "CAST(display_experience AS UNSIGNED) BETWEEN 5 AND 10";
+        }
+
+        if($exp == '10-15'){
+            $expConditions[] =
+            "CAST(display_experience AS UNSIGNED) BETWEEN 10 AND 15";
+        }
+
+        if($exp == '15+'){
+            $expConditions[] =
+            "CAST(display_experience AS UNSIGNED) >= 15";
+        }
+    }
+
+    if(count($expConditions) > 0){
+
+        $where .= " AND (" .
+        implode(" OR ",$expConditions)
+        . ")";
+    }
 }
 
 /* =========================================
@@ -655,8 +744,25 @@ $query = mysqli_query(
 
     <ul>
 
-        <li><input type="checkbox"> Video Consultation</li>
-        <li><input type="checkbox"> Voice Consultation</li>
+        <li>
+<label>
+<input
+type="checkbox"
+name="consultation_type[]"
+value="Video Consultation">
+Video Consultation
+</label>
+</li>
+
+<li>
+<label>
+<input
+type="checkbox"
+name="consultation_type[]"
+value="Voice Consultation">
+Voice Consultation
+</label>
+</li>
 
     </ul>
 
@@ -664,15 +770,77 @@ $query = mysqli_query(
 
 <div class="filter-block">
 
-    <h4>Availability</h4>
+<h4>Experience</h4>
 
-    <ul>
+<ul>
 
-        <li><input type="checkbox"> Available Now</li>
-        <li><input type="checkbox"> Today</li>
-        <li><input type="checkbox"> Tomorrow</li>
+<li>
+<label>
+<input type="checkbox" name="experience[]" value="0-5">
+0 - 5 Years
+</label>
+</li>
 
-    </ul>
+<li>
+<label>
+<input type="checkbox" name="experience[]" value="5-10">
+5 - 10 Years
+</label>
+</li>
+
+<li>
+<label>
+<input type="checkbox" name="experience[]" value="10-15">
+10 - 15 Years
+</label>
+</li>
+
+<li>
+<label>
+<input type="checkbox" name="experience[]" value="15+">
+15+ Years
+</label>
+</li>
+
+</ul>
+
+</div>
+
+<div class="filter-block">
+
+<h4>Languages</h4>
+
+<ul>
+
+<li>
+<label>
+<input type="checkbox" name="languages[]" value="English">
+English
+</label>
+</li>
+
+<li>
+<label>
+<input type="checkbox" name="languages[]" value="Hindi">
+Hindi
+</label>
+</li>
+
+<li>
+<label>
+<input type="checkbox" name="languages[]" value="Gujarati">
+Gujarati
+</label>
+</li>
+
+<li>
+<label>
+<input type="checkbox" name="languages[]" value="Marathi">
+Marathi
+</label>
+</li>
+
+</ul>
 
 </div>
 

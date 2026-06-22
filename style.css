@@ -5024,3 +5024,255 @@ ul{
     transition:all .3s ease;
 }
 
+/* =====================================================
+   GLOBAL RESPONSIVE SYSTEM
+   ADD THIS AT VERY BOTTOM OF universal.css
+===================================================== */
+
+/* ---------- LARGE LAPTOPS ---------- */
+@media (max-width: 1400px){
+
+    .container{
+        width:95%;
+    }
+
+}
+
+/* ---------- LAPTOP ---------- */
+@media (max-width: 1200px){
+
+    .container{
+        width:95%;
+    }
+
+    .section-title h2{
+        font-size:clamp(32px,4vw,52px);
+    }
+
+    .hero-content h1,
+    .about-hero-content h1,
+    .care-hero-content h1,
+    .travel-hero-content h1,
+    .companion-hero-content h1,
+    .city-hero-content h1,
+    .doctor-hero-content h1{
+        font-size:clamp(42px,5vw,70px);
+    }
+
+    .membership-content,
+    .final-cta-content,
+    .about-final-content,
+    .why-care-content,
+    .process-content{
+        padding:40px;
+    }
+
+}
+
+/* ---------- TABLET ---------- */
+@media (max-width: 992px){
+
+    .container{
+        width:95%;
+    }
+
+    .nav-links,
+    .header-right{
+        display:none;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .hero,
+    .about-hero,
+    .care-hero,
+    .travel-hero,
+    .companion-hero,
+    .city-guardian-hero{
+        min-height:auto;
+        padding:120px 0 80px;
+    }
+
+    .hero-content h1,
+    .about-hero-content h1,
+    .care-hero-content h1,
+    .travel-hero-content h1,
+    .companion-hero-content h1,
+    .city-hero-content h1,
+    .doctor-hero-content h1{
+        font-size:48px;
+        line-height:1.1;
+    }
+
+    .trust-grid,
+    .support-grid,
+    .why-grid,
+    .values-grid,
+    .timeline,
+    .stats-grid,
+    .care-features,
+    .travel-features,
+    .city-features,
+    .companion-features{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .ecosystem-grid,
+    .different-grid,
+    .travel-ecosystem-grid,
+    .care-services-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .membership-container,
+    .final-cta-container,
+    .about-final-grid,
+    .process-grid,
+    .why-care-grid,
+    .doctor-hero-grid,
+    .local-presence-grid,
+    .mission-story-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px){
+
+    .container{
+        width:100%;
+        padding:0 15px;
+    }
+
+    .section{
+        padding:60px 0;
+    }
+
+    .section-title{
+        margin-bottom:40px;
+    }
+
+    .section-title h2{
+        font-size:32px;
+    }
+
+    .hero-content h1,
+    .about-hero-content h1,
+    .care-hero-content h1,
+    .travel-hero-content h1,
+    .companion-hero-content h1,
+    .city-hero-content h1,
+    .doctor-hero-content h1{
+        font-size:38px;
+        line-height:1.1;
+    }
+
+    .hero-content p,
+    .about-hero-content p,
+    .care-hero-content p,
+    .travel-hero-content p,
+    .companion-hero-content p,
+    .city-hero-content p,
+    .doctor-hero-content p{
+        font-size:15px;
+        line-height:1.8;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .hero-buttons,
+    .final-buttons{
+        flex-direction:column;
+    }
+
+    .trust-grid,
+    .support-grid,
+    .why-grid,
+    .testimonial-grid,
+    .values-grid,
+    .timeline,
+    .stats-grid,
+    .different-grid,
+    .travel-trust-grid,
+    .travel-features,
+    .travel-ecosystem-grid,
+    .care-features,
+    .care-services-grid,
+    .city-features,
+    .companion-features,
+    .presence-cards{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .membership-content,
+    .final-cta-content,
+    .about-final-content,
+    .why-care-content,
+    .process-content,
+    .mission-card,
+    .story-card,
+    .local-left{
+        padding:30px;
+    }
+
+    .doctor-card{
+        min-width:100%;
+        flex:0 0 100%;
+    }
+
+    .doctor-stat{
+        text-align:center;
+    }
+
+    .doctor-stats-box{
+        position:static;
+        width:100%;
+        margin-top:20px;
+    }
+
+}
+
+/* ---------- SMALL MOBILE ---------- */
+@media (max-width: 480px){
+
+    .hero-content h1,
+    .about-hero-content h1,
+    .care-hero-content h1,
+    .travel-hero-content h1,
+    .companion-hero-content h1,
+    .city-hero-content h1,
+    .doctor-hero-content h1{
+        font-size:32px;
+    }
+
+    .section-title h2{
+        font-size:28px;
+    }
+
+    .btn{
+        padding:14px 20px;
+        font-size:14px;
+    }
+
+    .membership-content,
+    .final-cta-content,
+    .about-final-content,
+    .why-care-content,
+    .process-content{
+        padding:20px;
+    }
+
+}

@@ -16,19 +16,53 @@ if(isset($_POST['update_doctor'])){
     $consultation_type = mysqli_real_escape_string($conn,$_POST['consultation_type']);
     $clinic_fee = mysqli_real_escape_string($conn,$_POST['clinic_fee']);
     $caring_squad_fee = mysqli_real_escape_string($conn,$_POST['caring_squad_fee']);
+    $imageUpdate = "";
+
+if(
+    isset($_FILES['doctor_photo']) &&
+    $_FILES['doctor_photo']['error'] == 0
+){
+
+    $doctorQuery = mysqli_query(
+        $conn,
+        "SELECT image FROM doctors WHERE id='$id'"
+    );
+
+    $doctorData = mysqli_fetch_assoc($doctorQuery);
+
+    if(!empty($doctorData['image'])){
+
+        $oldImage = "../uploads/doctors/" . $doctorData['image'];
+
+        if(file_exists($oldImage)){
+            unlink($oldImage);
+        }
+    }
+
+    $newImage =
+        time() . "_" .
+        basename($_FILES['doctor_photo']['name']);
+
+    move_uploaded_file(
+        $_FILES['doctor_photo']['tmp_name'],
+        "../uploads/doctors/" . $newImage
+    );
+
+    $imageUpdate = ", image='$newImage'";
+}
 
     mysqli_query($conn,"
-        UPDATE doctors SET
-        display_name='$display_name',
-        display_degree='$display_degree',
-        display_speciality='$display_speciality',
-        display_experience='$display_experience',
-        display_languages='$display_languages',
-        consultation_type='$consultation_type',
-        clinic_fee='$clinic_fee',
-        caring_squad_fee='$caring_squad_fee'
-        WHERE id='$id'
-    ");
+    UPDATE doctors SET
+    display_name='$display_name',
+    display_degree='$display_degree',
+    display_speciality='$display_speciality',
+    display_experience='$display_experience',
+    display_languages='$display_languages',
+    consultation_type='$consultation_type',
+    clinic_fee='$clinic_fee',
+    caring_squad_fee='$caring_squad_fee'
+    WHERE id='$id'
+");
 
     header("Location: dashboard.php");
     exit();
@@ -441,10 +475,9 @@ table td{
     max-width:95%;
     max-height:90vh;
     overflow-y:auto;
-
     background:#fff;
-    border-radius:22px;
-    padding:35px;
+    border-radius:12px;
+    padding:25px;
     position:relative;
 }
 
@@ -457,13 +490,15 @@ table td{
 }
 
 .form-group{
-    margin-bottom:20px;
+    margin-bottom:12px;
 }
 
 .form-group label{
     display:block;
+    margin-top: 14px;
     margin-bottom:8px;
     font-weight:600;
+    font: size 14px;
 }
 
 .form-group input{
@@ -476,13 +511,15 @@ table td{
 
 .save-btn{
     width:100%;
-    height:55px;
+    height:50px;
     border:none;
-    border-radius:14px;
+    border-radius:10px;
     background:linear-gradient(to right,#b98b4c,#d7b27c);
     color:#04142b;
+    font-size:16px;
     font-weight:700;
     cursor:pointer;
+    margin-top:15px;
 }
 
 </style>
@@ -746,7 +783,7 @@ Delete
 
 <h2 style="margin-bottom:25px;">Edit Doctor</h2>
 
-<form action="dashboard.php" method="POST">
+<form action="dashboard.php" method="POST" enctype="multipart/form-data">
 
 <input type="hidden" name="id" id="edit_id">
 
@@ -775,6 +812,14 @@ Delete
 
 <label>Caring Squad Fee</label>
 <input type="text" name="caring_squad_fee" id="edit_caring_squad_fee">
+
+<label>Doctor Photo</label>
+<input
+    type="file"
+    name="doctor_photo"
+    accept="image/*"
+    style="margin-bottom:10px;"
+>
 
 <button type="submit" name="update_doctor" class="save-btn">
 
