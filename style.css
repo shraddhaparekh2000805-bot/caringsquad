@@ -162,7 +162,7 @@ ul{
 }
 
 .site-logo{
-    height:60px;
+    height:75px;
     width:auto;
     display:block;
 }
@@ -190,12 +190,11 @@ ul{
     gap:24px;
 }
 
-.header-phone{
-    color:#fff;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:14px;
+.header-phone,
+.header-phone span,
+.header-phone a{
+    color:#fff !important;
+    text-decoration:none;
 }
 
 .header-phone i{
@@ -211,7 +210,12 @@ ul{
 
 .mobile-nav{
     display:none;
+    position:absolute;
+    top:90px;
+    left:0;
+    width:100%;
     background:#061326;
+    z-index:9999;
     padding:15px 25px;
 }
 
@@ -896,15 +900,6 @@ ul{
         font-size:42px;
     }
 
-}
-
-.ecosystem-grid{
-    grid-template-columns:1fr !important;
-}
-
-.ecosystem-card{
-    height:520px;
-    width:100%;
 }
 
 /* ===========================================================================================================================
@@ -4310,6 +4305,30 @@ ul{
 
 }
 
+@media (max-width:768px){
+
+    .doctor-card{
+        width:100% !important;
+        max-width:100% !important;
+        margin:auto;
+    }
+
+    .doctor-card img{
+        width:100%;
+        height:auto;
+        object-fit:contain;
+    }
+
+    .doctor-card-body{
+        padding:12px;
+    }
+
+    .doctor-card .btn{
+        width:100%;
+    }
+
+}
+
 /* ===========================================================================================================================
    JOIN US PAGE
 =========================================================================================================================== */
@@ -5320,6 +5339,73 @@ ul{
         width:100% !important;
         height:auto !important;
         min-height:500px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .final-cta-content{
+        padding:30px 20px;
+    }
+
+    .final-cta-content h2{
+        font-size:42px;
+        line-height:1;
+        word-break:break-word;
+    }
+
+    .final-cta-content p{
+        font-size:15px;
+    }
+
+    .final-buttons{
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .final-buttons .btn{
+        width:100%;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .city-guardian-grid{
+        grid-template-columns:1fr;
+    }
+
+    .city-guardian-content{
+        width:100%;
+        max-width:100%;
+        padding:20px;
+    }
+
+    .city-guardian-content h1{
+        font-size:44px;
+        line-height:1;
+    }
+
+    .city-guardian-content p{
+        font-size:16px;
+        line-height:1.8;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .nav-container{
+        height:70px;
+    }
+
+    .site-logo{
+        height:50px;
+    }
+
+    .header-phone{
+        font-size:12px;
     }
 
 }
