@@ -3600,7 +3600,7 @@ ul{
     color: #c99645;
     font-size: 15px;
     font-weight: 600;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
 }
 
 /* =========================================
@@ -3611,7 +3611,7 @@ ul{
     color: #666;
     font-size: 14px;
     line-height: 1.7;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 /* =========================================
@@ -4167,26 +4167,28 @@ ul{
 =========================== */
 
 .booking-main .doctor-card{
-    padding: 14px;
+    padding: 10px 10px 10px;
     margin: auto;
-    width: 100%;
-    min-width: 100%;
-    min-height: 230px;
-    max-height: 230px;
+    width: 95%;
+    min-width: 95%;
+    min-height: 210px;
+    max-height: 210px;
 }
 
 .booking-main .doctor-image{
-    height: 200px;
+    height: 185px;
 }
 
 .booking-main .doctor-name{
-    font-size: 22px;
+    font-size: 20px;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .booking-main .doctor-speciality{
-    font-size: 15px;
+    font-size: 16px;
+    margin-bottom: 2px;
+    font-weight: 700;
 }
 
 .booking-main .fee-price{
@@ -4214,9 +4216,35 @@ ul{
 
 .booking-main .book-btn{
     margin-top: 12px;
+    height:40px;
+    font-size:16px;
 }
 
+/* =========================================
+   BOOKING PAGE - Experience & Language Left Align
+========================================= */
 
+.booking-main .doctor-info{
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.booking-main .doctor-meta{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:flex-start;
+    gap:30px;
+    margin-top:10px;
+    width:auto;
+}
+
+.booking-main .doctor-meta span{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    white-space:nowrap;
+}
 
 /* =========================================
    RESPONSIVE
@@ -4884,6 +4912,10 @@ ul{
     margin:0;
     color:#000;
     font-size:12px;
+}
+
+.experience,
+.languages{
     text-align:left;
 }
 
