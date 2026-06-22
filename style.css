@@ -3750,11 +3750,11 @@ ul{
     height:38px;
     width:80%;
     font-size:12px;
-
+    position: relative;
     border-radius:10px;
     font-size:13px;
     font-weight:600;
-
+    z-index: 20;
     transition:.3s;
 }
 .book-btn:hover{
@@ -4055,7 +4055,7 @@ ul{
 }
 
 .search-btn i{
-    margin-left: -30px;
+    margin-left: 20px;
 }
 
 /* =========================================
