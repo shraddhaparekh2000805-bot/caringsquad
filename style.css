@@ -3566,8 +3566,8 @@ ul{
 }
 
 .doctor-card{
-    flex: 0 0 calc((100% - 172px) / 4);
-    min-width: calc((100% - 172px) / 4);
+    flex: 0 0 calc((100% - 130px) / 4);
+    min-width: calc((100% - 130px) / 4);
     min-height: 430px;
     max-height: 430px;
 }
@@ -3607,6 +3607,9 @@ ul{
     border: 1px solid #eee2d3;
     padding: 10px;
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     flex-direction: column;
     transition: 0.3s;
 }
@@ -4052,7 +4055,7 @@ ul{
 }
 
 .search-btn i{
-    margin-left: 8px;
+    margin-left: -30px;
 }
 
 /* =========================================
@@ -5113,7 +5116,10 @@ ul{
 @media (max-width: 1400px){
 
     .container{
-        width:95%;
+        width:100%;
+        max-width: 1400px;
+        margin: auto;
+        padding: 0 15px;
     }
 
 }
@@ -5122,7 +5128,9 @@ ul{
 @media (max-width: 1200px){
 
     .container{
-        width:95%;
+        width: 90%;
+        max-width: 1400px;
+        margin: auto;
     }
 
     .section-title h2{
