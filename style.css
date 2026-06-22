@@ -544,7 +544,7 @@ ul{
 }
 
 .membership-content{
-    padding:70px;
+    padding:40px;
 }
 
 .membership-content h2{
@@ -891,13 +891,27 @@ ul{
         grid-template-columns:1fr;
     }
 
-    .membership-content,
-    .final-cta-content{
-        padding:40px;
-    }
-
     .big-cta h2{
         font-size:42px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .membership-content{
+        padding:25px;
+    }
+
+    .membership-content h2{
+        font-size:34px;
+        line-height:1.15;
+        word-break:break-word;
+    }
+
+    .membership-content p{
+        font-size:15px;
+        line-height:1.8;
     }
 
 }
@@ -3221,8 +3235,19 @@ ul{
 
     .city-guardian-hero{
         min-height: auto;
-        padding: 140px 0 90px;
+        padding:120px 20px 80px;
     }
+
+    .city-hero-content{
+    max-width:100%;
+    width:100%;
+}
+
+.city-hero-content p{
+    font-size:18px;
+    line-height:1.8;
+    text-align:left;
+}
 
     .city-hero-grid{
         min-height: auto;
@@ -4308,16 +4333,21 @@ ul{
 @media (max-width:768px){
 
     .doctor-card{
-        width:100% !important;
-        max-width:100% !important;
-        margin:auto;
-    }
+    width:100% !important;
+    min-width:100% !important;
+    max-width:100% !important;
+}
 
-    .doctor-card img{
-        width:100%;
-        height:auto;
-        object-fit:contain;
-    }
+.doctor-card img{
+    width:100%;
+    height:auto;
+    object-fit:contain;
+}
+
+.doctor-list-grid{
+    gap:12px;
+    padding:0 10px;
+}
 
     .doctor-card-body{
         padding:12px;
@@ -5406,6 +5436,29 @@ ul{
 
     .header-phone{
         font-size:12px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    html,
+    body{
+        overflow-x:hidden;
+        width:100%;
+    }
+
+    *{
+        max-width:100%;
+    }
+
+    img{
+        max-width:100%;
+        height:auto;
+    }
+
+    table{
+        width:100%;
     }
 
 }
