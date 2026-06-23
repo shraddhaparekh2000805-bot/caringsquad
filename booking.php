@@ -689,7 +689,7 @@ $query = mysqli_query(
 
                     <h3>Filter Doctors</h3>
 
-                    <a href="booking.php">Clear All</a>
+                    <a href="">Clear All</a>
 
                 </div>
 
@@ -840,6 +840,20 @@ Marathi
 </label>
 </li>
 
+<li>
+<label>
+<input type="checkbox" name="languages[]" value="Gujarati">
+Telugu
+</label>
+</li>
+
+<li>
+<label>
+<input type="checkbox" name="languages[]" value="Gujarati">
+Kannad
+</label>
+</li>
+
 </ul>
 
 </div>
@@ -942,7 +956,7 @@ if(mysqli_num_rows($query) > 0){
             <?php echo $doctor['consultation_type']; ?>
         </div>
 
-        <a href="https://forms.gle/dWUPEMVGmCmFLL8p6"
+        <a href="https://forms.gle/9W3dz6kwiR4hBZzRA"
            class="book-btn">
             Book Consultation
         </a>

@@ -119,10 +119,10 @@
             <h1>
                 Connecting Every Indian<br>
                 
-                to the <span>Right Care Expert</span>
+                to the <span>Right Care Expert</span> <br>
             </h1>
 
-            <h4>India's Expert Care Network</h4>
+            <h3>India's <span>Expert Care</span> Network</h3><br>
 
             <p>
                 A trusted ecosystem of Care, Companionship, Guardianship and Expert Healthcare guidance.

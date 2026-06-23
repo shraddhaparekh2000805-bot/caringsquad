@@ -20,6 +20,7 @@ if(isset($_POST['update_doctor'])){
 
 if(
     isset($_FILES['doctor_photo']) &&
+    !empty($_FILES['doctor_photo']['name']) &&
     $_FILES['doctor_photo']['error'] == 0
 ){
 
@@ -43,25 +44,32 @@ if(
         time() . "_" .
         basename($_FILES['doctor_photo']['name']);
 
-    move_uploaded_file(
-        $_FILES['doctor_photo']['tmp_name'],
-        "../uploads/doctors/" . $newImage
+    $uploadDir = "../uploads/doctors/";
+
+if(!file_exists($uploadDir)){
+    mkdir($uploadDir,0777,true);
+}
+
+move_uploaded_file(
+    $_FILES['doctor_photo']['tmp_name'],
+    $uploadDir . $newImage
     );
 
     $imageUpdate = ", image='$newImage'";
 }
 
     mysqli_query($conn,"
-    UPDATE doctors SET
-    display_name='$display_name',
-    display_degree='$display_degree',
-    display_speciality='$display_speciality',
-    display_experience='$display_experience',
-    display_languages='$display_languages',
-    consultation_type='$consultation_type',
-    clinic_fee='$clinic_fee',
-    caring_squad_fee='$caring_squad_fee'
-    WHERE id='$id'
+UPDATE doctors SET
+display_name='$display_name',
+display_degree='$display_degree',
+display_speciality='$display_speciality',
+display_experience='$display_experience',
+display_languages='$display_languages',
+consultation_type='$consultation_type',
+clinic_fee='$clinic_fee',
+caring_squad_fee='$caring_squad_fee'
+$imageUpdate
+WHERE id='$id'
 ");
 
     header("Location: dashboard.php");
@@ -161,7 +169,7 @@ $inactiveDoctors = mysqli_num_rows(
 
 $recentDoctors = mysqli_query(
     $conn,
-    "SELECT * FROM doctors ORDER BY id DESC"
+    "SELECT * FROM doctors ORDER BY id ASC"
 );
 
 ?>
@@ -721,7 +729,8 @@ onclick="openEditModal(
 '<?php echo addslashes($doctor['display_languages']); ?>',
 '<?php echo addslashes($doctor['consultation_type']); ?>',
 '<?php echo addslashes($doctor['clinic_fee']); ?>',
-'<?php echo addslashes($doctor['caring_squad_fee']); ?>'
+'<?php echo addslashes($doctor['caring_squad_fee']); ?>',
+'<?php echo $doctor['image']; ?>'
 )"
 >
 Edit
@@ -836,35 +845,32 @@ Save Changes
 <script>
 
 function openEditModal(
-id,
-display_name,
-display_degree,
-display_speciality,
-display_experience,
-display_languages,
-consultation_type,
-clinic_fee,
-caring_squad_fee
+    id,
+    display_name,
+    display_degree,
+    display_speciality,
+    display_experience,
+    display_languages,
+    consultation_type,
+    clinic_fee,
+    caring_squad_fee,
+    image
 )
-
 {
-    document.getElementById('editModal').style.display='flex';
+    document.getElementById('editModal').style.display = 'flex';
 
-    document.getElementById('edit_id').value=id;
+    document.getElementById('edit_id').value = id;
+    document.getElementById('edit_display_name').value = display_name;
+    document.getElementById('edit_display_degree').value = display_degree;
+    document.getElementById('edit_display_speciality').value = display_speciality;
+    document.getElementById('edit_display_experience').value = display_experience;
+    document.getElementById('edit_display_languages').value = display_languages;
+    document.getElementById('edit_consultation_type').value = consultation_type;
+    document.getElementById('edit_clinic_fee').value = clinic_fee;
+    document.getElementById('edit_caring_squad_fee').value = caring_squad_fee;
 
-    document.getElementById('edit_display_name').value=display_name;
-    document.getElementById('edit_display_degree').value=display_degree;
-    document.getElementById('edit_display_speciality').value=display_speciality;
-    document.getElementById('edit_display_experience').value=display_experience;
-    document.getElementById('edit_display_languages').value=display_languages;
-    document.getElementById('edit_consultation_type').value=consultation_type;
-    document.getElementById('edit_clinic_fee').value=clinic_fee;
-    document.getElementById('edit_caring_squad_fee').value=caring_squad_fee;
-}
-
-function closeEditModal()
-{
-    document.getElementById('editModal').style.display = 'none';
+    document.getElementById('currentDoctorPhoto').src =
+        '../uploads/doctors/' + image;
 }
 
 </script>

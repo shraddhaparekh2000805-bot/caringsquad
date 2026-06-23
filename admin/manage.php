@@ -74,11 +74,65 @@ if(isset($_POST['update_doctor'])){
     $cs_fee = mysqli_real_escape_string($conn,$_POST['cs_fee']);
     $priority_fee = mysqli_real_escape_string($conn,$_POST['priority_fee']);
     $professional_bio = mysqli_real_escape_string($conn,$_POST['professional_bio']);
+    $profession = mysqli_real_escape_string($conn,$_POST['profession']);
+$sub_specialization = mysqli_real_escape_string($conn,$_POST['sub_specialization']);
+$additional_certifications = mysqli_real_escape_string($conn,$_POST['additional_certifications']);
+$current_designation = mysqli_real_escape_string($conn,$_POST['current_designation']);
+$registration_valid_till = mysqli_real_escape_string($conn,$_POST['registration_valid_till']);
+$additional_registrations = mysqli_real_escape_string($conn,$_POST['additional_registrations']);
+
+$online_consultation = mysqli_real_escape_string($conn,$_POST['online_consultation']);
+$home_visit = mysqli_real_escape_string($conn,$_POST['home_visit']);
+$consultation_mode = mysqli_real_escape_string($conn,$_POST['consultation_mode']);
+$platform = mysqli_real_escape_string($conn,$_POST['platform']);
+
+$video_whatsapp = mysqli_real_escape_string($conn,$_POST['video_whatsapp']);
+$audio_mobile = mysqli_real_escape_string($conn,$_POST['audio_mobile']);
+
+$consultation_duration = mysqli_real_escape_string($conn,$_POST['consultation_duration']);
+$consultation_languages = mysqli_real_escape_string($conn,$_POST['consultation_languages']);
+
+$availability = mysqli_real_escape_string($conn,$_POST['availability']);
+$available_days = mysqli_real_escape_string($conn,$_POST['available_days']);
+
+$priority_consultation = mysqli_real_escape_string($conn,$_POST['priority_consultation']);
+$response_time = mysqli_real_escape_string($conn,$_POST['response_time']);
+$emergency_charges = mysqli_real_escape_string($conn,$_POST['emergency_charges']);
+$max_priority_consultation = mysqli_real_escape_string($conn,$_POST['max_priority_consultation']);
+
+$followup_available = mysqli_real_escape_string($conn,$_POST['followup_available']);
+$followup_fee = mysqli_real_escape_string($conn,$_POST['followup_fee']);
+$free_followup_period = mysqli_real_escape_string($conn,$_POST['free_followup_period']);
+
+$report_review = mysqli_real_escape_string($conn,$_POST['report_review']);
+$digital_prescription = mysqli_real_escape_string($conn,$_POST['digital_prescription']);
+
+$display_name = mysqli_real_escape_string($conn,$_POST['display_name']);
+$display_degree = mysqli_real_escape_string($conn,$_POST['display_degree']);
+$display_speciality = mysqli_real_escape_string($conn,$_POST['display_speciality']);
+$display_experience = mysqli_real_escape_string($conn,$_POST['display_experience']);
+$display_languages = mysqli_real_escape_string($conn,$_POST['display_languages']);
+    $image = $_POST['old_image'];
+
+if(
+    isset($_FILES['image']) &&
+    !empty($_FILES['image']['name'])
+){
+
+    $image =
+    time().'_'.basename($_FILES['image']['name']);
+
+    move_uploaded_file(
+        $_FILES['image']['tmp_name'],
+        '../uploads/'.$image
+    );
+}
 
     mysqli_query($conn,
 
         "UPDATE doctors SET
 
+        image='$image',
         name='$name',
         email='$email',
         mobile='$mobile',
@@ -97,7 +151,48 @@ if(isset($_POST['update_doctor'])){
         clinic_fee='$clinic_fee',
         cs_fee='$cs_fee',
         priority_fee='$priority_fee',
-        professional_bio='$professional_bio'
+professional_bio='$professional_bio',
+
+profession='$profession',
+sub_specialization='$sub_specialization',
+additional_certifications='$additional_certifications',
+
+current_designation='$current_designation',
+registration_valid_till='$registration_valid_till',
+additional_registrations='$additional_registrations',
+
+online_consultation='$online_consultation',
+home_visit='$home_visit',
+
+consultation_mode='$consultation_mode',
+platform='$platform',
+
+video_whatsapp='$video_whatsapp',
+audio_mobile='$audio_mobile',
+
+consultation_duration='$consultation_duration',
+consultation_languages='$consultation_languages',
+
+availability='$availability',
+available_days='$available_days',
+
+priority_consultation='$priority_consultation',
+response_time='$response_time',
+emergency_charges='$emergency_charges',
+max_priority_consultation='$max_priority_consultation',
+
+followup_available='$followup_available',
+followup_fee='$followup_fee',
+free_followup_period='$free_followup_period',
+
+report_review='$report_review',
+digital_prescription='$digital_prescription',
+
+display_name='$display_name',
+display_degree='$display_degree',
+display_speciality='$display_speciality',
+display_experience='$display_experience',
+display_languages='$display_languages'
 
         WHERE id='$doctor_id'"
 
@@ -306,13 +401,15 @@ body{
 .table-box{
     background:#fff;
     border-radius:24px;
+    padding:28px;
     overflow:auto;
+    box-shadow:0 8px 20px rgba(0,0,0,0.04);
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:1400px;
+    min-width:1300px;
 }
 
 th{
@@ -570,61 +667,71 @@ Logout
         <table>
 
             <tr>
-
-                <th>Doctor</th>
-                <th>Speciality</th>
+                <th>Sr No</th>
+                <th>Doctor ID</th>
+                <th>Photo</th>
+                <th>Display Name</th>
                 <th>Degree</th>
+                <th>Speciality</th>
                 <th>Experience</th>
-                <th>Hospital</th>
-                <th>City</th>
-                <th>Fee</th>
+                <th>Languages</th>
+                <th>Consultation Type</th> 
+                <th>Caring Squad Fee</th>
                 <th>Status</th>
                 <th>Actions</th>
-
             </tr>
 
-            <?php while($doctor = mysqli_fetch_assoc($doctorQuery)){ ?>
+<?php $sr = 1; while($doctor = mysqli_fetch_assoc($doctorQuery)){ ?>
 
-            <tr>
+<tr>
 
-                <td>
+<?php
+$imagePath =
+(!empty($doctor['image']) &&
+file_exists('../uploads/doctors/'.$doctor['image']))
+?
+'../uploads/doctors/'.$doctor['image']
+:
+'../assets/images/default-doctor.png';
+?>
 
-                    <div style="display:flex;align-items:center;gap:12px;">
+<td><?php echo $sr++; ?></td>
 
-                        <img
-                            src="../uploads/<?php echo $doctor['image']; ?>"
-                            class="doctor-img"
-                        >
+<td><?php echo $doctor['dr_id']; ?></td>
 
-                        <div>
+<td>
+<img
+src="<?php echo $imagePath; ?>"
+class="doctor-img">
+</td>
 
-                            <strong>
-                                <?php echo $doctor['name']; ?>
-                            </strong>
+<td>
+<?php echo $doctor['display_name']; ?>
+</td>
 
-                            <br>
+<td>
+<?php echo $doctor['display_degree']; ?>
+</td>
 
-                            <small>
-                                <?php echo $doctor['email']; ?>
-                            </small>
+<td>
+<?php echo $doctor['display_speciality']; ?>
+</td>
 
-                        </div>
+<td>
+<?php echo $doctor['display_experience']; ?>
+</td>
 
-                    </div>
+<td>
+<?php echo $doctor['display_languages']; ?>
+</td>
 
-                </td>
+<td>
+<?php echo $doctor['consultation_type']; ?>
+</td>
 
-                <td><?php echo $doctor['speciality']; ?></td>
-
-                <td><?php echo $doctor['degree']; ?></td>
-
-                <td><?php echo $doctor['experience']; ?></td>
-
-                <td><?php echo $doctor['hospital']; ?></td>
-
-                <td><?php echo $doctor['city']; ?></td>
-
-                <td>₹<?php echo $doctor['clinic_fee']; ?></td>
+<td>
+₹<?php echo $doctor['cs_fee']; ?>
+</td>
 
                 <td>
 
@@ -706,12 +813,11 @@ Logout
                             class="close-btn"
                             onclick="closeModal('modal<?php echo $doctor['id']; ?>')"
                         >
-                            ×
                         </span>
 
                     </div>
 
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
 
                         <input
                             type="hidden"
@@ -719,7 +825,35 @@ Logout
                             value="<?php echo $doctor['id']; ?>"
                         >
 
+                        <input
+                            type="hidden"
+                            name="old_image"
+                            value="<?php echo $doctor['image']; ?>"
+                        >
+
                         <div class="form-grid">
+
+                        <div class="form-group full">
+
+<label>Doctor Photo</label>
+
+<img
+src="../uploads/<?php echo $doctor['image']; ?>"
+style="
+width:120px;
+height:120px;
+border-radius:15px;
+object-fit:cover;
+margin-bottom:15px;
+border:1px solid #ddd;
+">
+
+<input
+type="file"
+name="image"
+accept="image/*">
+
+</div>
 
                             <div class="form-group">
                                 <label>Full Name</label>
@@ -828,6 +962,224 @@ Logout
 
                                 <textarea name="professional_bio"><?php echo $doctor['professional_bio']; ?></textarea>
                             </div>
+
+                            <!-- SECTION B EXTRA -->
+
+<div class="form-group">
+<label>Professional Category</label>
+<input type="text"
+name="profession"
+value="<?php echo $doctor['profession']; ?>">
+</div>
+
+<div class="form-group">
+<label>Sub Specialization</label>
+<input type="text"
+name="sub_specialization"
+value="<?php echo $doctor['sub_specialization']; ?>">
+</div>
+
+<div class="form-group full">
+<label>Additional Certifications</label>
+<input type="text"
+name="additional_certifications"
+value="<?php echo $doctor['additional_certifications']; ?>">
+</div>
+
+<div class="form-group">
+<label>Current Designation</label>
+<input type="text"
+name="current_designation"
+value="<?php echo $doctor['current_designation']; ?>">
+</div>
+
+<div class="form-group">
+<label>Registration Valid Till</label>
+<input type="date"
+name="registration_valid_till"
+value="<?php echo $doctor['registration_valid_till']; ?>">
+</div>
+
+<div class="form-group full">
+<label>Additional Registrations</label>
+<input type="text"
+name="additional_registrations"
+value="<?php echo $doctor['additional_registrations']; ?>">
+</div>
+
+<!-- ONLINE CONSULTATION -->
+
+<div class="form-group">
+<label>Online Consultation</label>
+<input type="text"
+name="online_consultation"
+value="<?php echo $doctor['online_consultation']; ?>">
+</div>
+
+<div class="form-group">
+<label>Home Visit</label>
+<input type="text"
+name="home_visit"
+value="<?php echo $doctor['home_visit']; ?>">
+</div>
+
+<div class="form-group full">
+<label>Consultation Mode</label>
+<input type="text"
+name="consultation_mode"
+value="<?php echo $doctor['consultation_mode']; ?>">
+</div>
+
+<div class="form-group full">
+<label>Platform</label>
+<input type="text"
+name="platform"
+value="<?php echo $doctor['platform']; ?>">
+</div>
+
+<div class="form-group">
+<label>Video Whatsapp</label>
+<input type="text"
+name="video_whatsapp"
+value="<?php echo $doctor['video_whatsapp']; ?>">
+</div>
+
+<div class="form-group">
+<label>Audio Mobile</label>
+<input type="text"
+name="audio_mobile"
+value="<?php echo $doctor['audio_mobile']; ?>">
+</div>
+
+<div class="form-group">
+<label>Consultation Duration</label>
+<input type="text"
+name="consultation_duration"
+value="<?php echo $doctor['consultation_duration']; ?>">
+</div>
+
+<div class="form-group full">
+<label>Consultation Languages</label>
+<input type="text"
+name="consultation_languages"
+value="<?php echo $doctor['consultation_languages']; ?>">
+</div>
+
+<div class="form-group full">
+<label>Availability</label>
+<input type="text"
+name="availability"
+value="<?php echo $doctor['availability']; ?>">
+</div>
+
+<div class="form-group full">
+<label>Available Days</label>
+<input type="text"
+name="available_days"
+value="<?php echo $doctor['available_days']; ?>">
+</div>
+
+<div class="form-group">
+<label>Priority Consultation</label>
+<input type="text"
+name="priority_consultation"
+value="<?php echo $doctor['priority_consultation']; ?>">
+</div>
+
+<div class="form-group">
+<label>Response Time</label>
+<input type="text"
+name="response_time"
+value="<?php echo $doctor['response_time']; ?>">
+</div>
+
+<div class="form-group">
+<label>Emergency Charges</label>
+<input type="text"
+name="emergency_charges"
+value="<?php echo $doctor['emergency_charges']; ?>">
+</div>
+
+<div class="form-group">
+<label>Max Priority Consultation</label>
+<input type="text"
+name="max_priority_consultation"
+value="<?php echo $doctor['max_priority_consultation']; ?>">
+</div>
+
+<div class="form-group">
+<label>Followup Available</label>
+<input type="text"
+name="followup_available"
+value="<?php echo $doctor['followup_available']; ?>">
+</div>
+
+<div class="form-group">
+<label>Followup Fee</label>
+<input type="text"
+name="followup_fee"
+value="<?php echo $doctor['followup_fee']; ?>">
+</div>
+
+<div class="form-group">
+<label>Free Followup Period</label>
+<input type="text"
+name="free_followup_period"
+value="<?php echo $doctor['free_followup_period']; ?>">
+</div>
+
+<div class="form-group">
+<label>Report Review</label>
+<input type="text"
+name="report_review"
+value="<?php echo $doctor['report_review']; ?>">
+</div>
+
+<div class="form-group">
+<label>Digital Prescription</label>
+<input type="text"
+name="digital_prescription"
+value="<?php echo $doctor['digital_prescription']; ?>">
+</div>
+
+<!-- DISPLAY PROFILE -->
+
+<div class="form-group">
+<label>Display Name</label>
+<input type="text"
+name="display_name"
+value="<?php echo $doctor['display_name']; ?>">
+</div>
+
+<div class="form-group">
+<label>Display Degree</label>
+<input type="text"
+name="display_degree"
+value="<?php echo $doctor['display_degree']; ?>">
+</div>
+
+<div class="form-group">
+<label>Display Speciality</label>
+<input type="text"
+name="display_speciality"
+value="<?php echo $doctor['display_speciality']; ?>">
+</div>
+
+<div class="form-group">
+<label>Display Experience</label>
+<input type="text"
+name="display_experience"
+value="<?php echo $doctor['display_experience']; ?>">
+</div>
+
+<div class="form-group full">
+<label>Display Languages</label>
+<input type="text"
+name="display_languages"
+value="<?php echo $doctor['display_languages']; ?>">
+</div>
+
+</div>
 
                         </div>
 

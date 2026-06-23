@@ -367,12 +367,12 @@
                 </div>
 
                 <div class="stat-box">
-                    <h3>200+</h3>
+                    <h3>100+</h3>
                     <p>Care Professionals</p>
                 </div>
 
                 <div class="stat-box">
-                    <h3>5+</h3>
+                    <h3>8+</h3>
                     <p>Cities</p>
                 </div>
 

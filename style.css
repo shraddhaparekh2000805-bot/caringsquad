@@ -1135,7 +1135,7 @@ ul{
 ========================================= */
 
 .mission-story{
-    padding: 90px 0;
+    padding: 40px 0;
 }
 
 .mission-story-grid{
@@ -1153,7 +1153,7 @@ ul{
     border: 1px solid #E8DED0;
     border-radius: 18px;
     overflow: hidden;
-    padding: 48px;
+    padding: 25px;
     height: 100%;
 }
 
@@ -2637,7 +2637,7 @@ ul{
 ========================================= */
 
 .companion-difference-section{
-    padding-bottom: 90px;
+    padding-bottom: 35px;
 }
 
 .companion-difference-grid{
@@ -2655,11 +2655,11 @@ ul{
 }
 
 .difference-left{
-    padding: 40px;
+    padding: 25px;
 }
 
 .difference-right{
-    padding: 40px 42px;
+    padding: 25px;
 }
 
 .difference-left h2,
@@ -2668,7 +2668,7 @@ ul{
     font-size: 42px;
     line-height: 1.15;
     color: var(--primary);
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
 .difference-left-content{
