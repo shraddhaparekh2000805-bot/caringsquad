@@ -269,7 +269,7 @@ body{
 /* SIDEBAR */
 
 .sidebar{
-    width:280px;
+    width:250px;
     background:#04142b;
     position:fixed;
     height:100vh;
@@ -324,8 +324,8 @@ body{
 /* MAIN */
 
 .main{
-    margin-left:280px;
-    padding:35px;
+    margin-left:250px;
+    padding:20px;
 }
 
 .topbar{
@@ -333,9 +333,9 @@ body{
     justify-content:space-between;
     align-items:center;
     background:#fff;
-    padding:26px 34px;
-    border-radius:28px;
-    margin-bottom:30px;
+    padding:18px 24px;
+    border-radius:20px;
+    margin-bottom:20px;
 }
 
 .topbar-right{
@@ -348,8 +348,8 @@ body{
     background:#198754;
     color:#fff;
     text-decoration:none;
-    padding:12px 22px;
-    border-radius:10px;
+    padding:10px 16px;
+    border-radius:14px;
     font-weight:600;
     display:flex;
     align-items:center;
@@ -363,13 +363,13 @@ body{
 
 .topbar h1{
     font-family:'Cormorant Garamond',serif;
-    font-size:48px;
+    font-size:30px;
 }
 
 /* SEARCH */
 
 .search-box{
-    margin-bottom:25px;
+    margin-bottom:18px;
 }
 
 .search-box form{
@@ -379,7 +379,7 @@ body{
 
 .search-box input{
     flex:1;
-    height:56px;
+    height:48px;
     border:none;
     border-radius:14px;
     padding:0 20px;
@@ -394,14 +394,16 @@ body{
     border-radius:14px;
     font-weight:600;
     cursor:pointer;
+    height:48px;
+    font-size:14px;
 }
 
 /* TABLE */
 
 .table-box{
     background:#fff;
-    border-radius:24px;
-    padding:28px;
+    border-radius:18px;
+    padding:16px;
     overflow:auto;
     box-shadow:0 8px 20px rgba(0,0,0,0.04);
 }
@@ -409,26 +411,27 @@ body{
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:1300px;
+    table-layout:fixed;
 }
 
 th{
     background:#04142b;
     color:#fff;
-    padding:18px;
-    font-size:14px;
-    text-align:left;
+    padding:12px 8px;
+    font-size:12px;
+    text-align:center;
+    white-space:nowrap;
 }
 
 td{
-    padding:18px;
+    padding:12px;
     border-bottom:1px solid #eee;
-    font-size:14px;
+    font-size:13px;
 }
 
 .doctor-img{
-    width:55px;
-    height:55px;
+    width:42px;
+    height:42px;
     border-radius:50%;
     object-fit:cover;
 }
@@ -457,7 +460,7 @@ td{
 
 .btn{
     border:none;
-    padding:10px 18px;
+    padding:7px 12px;
     border-radius:12px;
     cursor:pointer;
     text-decoration:none;
@@ -608,6 +611,27 @@ Add Doctor
 Manage Doctors
 </a>
 </li>
+
+ <li>
+                <a href="blog_categories.php">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    Blog Categories
+                </a>
+            </li>
+
+            <li>
+                <a href="add_blog.php">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    Add Blog
+                </a>
+            </li>
+
+            <li>
+                <a href="blog_list.php">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    Manage Blog
+                </a>
+            </li>
 
 <li>
 <a href="logout.php">

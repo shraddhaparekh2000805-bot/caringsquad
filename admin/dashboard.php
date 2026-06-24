@@ -574,6 +574,27 @@ Manage Doctors
 </li>
 
 <li>
+<a href="blog_categories.php">
+<i class="fa-solid fa-layer-group"></i>
+Blog Categories
+</a>
+</li>
+
+<li>
+<a href="add_blog.php">
+<i class="fa-solid fa-pen"></i>
+Add Blog
+</a>
+</li>
+
+<li>
+<a href="blog_list.php">
+<i class="fa-solid fa-newspaper"></i>
+Manage Blogs
+</a>
+</li>
+
+<li>
 <a href="logout.php">
 <i class="fa-solid fa-right-from-bracket"></i>
 Logout

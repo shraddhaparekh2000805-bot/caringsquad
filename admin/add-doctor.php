@@ -793,6 +793,27 @@ WHERE dr_id='$doctor_id'
                     Manage Doctors
                 </a>
             </li>
+            
+            <li>
+                <a href="blog_categories.php">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    Blog Categories
+                </a>
+            </li>
+
+            <li>
+                <a href="add_blog.php">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    Add Blog
+                </a>
+            </li>
+
+            <li>
+                <a href="blog_list.php">
+                    <i class="fa-solid fa-hospital-user"></i>
+                    Manage Blog
+                </a>
+            </li>
 
             <li>
                 <a href="logout.php">
