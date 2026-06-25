@@ -13,7 +13,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 
     $conn = mysqli_connect(
         "localhost",
-        "u306816562_caringsquad",
+        "caringsquad",
         "Caringsquad@123",
         "u306816562_caringsquad"
     );
