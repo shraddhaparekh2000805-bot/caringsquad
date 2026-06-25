@@ -13,9 +13,9 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 
     $conn = mysqli_connect(
         "localhost",
-        "caringsquad",
+        "u306816562_caringsquad",
         "Caringsquad@123",
-        "caringsquad"
+        "u306816562_caringsquad"
     );
 
 }
