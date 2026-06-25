@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2026 at 08:40 AM
+-- Generation Time: Jun 25, 2026 at 12:25 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,57 @@ SET time_zone = "+00:00";
 --
 -- Database: `caringsquad`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blogs`
+--
+
+CREATE TABLE `blogs` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `featured_image` varchar(255) DEFAULT NULL,
+  `excerpt` text DEFAULT NULL,
+  `content` longtext DEFAULT NULL,
+  `author` varchar(100) DEFAULT 'Caring Squad',
+  `read_time` varchar(30) DEFAULT NULL,
+  `status` enum('Published','Draft') DEFAULT 'Published',
+  `featured` tinyint(1) DEFAULT 0,
+  `views` int(11) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blogs`
+--
+
+INSERT INTO `blogs` (`id`, `title`, `slug`, `category_id`, `featured_image`, `excerpt`, `content`, `author`, `read_time`, `status`, `featured`, `views`, `created_at`) VALUES
+(4, 'Elder Care', 'elder-care', 3, 'care1.jpeg', 'Okay\r\nexpert care network\r\nelder care\r\ncompanionship\r\ntravel support\r\n', '<p><i><strong>No</strong></i></p>', 'Caring Squad', '3 min read', 'Published', 1, 0, '2026-06-25 09:09:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog_categories`
+--
+
+CREATE TABLE `blog_categories` (
+  `id` int(11) NOT NULL,
+  `category_name` varchar(100) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blog_categories`
+--
+
+INSERT INTO `blog_categories` (`id`, `category_name`, `status`) VALUES
+(1, 'Health & Wellness', 1),
+(2, 'Elder Care', 1),
+(3, 'Companionship', 0),
+(5, 'News & Updates', 1);
 
 -- --------------------------------------------------------
 
@@ -405,6 +456,7 @@ CREATE TABLE `doctors` (
   `fee` varchar(50) DEFAULT NULL,
   `available_time` varchar(255) DEFAULT NULL,
   `hospital` varchar(255) DEFAULT NULL,
+  `current_designation` varchar(255) DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
   `state` varchar(100) DEFAULT NULL,
   `description` text DEFAULT NULL,
@@ -453,15 +505,39 @@ CREATE TABLE `doctors` (
   `display_speciality` varchar(255) DEFAULT NULL,
   `display_experience` varchar(100) DEFAULT NULL,
   `display_languages` varchar(255) DEFAULT NULL,
-  `consultation_type` varchar(100) DEFAULT NULL
+  `consultation_type` varchar(100) DEFAULT NULL,
+  `sub_specialization` varchar(255) DEFAULT NULL,
+  `additional_certifications` text DEFAULT NULL,
+  `registration_valid_till` date DEFAULT NULL,
+  `additional_registrations` text DEFAULT NULL,
+  `areas_covered` text DEFAULT NULL,
+  `discounted_home_visit_fee` varchar(50) DEFAULT NULL,
+  `display_profile` varchar(10) DEFAULT NULL,
+  `display_photo` varchar(10) DEFAULT NULL,
+  `display_fee` varchar(10) DEFAULT NULL,
+  `founding_expert` varchar(10) DEFAULT NULL,
+  `city_ambassador` varchar(10) DEFAULT NULL,
+  `online_expert_panel` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `doctors`
 --
 
-INSERT INTO `doctors` (`id`, `name`, `gender`, `dob`, `mobile`, `whatsapp`, `email`, `degree`, `speciality`, `experience`, `rating`, `language`, `fee`, `available_time`, `hospital`, `city`, `state`, `description`, `image`, `status`, `created_at`, `profession`, `license_number`, `council`, `online_consultation`, `home_visit`, `consultation_mode`, `platform`, `video_whatsapp`, `audio_mobile`, `clinic_fee`, `cs_fee`, `priority_fee`, `consultation_duration`, `consultation_languages`, `availability`, `available_days`, `priority_consultation`, `response_time`, `emergency_charges`, `max_priority_consultation`, `followup_available`, `followup_fee`, `free_followup_period`, `report_review`, `digital_prescription`, `home_visit_available`, `service_radius`, `home_visit_fee`, `linkedin_profile`, `website_profile`, `professional_bio`, `special_consultation_fee`, `special_fee_amount`, `dr_id`, `caring_squad_fee`, `state_id`, `city_id`, `display_name`, `display_degree`, `display_speciality`, `display_experience`, `display_languages`, `consultation_type`) VALUES
-(2, 'Dr.Vijay Makvana', 'Male', '1994-01-22', '9327093071', '9327093071', 'vjay.makvana22@gmail.com', 'MBBS,MD (General Medicine)', 'General Physician', '3-5 Years', NULL, 'Hindi, Gujarati ', NULL, NULL, 'Netrachikitsa Trust Hospital, Amreli', 'Amreli', 'Gujarat', NULL, 'vijay.jpeg\r\n', 'Active', '2026-06-04 07:28:35', NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, 'IEN26-261', 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `doctors` (`id`, `name`, `gender`, `dob`, `mobile`, `whatsapp`, `email`, `degree`, `speciality`, `experience`, `rating`, `language`, `fee`, `available_time`, `hospital`, `current_designation`, `city`, `state`, `description`, `image`, `status`, `created_at`, `profession`, `license_number`, `council`, `online_consultation`, `home_visit`, `consultation_mode`, `platform`, `video_whatsapp`, `audio_mobile`, `clinic_fee`, `cs_fee`, `priority_fee`, `consultation_duration`, `consultation_languages`, `availability`, `available_days`, `priority_consultation`, `response_time`, `emergency_charges`, `max_priority_consultation`, `followup_available`, `followup_fee`, `free_followup_period`, `report_review`, `digital_prescription`, `home_visit_available`, `service_radius`, `home_visit_fee`, `linkedin_profile`, `website_profile`, `professional_bio`, `special_consultation_fee`, `special_fee_amount`, `dr_id`, `caring_squad_fee`, `state_id`, `city_id`, `display_name`, `display_degree`, `display_speciality`, `display_experience`, `display_languages`, `consultation_type`, `sub_specialization`, `additional_certifications`, `registration_valid_till`, `additional_registrations`, `areas_covered`, `discounted_home_visit_fee`, `display_profile`, `display_photo`, `display_fee`, `founding_expert`, `city_ambassador`, `online_expert_panel`) VALUES
+(29, '', NULL, NULL, NULL, NULL, NULL, '', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1782206844_Dr.Anamika Jha.jpeg', 'Active', '2026-06-23 09:27:24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'jghjfghmdghmd,tyiou98765rredsfghj', NULL, NULL, 'D2026A1', 900.00, NULL, NULL, 'Mudra Patel', 'MBBS, MD', 'Cardiologist', '2 year', 'English, Hindi', 'Video Consultation', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `newsletter_subscribers`
+--
+
+CREATE TABLE `newsletter_subscribers` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -521,6 +597,18 @@ INSERT INTO `states` (`id`, `state_name`) VALUES
 --
 
 --
+-- Indexes for table `blogs`
+--
+ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `blog_categories`
+--
+ALTER TABLE `blog_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `cities`
 --
 ALTER TABLE `cities`
@@ -536,6 +624,12 @@ ALTER TABLE `doctors`
   ADD KEY `fk_city` (`city_id`);
 
 --
+-- Indexes for table `newsletter_subscribers`
+--
+ALTER TABLE `newsletter_subscribers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `states`
 --
 ALTER TABLE `states`
@@ -547,6 +641,18 @@ ALTER TABLE `states`
 --
 
 --
+-- AUTO_INCREMENT for table `blogs`
+--
+ALTER TABLE `blogs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `blog_categories`
+--
+ALTER TABLE `blog_categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `cities`
 --
 ALTER TABLE `cities`
@@ -556,7 +662,13 @@ ALTER TABLE `cities`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `newsletter_subscribers`
+--
+ALTER TABLE `newsletter_subscribers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `states`

@@ -82,7 +82,7 @@ $featured_image =
 
 move_uploaded_file(
     $_FILES['featured_image']['tmp_name'],
-    'uploads/blogs/' .
+    '../uploads/blogs/' .
     $featured_image
 );
 
