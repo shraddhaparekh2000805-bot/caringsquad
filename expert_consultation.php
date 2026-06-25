@@ -41,7 +41,7 @@
             <ul class="nav-links">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">Our Story</a></li>
-                    <li><a href="doctor.php" class="active">Expert Consultation</a></li>
+                    <li><a href="expert_consultation.php" class="active">Expert Consultation</a></li>
                     <li><a href="care.php">Care</a></li>
                     <li><a href="companion.php">Companion</a></li>
                     <li><a href="travel.php">Travel Companion</a></li>
@@ -151,7 +151,7 @@
 
             </div>
 
-            <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+            <a href="https://forms.gle/hsyAGYWXguJbpvPb7" class="btn btn-primary">
                 Apply to Join
             </a>
 

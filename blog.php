@@ -1,24 +1,51 @@
 <?php
 
-include 'db.php';
+$conn = mysqli_connect(
+    "localhost",
+    "root",
+    "",
+    "caringsquad"
+);
 
-/* CATEGORY FILTER */
-
-$category_id = 0;
-
-if(isset($_GET['category'])){
-    $category_id = (int)$_GET['category'];
+if (!$conn) {
+    die("Database Connection Failed : " . mysqli_connect_error());
 }
 
-/* SEARCH */
+/* =========================================
+   CATEGORY FILTER
+========================================= */
 
-$search = '';
+$category_id = isset($_GET['category'])
+    ? (int)$_GET['category']
+    : 0;
 
-if(isset($_GET['search'])){
-    $search = trim($_GET['search']);
+/* =========================================
+   SEARCH
+========================================= */
+
+$search = isset($_GET['search'])
+    ? trim($_GET['search'])
+    : '';
+
+/* =========================================
+   PAGINATION
+========================================= */
+
+$limit = 6;
+
+$page = isset($_GET['page'])
+    ? (int)$_GET['page']
+    : 1;
+
+if($page < 1){
+    $page = 1;
 }
 
-/* MAIN BLOG QUERY */
+$start = ($page - 1) * $limit;
+
+/* =========================================
+   WHERE CONDITIONS
+========================================= */
 
 $where = " WHERE blogs.status='Published' ";
 
@@ -27,10 +54,47 @@ if($category_id > 0){
 }
 
 if($search != ''){
+
+    $search = mysqli_real_escape_string(
+        $conn,
+        $search
+    );
+
     $where .= "
-    AND blogs.title LIKE '%$search%'
-    ";
+    AND (
+        blogs.title LIKE '%$search%'
+        OR blogs.excerpt LIKE '%$search%'
+    )";
 }
+
+/* =========================================
+   TOTAL BLOGS
+========================================= */
+
+$total_query = mysqli_query(
+$conn,
+"
+SELECT COUNT(*) AS total
+FROM blogs
+LEFT JOIN blog_categories
+ON blogs.category_id = blog_categories.id
+$where
+"
+);
+
+$total_row = mysqli_fetch_assoc(
+$total_query
+);
+
+$total_records = $total_row['total'];
+
+$total_pages = ceil(
+    $total_records / $limit
+);
+
+/* =========================================
+   BLOG LIST
+========================================= */
 
 $blogs = mysqli_query(
 $conn,
@@ -48,22 +112,44 @@ blog_categories.id
 $where
 
 ORDER BY blogs.created_at DESC
+
+LIMIT $start,$limit
 "
 );
 
-/* CATEGORIES */
+/* =========================================
+   FEATURED BLOG
+========================================= */
 
-$categories = mysqli_query(
+$featured_blog = mysqli_query(
 $conn,
 "
-SELECT *
-FROM blog_categories
-WHERE status='Active'
-ORDER BY category_name ASC
+SELECT
+blogs.*,
+blog_categories.category_name
+
+FROM blogs
+
+LEFT JOIN blog_categories
+ON blogs.category_id =
+blog_categories.id
+
+WHERE blogs.featured='1'
+AND blogs.status='Published'
+
+ORDER BY blogs.id DESC
+
+LIMIT 1
 "
 );
 
-/* POPULAR POSTS */
+$featured = mysqli_fetch_assoc(
+$featured_blog
+);
+
+/* =========================================
+   POPULAR POSTS
+========================================= */
 
 $popular = mysqli_query(
 $conn,
@@ -72,27 +158,23 @@ SELECT *
 FROM blogs
 WHERE status='Published'
 ORDER BY views DESC
-LIMIT 3
+LIMIT 5
 "
 );
 
-$featured_blog = mysqli_query(
+/* =========================================
+   CATEGORIES
+========================================= */
+
+$categories = mysqli_query(
 $conn,
 "
-SELECT
-blogs.*,
-blog_categories.category_name
-FROM blogs
-LEFT JOIN blog_categories
-ON blogs.category_id = blog_categories.id
-WHERE blogs.featured=1
-AND blogs.status='Published'
-ORDER BY blogs.id DESC
-LIMIT 1
+SELECT *
+FROM blog_categories
+WHERE status='1'
+ORDER BY category_name ASC
 "
 );
-
-$featured = mysqli_fetch_assoc($featured_blog);
 
 ?>
 
@@ -107,7 +189,9 @@ $featured = mysqli_fetch_assoc($featured_blog);
 name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Blogs & Insights | Caring Squad</title>
+<title>
+Blogs & Insights | Caring Squad
+</title>
 
 <link rel="preconnect"
 href="https://fonts.googleapis.com">
@@ -122,1150 +206,928 @@ rel="stylesheet">
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<style>
-
-/* HERO SECTION */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-.blog-hero{
-padding:80px 0;
-background:#f8f4ee;
-}
-
-.blog-hero-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:70px;
-align-items:center;
-}
-
-.hero-label{
-font-size:13px;
-font-weight:600;
-letter-spacing:3px;
-color:#C89B4D;
-text-transform:uppercase;
-}
-
-.hero-divider{
-width:80px;
-height:2px;
-background:#C89B4D;
-margin:18px 0 28px;
-}
-
-.hero-content h1{
-font-family:'Cormorant Garamond',serif;
-font-size:72px;
-line-height:1.05;
-margin-bottom:20px;
-}
-
-.hero-content h1 span{
-color:#C89B4D;
-}
-
-.hero-heart{
-color:#C89B4D;
-font-size:18px;
-margin-bottom:20px;
-}
-
-.hero-content p{
-font-size:17px;
-line-height:1.9;
-max-width:550px;
-color:#666;
-}
-
-.hero-image img{
-width:100%;
-border-radius:24px;
-display:block;
-}
-
-body{
-font-family:'Montserrat',sans-serif;
-background:#f8f4ee;
-color:#061326;
-}
-
-.container{
-width:90%;
-max-width:1400px;
-margin:auto;
-}
-
-/* HEADER */
-
-.header{
-background:#fff;
-border-bottom:1px solid #eee;
-position:sticky;
-top:0;
-z-index:999;
-}
-
-.nav-container{
-display:flex;
-align-items:center;
-justify-content:space-between;
-height:90px;
-}
-
-.site-logo{
-height:55px;
-}
-
-.nav-links{
-display:flex;
-list-style:none;
-gap:30px;
-}
-
-.nav-links a{
-text-decoration:none;
-color:#061326;
-font-size:15px;
-font-weight:500;
-}
-
-.nav-links a:hover{
-color:#C89B4D;
-}
-
-.header-phone{
-background:#061326;
-color:#fff;
-padding:12px 20px;
-border-radius:50px;
-font-size:14px;
-display:flex;
-align-items:center;
-gap:8px;
-}
-
-/* BLOG MAIN */
-
-.blog-main{
-padding:60px 0;
-}
-
-.blog-layout{
-display:grid;
-grid-template-columns:2.5fr 1fr;
-gap:50px;
-}
-
-.category-tabs{
-display:flex;
-flex-wrap:wrap;
-gap:12px;
-margin-bottom:25px;
-}
-
-.tab-btn{
-text-decoration:none;
-padding:12px 22px;
-border-radius:50px;
-background:#fff;
-border:1px solid #e8dfd2;
-color:#061326;
-font-size:14px;
-font-weight:500;
-transition:.3s;
-}
-
-.tab-btn:hover{
-background:#C89B4D;
-color:#fff;
-}
-
-.tab-btn.active{
-background:#061326;
-color:#fff;
-}
-
-.blog-search{
-display:flex;
-margin-bottom:35px;
-}
-
-.blog-search input{
-flex:1;
-height:54px;
-border:1px solid #ddd;
-padding:0 18px;
-border-radius:12px 0 0 12px;
-outline:none;
-}
-
-.blog-search button{
-width:60px;
-border:none;
-background:#061326;
-color:#fff;
-border-radius:0 12px 12px 0;
-cursor:pointer;
-}
-
-.blog-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:30px;
-}
-
-.blog-card{
-background:#fff;
-border-radius:22px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,.05);
-transition:.3s;
-}
-
-.blog-card:hover{
-transform:translateY(-6px);
-}
-
-.blog-card-image img{
-width:100%;
-height:260px;
-object-fit:cover;
-display:block;
-}
-
-.blog-card-content{
-padding:25px;
-}
-
-.blog-category{
-display:inline-block;
-padding:8px 16px;
-border-radius:30px;
-background:#f5efe5;
-color:#C89B4D;
-font-size:12px;
-font-weight:600;
-margin-bottom:15px;
-}
-
-.blog-card h3{
-font-family:'Cormorant Garamond',serif;
-font-size:32px;
-line-height:1.2;
-margin-bottom:15px;
-color:#061326;
-}
-
-.blog-card p{
-line-height:1.8;
-font-size:14px;
-color:#666;
-margin-bottom:20px;
-}
-
-.blog-meta{
-display:flex;
-gap:20px;
-font-size:13px;
-margin-bottom:20px;
-color:#777;
-}
-
-.read-more{
-display:inline-block;
-padding:12px 22px;
-border-radius:50px;
-background:#061326;
-color:#fff;
-text-decoration:none;
-font-size:14px;
-font-weight:600;
-}
-
-.blog-right{
-display:flex;
-flex-direction:column;
-gap:25px;
-}
-
-.sidebar-card{
-background:#fff;
-padding:25px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.04);
-}
-
-.sidebar-card h3{
-font-family:'Cormorant Garamond',serif;
-font-size:28px;
-margin-bottom:18px;
-}
-
-.popular-post{
-padding:12px 0;
-border-bottom:1px solid #eee;
-}
-
-.popular-post:last-child{
-border-bottom:none;
-}
-
-.popular-post a{
-text-decoration:none;
-color:#061326;
-font-weight:500;
-line-height:1.6;
-}
-
-.sidebar-categories{
-list-style:none;
-}
-
-.sidebar-categories li{
-margin-bottom:12px;
-}
-
-.sidebar-categories a{
-text-decoration:none;
-color:#061326;
-}
-
-.newsletter-box p{
-margin-bottom:18px;
-line-height:1.8;
-color:#666;
-}
-
-.newsletter-box input{
-width:100%;
-height:50px;
-border:1px solid #ddd;
-padding:0 15px;
-border-radius:10px;
-margin-bottom:12px;
-}
-
-.newsletter-box button{
-width:100%;
-height:50px;
-border:none;
-background:#061326;
-color:#fff;
-border-radius:10px;
-cursor:pointer;
-}
-
-.featured-blog{
-padding:20px 0 60px;
-}
-
-.featured-card{
-display:grid;
-grid-template-columns:1.2fr 1fr;
-background:#fff;
-border-radius:28px;
-overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,.05);
-}
-
-.featured-image img{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
-}
-
-.featured-content{
-padding:50px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-}
-
-.featured-tag{
-color:#C89B4D;
-font-size:13px;
-font-weight:700;
-letter-spacing:2px;
-text-transform:uppercase;
-margin-bottom:15px;
-}
-
-.featured-content h2{
-font-family:'Cormorant Garamond',serif;
-font-size:52px;
-line-height:1.1;
-margin-bottom:20px;
-}
-
-.featured-content p{
-line-height:1.9;
-color:#666;
-margin-bottom:25px;
-}
-
-.featured-btn{
-display:inline-block;
-width:max-content;
-padding:14px 24px;
-background:#061326;
-color:#fff;
-text-decoration:none;
-border-radius:50px;
-}
-
-.cta-section{
-padding:80px 0;
-}
-
-.cta-box{
-background:#061326;
-border-radius:30px;
-padding:70px;
-text-align:center;
-color:#fff;
-}
-
-.cta-box h2{
-font-family:'Cormorant Garamond',serif;
-font-size:58px;
-margin-bottom:20px;
-}
-
-.cta-box p{
-max-width:700px;
-margin:auto;
-line-height:1.9;
-font-size:16px;
-opacity:.9;
-margin-bottom:30px;
-}
-
-.cta-btn{
-display:inline-block;
-padding:15px 30px;
-background:#C89B4D;
-color:#fff;
-text-decoration:none;
-border-radius:50px;
-font-weight:600;
-}
-
-.footer{
-background:#061326;
-padding:80px 0 30px;
-color:#fff;
-}
-
-.footer-grid{
-display:grid;
-grid-template-columns:2fr 1fr 1fr 1fr;
-gap:50px;
-}
-
-.footer-logo{
-height:60px;
-margin-bottom:20px;
-}
-
-.footer-about p{
-line-height:1.9;
-color:#d9d9d9;
-}
-
-.footer-title{
-font-family:'Cormorant Garamond',serif;
-font-size:28px;
-margin-bottom:20px;
-color:#fff;
-}
-
-.footer-links{
-list-style:none;
-}
-
-.footer-links li{
-margin-bottom:12px;
-}
-
-.footer-links a{
-text-decoration:none;
-color:#d9d9d9;
-}
-
-.footer-links a:hover{
-color:#C89B4D;
-}
-
-.footer-bottom{
-margin-top:50px;
-padding-top:25px;
-border-top:1px solid rgba(255,255,255,.1);
-text-align:center;
-color:#bfbfbf;
-font-size:14px;
-}
-
-/* =========================
-   MOBILE RESPONSIVE
-========================= */
-
-@media(max-width:1024px){
-
-.blog-layout{
-grid-template-columns:1fr;
-}
-
-.blog-right{
-margin-top:40px;
-}
-
-.blog-grid{
-grid-template-columns:1fr;
-}
-
-.featured-card{
-grid-template-columns:1fr;
-}
-
-.hero-content h1{
-font-size:56px;
-}
-
-.footer-grid{
-grid-template-columns:1fr 1fr;
-}
-
-}
-
-@media(max-width:768px){
-
-.container{
-width:94%;
-}
-
-.nav-container{
-flex-direction:column;
-height:auto;
-padding:15px 0;
-gap:15px;
-}
-
-.nav-links{
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
-}
-
-.blog-hero{
-padding:50px 0;
-}
-
-.blog-hero-grid{
-grid-template-columns:1fr;
-gap:40px;
-}
-
-.hero-content h1{
-font-size:42px;
-}
-
-.hero-content p{
-font-size:15px;
-}
-
-.featured-content{
-padding:30px;
-}
-
-.featured-content h2{
-font-size:38px;
-}
-
-.blog-grid{
-grid-template-columns:1fr;
-}
-
-.blog-card h3{
-font-size:26px;
-}
-
-.cta-box{
-padding:40px 25px;
-}
-
-.cta-box h2{
-font-size:40px;
-}
-
-.footer-grid{
-grid-template-columns:1fr;
-gap:35px;
-}
-
-}
-
-@media(max-width:480px){
-
-.hero-content h1{
-font-size:34px;
-}
-
-.featured-content h2{
-font-size:30px;
-}
-
-.page-btn{
-width:40px;
-height:40px;
-}
-
-.cta-box h2{
-font-size:30px;
-}
-
-.footer-title{
-font-size:24px;
-}
-
-}
-
-</style>
+<link rel="stylesheet"
+href="style.css">
 
 </head>
 
 <body>
 
+<!-- ========================= -->
+<!-- HEADER -->
+<!-- ========================= -->
+
 <header class="header">
 
-<div class="container nav-container">
+    <div class="container nav-container">
 
-<a href="index.php">
+        <div class="logo">
 
-<img
-src="assets/images/caringsquad-logo.png"
-class="site-logo"
-alt="Caring Squad">
+            <img
+            class="site-logo"
+            src="assets/images/caringsquad-logo.png"
+            alt="Caring Squad">
 
-</a>
+        </div>
 
-<ul class="nav-links">
+        <nav class="navbar">
 
-<li><a href="index.php">Home</a></li>
+            <ul class="nav-links">
 
-<li><a href="about.php">Our Story</a></li>
+                <li>
+                    <a href="index.php">
+                        Home
+                    </a>
+                </li>
 
-<li><a href="doctor.php">Expert Consultation</a></li>
+                <li>
+                    <a href="about.php">
+                        Our Story
+                    </a>
+                </li>
 
-<li><a href="care.php">Care</a></li>
+                <li>
+                    <a href="expert_consultation.php">
+                        Expert Consultation
+                    </a>
+                </li>
 
-<li><a href="companion.php">Companion</a></li>
+                <li>
+                    <a href="care.php">
+                        Care
+                    </a>
+                </li>
 
-<a
-href="blog.php"
-class="tab-btn <?php echo ($category_id==0)?'active':''; ?>">
-All Articles
-</a>
+                <li>
+                    <a href="companion.php">
+                        Companion
+                    </a>
+                </li>
 
-</ul>
+                <li>
+                    <a href="travel.php">
+                        Travel Companion
+                    </a>
+                </li>
 
-<div class="header-phone">
+                <li>
+                    <a href="cityguardian.php">
+                        City Guardian
+                    </a>
+                </li>
 
-<i class="fa-solid fa-phone"></i>
+                <li class="dropdown">
 
-1800 571 1929
+                    <a href="#">
+                        Other
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </a>
 
-</div>
+                    <ul class="dropdown-menu">
 
-</div>
+                        <li>
+                            <a href="blog.php">
+                                Blog
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="joinus.php">
+                                Join Us
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="contact.php">
+                                Contact Us
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <div class="header-right">
+
+            <div class="header-phone">
+
+                <i class="fa-solid fa-phone"></i>
+
+                <span>
+                    1800 571 1929
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </header>
 
+<!-- ========================= -->
+<!-- HERO -->
+<!-- ========================= -->
+
 <section class="blog-hero">
 
-<div class="container">
+    <div class="container">
 
-<div class="blog-hero-grid">
+        <div class="about-hero-grid">
 
-<div class="hero-content">
+            <div class="about-hero-content">
 
-<div class="hero-label">
-CARE • COMPANIONS • GUARDIANS
-</div>
+                <h1>
 
-<div class="hero-divider"></div>
+                    Insights that Care
 
-<h1>
-Insights that care.
-<br>
-<span>Guidance that empowers.</span>
-</h1>
+                    <br>
 
-<div class="hero-heart">
-<i class="fa-solid fa-heart"></i>
-</div>
+                    <span>
+                        Guidance that Empowers
+                    </span>
 
-<p>
-Expert insights, real stories, and practical guidance
-to help families make better care decisions with confidence.
-</p>
+                </h1>
 
-</div>
+                <p>
 
-<div class="hero-image">
+                    Expert insights, real stories
+                    and practical advice to help
+                    families make informed care
+                    decisions.
 
-<img
-src="assets/images/blog-hero.jpg"
-alt="Blog Hero">
+                </p>
 
-</div>
+                <div class="hero-buttons">
 
-</div>
+                    <a
+                    href="#blogs"
+                    class="btn btn-primary">
 
-</div>
+                        Explore Blogs
 
-</section>
+                    </a>
 
-<?php if($featured){ ?>
+                    <a
+                    href="contact.php"
+                    class="btn btn-secondary">
 
-<section class="featured-blog">
+                        Contact Us
 
-<div class="container">
+                    </a>
 
-<div class="featured-card">
+                </div>
 
-<div class="featured-image">
+            </div>
 
-<img
-src="admin/uploads/blogs/<?php echo $featured['featured_image']; ?>"
-alt="<?php echo htmlspecialchars($featured['title']); ?>">
+        </div>
 
-</div>
-
-<div class="featured-content">
-
-<span class="featured-tag">
-
-Featured Article
-
-</span>
-
-<h2>
-
-<?php echo $featured['title']; ?>
-
-</h2>
-
-<p>
-
-<?php echo $featured['excerpt']; ?>
-
-</p>
-
-<a
-href="blog_details.php?slug=<?php echo $featured['slug']; ?>"
-class="featured-btn">
-
-Read Full Story
-
-</a>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
-<?php } ?>
 
-<section class="blog-main">
+<!-- ========================= -->
+<!-- BLOG MAIN SECTION -->
+<!-- ========================= -->
 
-<div class="container">
+<section class="blog-main" id="blogs">
 
-<div class="blog-layout">
+    <div class="container">
 
-<div class="blog-left">
+        <div class="blog-layout">
 
-<!-- Category Tabs -->
+            <!-- ========================= -->
+            <!-- LEFT SIDE -->
+            <!-- ========================= -->
 
-<div class="category-tabs">
+            <div class="blog-left">
 
-<a
-href="blog.php"
-class="tab-btn active">
+                <!-- CATEGORY TABS -->
 
-All Articles
+                <div class="category-tabs">
 
-</a>
+                    <a
+                    href="blog.php"
+                    class="tab-btn <?php echo ($category_id==0)?'active':''; ?>">
 
-<?php
-while($cat=mysqli_fetch_assoc($categories)){
-?>
+                        All Articles
 
-<a
-href="blog.php?category=<?php echo $cat['id']; ?>"
-class="tab-btn <?php echo ($category_id==$cat['id'])?'active':''; ?>">
+                    </a>
 
-<?php echo $cat['category_name']; ?>
+                    <?php
 
-</a>
+                    mysqli_data_seek(
+                        $categories,
+                        0
+                    );
 
-<?php } ?>
+                    while($cat=mysqli_fetch_assoc($categories)){
 
-</div>
+                    ?>
 
-<!-- Search -->
+                    <a
+                    href="blog.php?category=<?php echo $cat['id']; ?>"
+                    class="tab-btn <?php echo ($category_id==$cat['id'])?'active':''; ?>">
 
-<form
-method="GET"
-class="blog-search">
+                        <?php echo $cat['category_name']; ?>
 
-<input
-type="text"
-name="search"
-placeholder="Search articles..."
-value="<?php echo htmlspecialchars($search); ?>">
+                    </a>
 
-<button type="submit">
+                    <?php } ?>
 
-<i class="fa-solid fa-magnifying-glass"></i>
+                </div>
 
-</button>
+                <!-- SEARCH -->
 
-</form>
+                <form
+                method="GET"
+                class="blog-search">
 
-<div class="blog-grid">
+                    <?php
 
-<?php while($blog=mysqli_fetch_assoc($blogs)){ ?>
+                    if($category_id>0){
 
-<div class="blog-card">
+                    ?>
 
-<div class="blog-card-image">
+                    <input
+                    type="hidden"
+                    name="category"
+                    value="<?php echo $category_id; ?>">
 
-<?php if(!empty($blog['featured_image'])){ ?>
+                    <?php } ?>
 
-<img
-src="admin/uploads/blogs/<?php echo $blog['featured_image']; ?>"
-alt="<?php echo htmlspecialchars($blog['title']); ?>">
+                    <input
+                    type="text"
+                    name="search"
+                    placeholder="Search articles..."
+                    value="<?php echo htmlspecialchars($search); ?>">
 
-<?php } ?>
+                    <button type="submit">
 
-</div>
+                        <i class="fa-solid fa-magnifying-glass"></i>
 
-<div class="blog-card-content">
+                    </button>
 
-<span class="blog-category">
+                </form>
 
-<?php echo $blog['category_name']; ?>
+                <!-- BLOG GRID -->
 
-</span>
+                <div class="blog-grid">
 
-<h3>
+                <?php
 
-<?php echo $blog['title']; ?>
+                if(mysqli_num_rows($blogs)>0){
 
-</h3>
+                while($blog=mysqli_fetch_assoc($blogs)){
 
-<p>
+                ?>
 
-<?php echo substr(strip_tags($blog['excerpt']),0,120); ?>...
+                <div class="blog-card">
 
-</p>
+                    <div class="blog-card-image">
 
-<div class="blog-meta">
+                        <?php
 
-<span>
+                        if(!empty($blog['featured_image'])){
 
-<i class="fa-regular fa-user"></i>
+                        ?>
 
-<?php echo $blog['author']; ?>
+                        <img
+                        src="uploads/blogs/<?php echo $blog['featured_image']; ?>"
+                        alt="<?php echo htmlspecialchars($blog['title']); ?>">
 
-</span>
+                        <?php } ?>
 
-<span>
+                    </div>
 
-<i class="fa-regular fa-clock"></i>
+                    <div class="blog-card-content">
 
-<?php echo $blog['read_time']; ?>
+                        <span class="blog-category">
 
-</span>
+                            <?php echo $blog['category_name']; ?>
 
-</div>
+                        </span>
 
-<a
-href="blog_details.php?slug=<?php echo $blog['slug']; ?>"
-class="read-more">
+                        <h3>
 
-Read Article
+                            <?php echo $blog['title']; ?>
 
-</a>
+                        </h3>
 
-</div>
+                        <p>
 
-</div>
+                            <?php
 
-<?php } ?>
+                            echo substr(
+                                strip_tags(
+                                    $blog['excerpt']
+                                ),
+                                0,
+                                140
+                            );
 
-</div>
+                            ?>...
 
-<div class="blog-pagination"></div>
+                        </p>
 
-<a href="#" class="page-btn active">1</a>
+                        <div class="blog-meta">
 
-<a href="#" class="page-btn">2</a>
+                            <span>
 
-<a href="#" class="page-btn">3</a>
+                                <i class="fa-regular fa-user"></i>
 
-<a href="#" class="page-btn">
+                                <?php echo $blog['author']; ?>
 
-<i class="fa-solid fa-arrow-right"></i>
+                            </span>
 
-</a>
+                            <span>
 
-</div>
+                                <i class="fa-regular fa-clock"></i>
 
-<div class="blog-right">
+                                <?php echo $blog['read_time']; ?>
 
-<div class="sidebar-card">
+                            </span>
 
-<h3>
-Popular Articles
-</h3>
+                        </div>
 
-<?php while($pop=mysqli_fetch_assoc($popular)){ ?>
+                        <a
+                        href="blog_details.php?slug=<?php echo $blog['slug']; ?>"
+                        class="read-more">
 
-<div class="popular-post">
+                            Read Article
 
-<a
-href="blog_details.php?slug=<?php echo $pop['slug']; ?>">
+                        </a>
 
-<?php echo $pop['title']; ?>
+                    </div>
 
-</a>
+                </div>
 
-</div>
+                <?php
 
-<?php } ?>
+                }
 
-</div>
+                }else{
 
-<div class="sidebar-card">
+                ?>
 
-<h3>
-Categories
-</h3>
+                <div class="no-blogs">
 
-<ul class="sidebar-categories">
+                    <h2>
 
-<?php
+                        No Articles Found
 
-$side_categories = mysqli_query(
-$conn,
-"
-SELECT *
-FROM blog_categories
-WHERE status='Active'
-ORDER BY category_name ASC
-"
-);
+                    </h2>
 
-while($scat=mysqli_fetch_assoc($side_categories)){
+                    <p>
 
-?>
+                        Try changing search
+                        keywords or category.
 
-<li>
+                    </p>
 
-<a
-href="blog.php?category=<?php echo $scat['id']; ?>">
+                </div>
 
-<?php echo $scat['category_name']; ?>
+                <?php
 
-</a>
+                }
 
-</li>
+                ?>
 
-<?php } ?>
+                </div>
 
-</ul>
+            </div>
 
-</div>
+            <!-- ========================= -->
+            <!-- RIGHT SIDEBAR -->
+            <!-- ========================= -->
 
-<div class="sidebar-card newsletter-box">
+            <div class="blog-right">
 
-<h3>
-Join Our Newsletter
-</h3>
+                <!-- POPULAR ARTICLES -->
 
-<p>
+                <div class="sidebar-card">
 
-Get elder care tips,
-wellness insights and updates.
+                    <h3>
 
-</p>
+                        Popular Articles
 
-<form>
+                    </h3>
 
-<input
-type="email"
-placeholder="Your Email Address">
+                    <?php
 
-<button type="submit">
+                    while($pop=mysqli_fetch_assoc($popular)){
 
-Subscribe
+                    ?>
 
-</button>
+                    <div class="popular-post">
 
-</form>
+                        <a
+                        href="blog_details.php?slug=<?php echo $pop['slug']; ?>">
 
-</div>
+                            <?php echo $pop['title']; ?>
 
-</div>
+                        </a>
 
-</div>
-</div>
+                    </div>
+
+                    <?php } ?>
+
+                </div>
+
+                <!-- CATEGORIES -->
+
+                <div class="sidebar-card">
+
+                    <h3>
+
+                        Categories
+
+                    </h3>
+
+                    <ul class="sidebar-categories">
+
+                    <?php
+
+                    $side_categories = mysqli_query(
+                    $conn,
+                    "
+                    SELECT *
+                    FROM blog_categories
+                    WHERE status='1'
+                    ORDER BY category_name ASC
+                    "
+                    );
+
+                    while($scat=mysqli_fetch_assoc($side_categories)){
+
+                    ?>
+
+                    <li>
+
+                        <a
+                        href="blog.php?category=<?php echo $scat['id']; ?>">
+
+                            <?php echo $scat['category_name']; ?>
+
+                        </a>
+
+                    </li>
+
+                    <?php } ?>
+
+                    </ul>
+
+                </div>
+
+                <!-- NEWSLETTER -->
+
+                <div class="sidebar-card newsletter-box">
+
+                    <h3>
+
+                        Join Our Newsletter
+
+                    </h3>
+
+                    <p>
+
+                        Get elder care tips,
+                        wellness insights and
+                        Caring Squad updates.
+
+                    </p>
+
+                    <form action="" method="post">
+
+                        <input
+                        type="email"
+                        name="email"
+                        placeholder="Your Email Address">
+
+                        <button type="submit">
+
+                            Subscribe
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </section>
+
+<!-- ========================= -->
+<!-- PAGINATION -->
+<!-- ========================= -->
+
+<?php if($total_pages > 1){ ?>
+
+<section class="blog-pagination-section">
+
+    <div class="container">
+
+        <div class="blog-pagination">
+
+            <!-- PREVIOUS -->
+
+            <?php if($page > 1){ ?>
+
+            <a
+            href="?page=<?php echo $page-1; ?>&category=<?php echo $category_id; ?>&search=<?php echo urlencode($search); ?>"
+            class="page-btn">
+
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </a>
+
+            <?php } ?>
+
+            <!-- PAGE NUMBERS -->
+
+            <?php
+
+            for($i=1;$i<=$total_pages;$i++){
+
+            ?>
+
+            <a
+            href="?page=<?php echo $i; ?>&category=<?php echo $category_id; ?>&search=<?php echo urlencode($search); ?>"
+            class="page-btn <?php echo ($page==$i)?'active':''; ?>">
+
+                <?php echo $i; ?>
+
+            </a>
+
+            <?php } ?>
+
+            <!-- NEXT -->
+
+            <?php if($page < $total_pages){ ?>
+
+            <a
+            href="?page=<?php echo $page+1; ?>&category=<?php echo $category_id; ?>&search=<?php echo urlencode($search); ?>"
+            class="page-btn">
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </a>
+
+            <?php } ?>
+
+        </div>
+
+    </div>
+
+</section>
+
+<?php } ?>
+
+<!-- ========================= -->
+<!-- CTA SECTION -->
+<!-- ========================= -->
 
 <section class="cta-section">
 
-<div class="container">
+    <div class="container">
 
-<div class="cta-box">
+        <div class="cta-box">
 
-<h2>
+            <h2>
 
-Need Personal Care Guidance?
+                Need Personal Care Guidance?
 
-</h2>
+            </h2>
 
-<p>
+            <p>
 
-Connect with our care experts and get personalized
-recommendations for elder care, companionship,
-wellness support and healthcare services.
+                Connect with our care experts and get
+                personalized recommendations for elder care,
+                companionship, wellness support and
+                healthcare services.
 
-</p>
+            </p>
 
-<a
-href="contact.php"
-class="cta-btn">
+            <a
+            href="contact.php"
+            class="cta-btn">
 
-Talk To An Expert
+                Talk To An Expert
 
-</a>
+            </a>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </section>
 
+<!-- ========================= -->
+<!-- FOOTER -->
+<!-- ========================= -->
+
 <footer class="footer">
 
-<div class="container">
+    <div class="container footer-grid">
 
-<div class="footer-grid">
+        <div class="footer-brand">
 
-<div class="footer-about">
+            <div class="logo footer-logo">
 
-<img
-src="assets/images/caringsquad-logo.png"
-class="footer-logo"
-alt="Caring Squad">
+                <div class="logo-icon">
 
-<p>
+                    <i class="fa-regular fa-heart"></i>
 
-Compassionate elder care,
-expert consultations,
-companionship and wellness
-support for every stage of life.
+                </div>
 
-</p>
+                <div class="logo-text">
 
-</div>
+                    <h2>CARING SQUAD</h2>
 
-<div>
+                    <span>
+                        Care | Companions | Guardians
+                    </span>
 
-<h3 class="footer-title">
+                </div>
 
-Company
+            </div>
 
-</h3>
+            <p>
 
-<ul class="footer-links">
+                A trusted ecosystem designed around care,
+                companionship and protection.
 
-<li><a href="about.php">About Us</a></li>
+            </p>
 
-<li><a href="care.php">Care Services</a></li>
+            <div class="social-icons">
 
-<li><a href="companion.php">Companion</a></li>
+                <a href="#">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
 
-<li><a href="contact.php">Contact</a></li>
+                <a href="#">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
 
-</ul>
+                <a href="#">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
 
-</div>
+                <a href="#">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
 
-<div>
+            </div>
 
-<h3 class="footer-title">
+        </div>
 
-Resources
+        <!-- SERVICES -->
 
-</h3>
+        <div class="footer-links">
 
-<ul class="footer-links">
+            <h4>Our Services</h4>
 
-<li><a href="blog.php">Blogs</a></li>
+            <ul>
 
-<li><a href="#">FAQs</a></li>
+                <li>
+                    <a href="care.php">
+                        Care
+                    </a>
+                </li>
 
-<li><a href="#">Privacy Policy</a></li>
+                <li>
+                    <a href="companion.php">
+                        Companion
+                    </a>
+                </li>
 
-<li><a href="#">Terms</a></li>
+                <li>
+                    <a href="#">
+                        Guardian
+                    </a>
+                </li>
 
-</ul>
+                <li>
+                    <a href="cityguardian.php">
+                        City Guardian
+                    </a>
+                </li>
 
-</div>
+                <li>
+                    <a href="travel.php">
+                        Travel Companion
+                    </a>
+                </li>
 
-<div>
+            </ul>
 
-<h3 class="footer-title">
+        </div>
 
-Support
+        <!-- COMPANY -->
 
-</h3>
+        <div class="footer-links">
 
-<ul class="footer-links">
+            <h4>Company</h4>
 
-<li>1800 571 1929</li>
+            <ul>
 
-<li>support@caringsquad.in</li>
+                <li>
+                    <a href="about.php">
+                        About Us
+                    </a>
+                </li>
 
-<li>India</li>
+                <li>
+                    <a href="#">
+                        Safety & Trust
+                    </a>
+                </li>
 
-</ul>
+                <li>
+                    <a href="#">
+                        Membership Plans
+                    </a>
+                </li>
 
-</div>
+                <li>
+                    <a href="joinus.php">
+                        Join Us
+                    </a>
+                </li>
 
-</div>
+                <li>
+                    <a href="blog.php">
+                        Blog
+                    </a>
+                </li>
 
-<div class="footer-bottom">
+            </ul>
 
-© <?php echo date('Y'); ?> Caring Squad.
-All Rights Reserved.
+        </div>
 
-</div>
+        <!-- SUPPORT -->
 
-</div>
+        <div class="footer-links">
+
+            <h4>Support</h4>
+
+            <ul>
+
+                <li>
+                    <a href="#">
+                        Help Center
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        FAQs
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Care Resources
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        Terms & Conditions
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- CONTACT -->
+
+        <div class="footer-contact">
+
+            <h4>
+
+                Get In Touch
+
+            </h4>
+
+            <ul>
+
+                <li>
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    1800 571 1929
+
+                </li>
+
+                <li>
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                    +91 81404 69546
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    info@caringsquad.in
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    STC, Ambli T Junction,
+                    Ambli, Ahmedabad
+
+                </li>
+
+                <li>
+
+                    <a
+                    href="admin/login.php"
+                    class="admin-footer-link">
+
+                        Admin Login
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+
+            © <?php echo date('Y'); ?>
+            Caring Squad.
+            All rights reserved.
+
+        </p>
+
+    </div>
 
 </footer>
+
+<!-- ========================= -->
+<!-- JS -->
+<!-- ========================= -->
+
+<script src="script.js"></script>
+
+<script>
+
+document.addEventListener(
+'DOMContentLoaded',
+function(){
+
+const mobileMenu =
+document.getElementById(
+'mobileMenuBtn'
+);
+
+if(mobileMenu){
+
+mobileMenu.addEventListener(
+'click',
+function(){
+
+document
+.querySelector('.navbar')
+.classList.toggle('active');
+
+});
+
+}
+
+});
+
+</script>
+
 </body>
 </html>

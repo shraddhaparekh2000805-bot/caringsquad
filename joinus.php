@@ -1,4 +1,4 @@
-<?php include 'db.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +42,7 @@
                 <ul class="nav-links">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">Our Story</a></li>
-                    <li><a href="doctor.php">Expert Consultation</a></li>
+                    <li><a href="expert_consultation.php">Expert Consultation</a></li>
                     <li><a href="care.php">Care</a></li>
                     <li><a href="companion.php">Companion</a></li>
                     <li><a href="travel.php">Travel Companion</a></li>

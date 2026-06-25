@@ -46,7 +46,7 @@
                 <ul class="nav-links">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">Our Story</a></li>
-                    <li><a href="doctor.php">Expert Consultation</a></li>
+                    <li><a href="expert_consultation.php">Expert Consultation</a></li>
                     <li><a href="care.php" class="active">Care</a></li>
                     <li><a href="companion.php">Companion</a></li>
                     <li><a href="travel.php">Travel Companion</a></li>
@@ -179,7 +179,7 @@
                             to help them live comfortably and independently.
                         </p>
 
-                        <a href="#">
+                        <a href="blog.php">
                             Learn More →
                         </a>
 
@@ -205,7 +205,7 @@
                            Providing dependable support for children with supervision, learning, and daily care.
                         </p>
 
-                        <a href="#">
+                        <a href="blog.php">
                             Learn More →
                         </a>
 
@@ -232,7 +232,7 @@
                             and health assistance.
                         </p>
 
-                        <a href="#">
+                        <a href="blog.php">
                             Learn More →
                         </a>
 
@@ -258,7 +258,7 @@
                             Specialized support for a faster and safer recovery at home.
                         </p>
 
-                        <a href="#">
+                        <a href="blog.php">
                             Learn More →
                         </a>
 
@@ -285,7 +285,7 @@
                             can live with ease.
                         </p>
 
-                        <a href="#">
+                        <a href="blog.php">
                             Learn More →
                         </a>
 
@@ -294,6 +294,14 @@
                 </div>
 
             </div>
+
+            <div class="care-btn-center">
+
+            <a href="#" class="btn btn-primary">
+                Explore Care Plans →
+            </a>
+
+        </div>
 
         </div>
 

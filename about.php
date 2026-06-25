@@ -37,18 +37,16 @@
 </div>
 
             <nav class="navbar">
-
                 <ul class="nav-links">
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php" class="active">Our Story</a></li>
-                    <li><a href="doctor.php">Expert Consultation</a></li>
+                    <li><a href="expert_consultation.php">Expert Consultation</a></li>
                     <li><a href="care.php">Care</a></li>
                     <li><a href="companion.php">Companion</a></li>
                     <li><a href="travel.php">Travel Companion</a></li>
                     <li><a href="cityguardian.php">City Guardian</a></li>
                     <li><a href="#">Other</a></li>
                 </ul>
-
             </nav>
 
                 <div class="header-phone">
@@ -357,12 +355,12 @@
             <div class="stats-grid">
 
                 <div class="stat-box">
-                    <h3>1K+</h3>
+                    <h3>700+</h3>
                     <p>Families Supported</p>
                 </div>
 
                 <div class="stat-box">
-                    <h3>5K+</h3>
+                    <h3>2K+</h3>
                     <p>Service Engagements</p>
                 </div>
 

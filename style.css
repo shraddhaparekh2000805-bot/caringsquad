@@ -235,6 +235,55 @@ ul{
     border-bottom:none;
 }
 
+/* ==========================
+   HEADER DROPDOWN
+========================== */
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown-menu{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    min-width:190px;
+    background:#061326;
+    border-radius:8px;
+    padding:8px 0;
+    list-style:none;
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+    z-index:9999;
+}
+
+.dropdown:hover .dropdown-menu{
+    display:block;
+}
+
+.dropdown-menu li{
+    width:100%;
+}
+
+.dropdown-menu li a{
+    display:block;
+    padding:12px 18px;
+    color:#fff;
+    font-size:14px;
+    transition:.3s;
+}
+
+.dropdown-menu li a:hover{
+    background:#C89B4D;
+    color:#fff;
+}
+
+.dropdown > a{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
 /* =========================================
    HERO SECTION
 ========================================= */
@@ -1843,6 +1892,11 @@ ul{
     color: var(--gold);
     font-weight: 600;
     margin-top: auto;
+}
+
+.care-btn-center{
+    text-align: center;
+    margin-top: 36px;
 }
 
 /* =========================================
@@ -4944,7 +4998,7 @@ ul{
 }
 
 /* =====================================
-   DOCTOR.PHP CARD ONLY
+   EXPERT-CONSULTATION.PHP CARD ONLY
 ===================================== */
 
 /* DOCTOR PAGE CARD ONLY */
@@ -5457,4 +5511,347 @@ ul{
         width:100%;
     }
 
+}
+
+/* ===========================================================================================================================
+   BLOG PAGE
+=========================================================================================================================== */
+
+.blog-main{
+    padding:20px 0;
+    padding-top: 40px;
+    background:#faf8f4;
+}
+
+.blog-layout{
+    display:grid;
+    grid-template-columns:2fr 380px;
+    gap:40px;
+    align-items:start;
+}
+
+/* =========================================
+   CATEGORY TABS
+========================================= */
+
+.category-tabs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:30px;
+}
+
+.tab-btn{
+    text-decoration:none;
+    padding:12px 22px;
+    border-radius:50px;
+    background:#fff;
+    color:#07172B;
+    border:1px solid #e5e5e5;
+    transition:.3s;
+}
+
+.tab-btn:hover,
+.tab-btn.active{
+    background:#B8872B;
+    color:#fff;
+}
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.blog-search{
+    position:relative;
+    margin-bottom:35px;
+}
+
+.blog-search input{
+    width:100%;
+    height:58px;
+    border:1px solid #ddd;
+    border-radius:14px;
+    padding:0 65px 0 20px;
+    font-size:15px;
+}
+
+.blog-search button{
+    position:absolute;
+    right:8px;
+    top:8px;
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:10px;
+    background:#07172B;
+    color:#fff;
+    cursor:pointer;
+}
+
+/* =========================================
+   BLOG GRID
+========================================= */
+
+.blog-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(240px, 320px));
+    gap:25px;
+}
+
+.blog-card{
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.blog-card:hover{
+    transform:translateY(-6px);
+}
+
+.blog-card-image img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+}
+
+.blog-card-content{
+    padding: 16px;
+    min-height:200px;
+}
+
+.blog-category{
+    color:#B8872B;
+    font-size:14px;
+    font-weight:600;
+}
+
+.blog-card-content h3{
+    margin:6px 0;
+    font-size:16px;
+    line-height:1.3;
+}
+
+.blog-card-content p{
+    margin-bottom:15px;
+    color:#666;
+    line-height:1.6;
+    font-size:14px;
+}
+
+.blog-meta{
+    display:flex;
+    justify-content:space-between;
+    margin:15px 0;
+    font-size:12px;
+    color:#777;
+    
+}
+
+.read-more{
+    color:#07172B;
+    font-size: 16px;
+    font-weight:650;
+    text-decoration:none;
+
+}
+
+.read-more:hover{
+    color:#B8872B;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.blog-right{
+    position:sticky;
+    top:100px;
+}
+
+.sidebar-card{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    margin-bottom:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.sidebar-card h3{
+    margin-bottom:20px;
+}
+
+.popular-post{
+    padding:15px 0;
+    border-bottom:1px solid #eee;
+}
+
+.popular-post:last-child{
+    border-bottom:none;
+}
+
+.popular-post a{
+    text-decoration:none;
+    color:#07172B;
+    line-height:1.6;
+    font-weight:500;
+}
+
+.sidebar-categories{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.sidebar-categories li{
+    margin-bottom:12px;
+}
+
+.sidebar-categories a{
+    text-decoration:none;
+    color:#444;
+}
+
+.sidebar-categories a:hover{
+    color:#B8872B;
+}
+
+/* =========================================
+   NEWSLETTER
+========================================= */
+
+.newsletter-box input{
+    width:100%;
+    height:52px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:0 15px;
+    margin-top:15px;
+}
+
+.newsletter-box button{
+    width:100%;
+    margin-top:12px;
+    height:50px;
+    border:none;
+    background:#B8872B;
+    color:#fff;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+/* =========================================
+   PAGINATION
+========================================= */
+
+.blog-pagination-section{
+    padding:20px 0 70px;
+}
+
+.blog-pagination{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+}
+
+.page-btn{
+    width:46px;
+    height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    text-decoration:none;
+    background:#fff;
+    color:#07172B;
+    border:1px solid #eee;
+}
+
+.page-btn.active{
+    background:#B8872B;
+    color:#fff;
+}
+
+/* =========================================
+   CTA
+========================================= */
+
+.cta-section{
+    padding:90px 0;
+}
+
+.cta-box{
+    background:#07172B;
+    color:#fff;
+    text-align:center;
+    padding:70px;
+    border-radius:24px;
+}
+
+.cta-box h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.cta-box p{
+    max-width:800px;
+    margin:0 auto 30px;
+    line-height:1.8;
+}
+
+.cta-btn{
+    display:inline-block;
+    padding:16px 34px;
+    background:#B8872B;
+    color:#fff;
+    border-radius:12px;
+    text-decoration:none;
+}
+
+/* =========================================
+   NO BLOGS
+========================================= */
+
+.no-blogs{
+    background:#fff;
+    padding:50px;
+    border-radius:20px;
+    text-align:center;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:991px){
+
+    .blog-layout{
+        grid-template-columns:1fr;
+    }
+
+    .featured-blog-card{
+        grid-template-columns:1fr;
+    }
+
+    .blog-grid{
+        grid-template-columns:1fr;
+    }
+
+    .featured-blog-content{
+        padding:30px;
+    }
+
+    .featured-blog-content h2{
+        font-size:32px;
+    }
+
+    .cta-box{
+        padding:40px 25px;
+    }
+
+    .cta-box h2{
+        font-size:30px;
+    }
 }

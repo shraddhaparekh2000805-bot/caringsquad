@@ -35,12 +35,23 @@
                 <ul class="nav-links">
                     <li><a href="index.php" class="active">Home</a></li>
                     <li><a href="about.php">Our Story</a></li>
-                    <li><a href="doctor.php">Expert Consultation</a></li>
+                    <li><a href="expert_consultation.php">Expert Consultation</a></li>
                     <li><a href="care.php">Care</a></li>
                     <li><a href="companion.php">Companion</a></li>
                     <li><a href="travel.php">Travel Companion</a></li>
                     <li><a href="cityguardian.php">City Guardian</a></li>
-                    <li><a href="#">Other</a></li>
+                    <li class="dropdown">
+    <a href="#">
+        Other
+        <i class="fa-solid fa-chevron-down"></i>
+    </a>
+
+    <ul class="dropdown-menu">
+        <li><a href="blog.php">Blog</a></li>
+        <li><a href="joinus.php">Join Us</a></li>
+        <li><a href="contact.php">Contact Us</a></li>
+    </ul>
+</li>
                 </ul>
             </nav>
 
@@ -56,18 +67,6 @@
 
         </div>
     </header>
-
-    <div class="mobile-nav" id="mobileNav">
-
-    <a href="index.php">Home</a>
-    <a href="about.php">Our Story</a>
-    <a href="doctor.php">Expert Consultation</a>
-    <a href="care.php">Care</a>
-    <a href="companion.php">Companion</a>
-    <a href="travel.php">Travel Companion</a>
-    <a href="cityguardian.php">City Guardian</a>
-
-</div>
 
     <!-- ========================= -->
     <!-- HERO SECTION -->
@@ -256,7 +255,7 @@
                             children and individuals who need support.
                         </p>
 
-                        <a href="#">Explore Care Services →</a>
+                        <a href="care.php">Explore Care Services →</a>
                     </div>
                 </div>
 
@@ -273,7 +272,7 @@
                             connection and emotional wellbeing.
                         </p>
 
-                        <a href="#">Explore Companion Services →</a>
+                        <a href="companion.php">Explore Companion Services →</a>
                     </div>
                 </div>
 
@@ -290,7 +289,7 @@
                             can live and travel with peace of mind.
                         </p>
 
-                        <a href="#">Explore Guardian Services →</a>
+                        <a href="cityguardian.php">Explore Guardian Services →</a>
                     </div>
                 </div>
 
@@ -513,7 +512,7 @@
                 <div class="final-buttons">
                     <a href="booking.php" class="btn btn-primary">Book Consultation</a>
 
-                    <a href="#" class="btn btn-whatsapp">
+                    <a href="" class="btn btn-whatsapp">
                         <i class="fa-brands fa-whatsapp"></i>
                         WhatsApp Us
                     </a>

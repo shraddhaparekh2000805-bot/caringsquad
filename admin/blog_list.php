@@ -342,7 +342,7 @@ Manage Blogs
 <?php if(!empty($blog['featured_image'])){ ?>
 
 <img
-src="uploads/blogs/<?php echo $blog['featured_image']; ?>"
+src="../uploads/blogs/<?php echo $blog['featured_image']; ?>"
 class="blog-thumb">
 
 <?php } else { ?>
