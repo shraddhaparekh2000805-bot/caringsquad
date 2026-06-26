@@ -26,7 +26,7 @@ if(isset($_GET['delete'])){
     if(!empty($blogData['featured_image'])){
 
         $imagePath =
-        "uploads/blogs/" .
+        "../uploads/blogs/" .
         $blogData['featured_image'];
 
         if(file_exists($imagePath)){

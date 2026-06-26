@@ -1,15 +1,6 @@
 <?php
 
-$conn = mysqli_connect(
-    "localhost",
-    "root",
-    "",
-    "caringsquad"
-);
-
-if (!$conn) {
-    die("Database Connection Failed : " . mysqli_connect_error());
-}
+include 'db.php';
 
 /* =========================================
    CATEGORY FILTER
@@ -111,7 +102,7 @@ blog_categories.id
 
 $where
 
-ORDER BY blogs.created_at DESC
+ORDER BY blogs.created_at ASC
 
 LIMIT $start,$limit
 "

@@ -33,7 +33,7 @@ $categories = mysqli_query(
     $conn,
     "SELECT *
      FROM blog_categories
-     WHERE status='Active'
+     WHERE status=1
      ORDER BY category_name ASC"
 );
 
@@ -97,12 +97,12 @@ if(isset($_POST['update_blog'])){
         if(
             !empty($blog['featured_image']) &&
             file_exists(
-                'uploads/blogs/' .
+                '../uploads/blogs/' .
                 $blog['featured_image']
             )
         ){
             unlink(
-                'uploads/blogs/' .
+                '../uploads/blogs/' .
                 $blog['featured_image']
             );
         }
@@ -115,7 +115,7 @@ if(isset($_POST['update_blog'])){
 
         move_uploaded_file(
             $_FILES['featured_image']['tmp_name'],
-            'uploads/blogs/' .
+            '../uploads/blogs/' .
             $featured_image
         );
     }
