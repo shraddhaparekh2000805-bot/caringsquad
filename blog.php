@@ -1,6 +1,9 @@
 <?php
 
 include 'db.php';
+include 'blog_setup.php';
+
+ensureBlogTables($conn);
 
 /* =========================================
    CATEGORY FILTER
@@ -73,11 +76,8 @@ $where
 "
 );
 
-$total_row = mysqli_fetch_assoc(
-$total_query
-);
-
-$total_records = $total_row['total'];
+$total_row = mysqli_fetch_assoc($total_query);
+$total_records = $total_row ? (int)$total_row['total'] : 0;
 
 $total_pages = ceil(
     $total_records / $limit

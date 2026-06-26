@@ -2,6 +2,9 @@
 
 session_start();
 include '../db.php';
+include '../blog_setup.php';
+
+ensureBlogTables($conn);
 
 if(!isset($_SESSION['admin'])){
     header("Location: login.php");

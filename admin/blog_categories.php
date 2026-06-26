@@ -3,6 +3,9 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include '../db.php';
+include '../blog_setup.php';
+
+ensureBlogTables($conn);
 if(!isset($_SESSION['admin'])){ header("Location: login.php"); exit(); }
 
 /* ADD CATEGORY */

@@ -1,10 +1,9 @@
 <?php
 
 include 'db.php';
+include 'blog_setup.php';
 
-if (!$conn) {
-    die('Database Connection Failed : ' . mysqli_connect_error());
-}
+ensureBlogTables($conn);
 
 $slug = isset($_GET['slug']) ? trim($_GET['slug']) : '';
 
