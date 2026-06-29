@@ -6073,89 +6073,44 @@ ul{
 CONTACT HERO
 ======================================================================================================================================================*/
 
+/*==================================================
+CONTACT HERO
+==================================================*/
+
 .contact-hero{
-    position:relative;
-    overflow:hidden;
     background:linear-gradient(135deg,#FFF8F0 0%,#F6EBDD 100%);
     padding:120px 0 90px;
-    overflow:hidden;
 }
 
-.contact-hero .container{
-    position:relative;
-    z-index:2;
-}
-
-.contact-hero-wrapper{
+.page-hero-wrapper{
     display:grid;
     grid-template-columns:1fr 520px;
     align-items:center;
-    gap:80px;
+    gap:70px;
 }
 
-.contact-hero-content{
-    max-width:700px;
-}
-
-.hero-tag{
-    display:inline-block;
-    background:#B8872B;
-    color:#fff;
-    padding:10px 24px;
-    border-radius:50px;
-    font-size:13px;
-    font-weight:600;
-    letter-spacing:2px;
-    margin-bottom:25px;
-}
-
-.contact-hero-content h1{
+.page-hero-content h1{
     font-family:'Cormorant Garamond',serif;
     font-size:64px;
-    line-height:1.08;
-    font-weight:700;
+    line-height:1.1;
     color:#07172B;
-    margin-bottom:28px;
+    margin-bottom:30px;
 }
 
-.contact-hero-content h1 span{
+.page-hero-content h1 span{
     display:block;
     color:#B8872B;
 }
 
-.breadcrumb{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    flex-wrap:wrap;
-    font-size:15px;
-}
-
-.breadcrumb a{
-    color:#07172B;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
-}
-
-.breadcrumb a:hover{
-    color:#B8872B;
-}
-
-.breadcrumb span{
-    color:#777;
-}
-
-.contact-hero-image{
+.page-hero-image{
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
-.contact-hero-image img{
+.page-hero-image img{
     width:100%;
-    max-width:500px;
-    display:block;
+    max-width:520px;
 }
 
 /*==================================================
@@ -6782,9 +6737,9 @@ Large Desktop
 
 @media (max-width:1400px){
 
-    .contact-hero-content h1{
-        font-size:58px;
-    }
+    .page-hero-content h1{
+    font-size:58px;
+   }
 
     .contact-cta-content h2{
         font-size:48px;

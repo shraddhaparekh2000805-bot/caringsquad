@@ -119,45 +119,41 @@ HEADER
 CONTACT HERO
 ======================================-->
 
-<section class="contact-hero">
+<section class="page-hero contact-hero">
 
     <div class="container">
 
-        <div class="contact-hero-wrapper">
+        <div class="page-hero-wrapper">
 
-            <div class="contact-hero-content">
+            <div class="page-hero-content">
+
+                <span class="hero-tag">
+                    CONTACT US
+                </span>
 
                 <h1>
                     We're Here to Support You
-                    <span>
-                        & Your Loved Ones
-                    </span>
-                    Anytime
+                    <span>& Your Loved Ones Anytime</span>
                 </h1>
 
                 <div class="breadcrumb">
 
-                    <a href="index.php">
-                        Home
-                    </a>
+                    <a href="index.php">Home</a>
 
                     <span>
-                        <i class="fa-solid fa-chevron-right"></i>
+                        <i class="fa-solid fa-angle-right"></i>
                     </span>
 
-                    <span>
-                        Contact Us
-                    </span>
+                    <span>Contact Us</span>
 
                 </div>
 
             </div>
 
-            <div class="contact-hero-image">
+            <div class="page-hero-image">
 
-                <img
-                    src="assets/images/contact-banner.png"
-                    alt="Contact Caring Squad">
+                <img src="assets/images/contact-hero.jpeg"
+                     alt="Contact Caring Squad">
 
             </div>
 
@@ -171,7 +167,7 @@ CONTACT HERO
 
     <div class="container">
 
-    <!--=====================================
+<!--=====================================
 GET IN TOUCH SECTION
 ======================================-->
 
@@ -716,7 +712,7 @@ CALL TO ACTION
             <div class="contact-cta-image">
 
                 <img
-                    src="assets/images/contact-cta.png"
+                    src="assets/images/contact-cta.jpeg"
                     alt="Need Immediate Assistance">
 
             </div>
