@@ -250,7 +250,7 @@
                     <img src="uploads/mayurr.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -264,7 +264,7 @@
                     <img src="uploads/vijayy.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -278,7 +278,7 @@
                     <img src="uploads/nirmall.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -292,7 +292,7 @@
                     <img src="uploads/ishaa.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -306,7 +306,7 @@
                     <img src="uploads/kevel.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -320,7 +320,7 @@
                     <img src="uploads/ajitt.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -334,7 +334,7 @@
                     <img src="uploads/daxa.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -348,7 +348,7 @@
                     <img src="uploads/shabir.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -383,7 +383,7 @@
                     <img src="uploads/kalpitha.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
             </div>
@@ -396,7 +396,7 @@
                     <img src="uploads/yogesh.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -410,7 +410,7 @@
                     <img src="uploads/pallavi.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -424,7 +424,7 @@
                     <img src="uploads/anamika.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -438,7 +438,7 @@
                     <img src="uploads/jeenal.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -452,7 +452,7 @@
                     <img src="uploads/triptii.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -491,7 +491,7 @@
                     <img src="uploads/heenaa.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -505,7 +505,7 @@
                     <img src="uploads/chandana.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -519,7 +519,7 @@
                     <img src="uploads/.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -533,7 +533,7 @@
                     <img src="uploads/.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -547,7 +547,7 @@
                     <img src="uploads/.jpeg" alt="Doctor">
                 </div>
                 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-primary">
+                <a href="#" class="btn btn-primary">
                         Book Consultation
                     </a>
                 
@@ -684,7 +684,7 @@
                     Book a Consultation
                 </a>
 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA" class="btn btn-whatsapp">
+                <a href="#" class="btn btn-whatsapp">
                     <i class="fa-brands fa-whatsapp"></i>
                     Chat on WhatsApp
                 </a>
@@ -709,14 +709,13 @@
 
             <div class="logo footer-logo">
 
-                <div class="logo-icon">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-                <div class="logo-text">
-                    <h2>CARING SQUAD</h2>
-                    <span>Care | Companions | Guardians</span>
-                </div>
+                <div class="footer-logo">
+    <a href="index.php">
+        <img src="assets/images/caringsquad-logo.png"
+             alt="Caring Squad Logo"
+             class="footer-logo-img">
+    </a>
+</div>
 
             </div>
 
@@ -727,10 +726,10 @@
 
             <div class="social-icons">
 
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://forms.gle/9W3dz6kwiR4hBZzRA"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
 
             </div>
 
@@ -741,11 +740,11 @@
             <h4>Our Services</h4>
 
             <ul>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Care</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Companion</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Guardian</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">City Guardian</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Travel Companion</a></li>
+                <li><a href="#">Care</a></li>
+                <li><a href="#">Companion</a></li>
+                <li><a href="#">Guardian</a></li>
+                <li><a href="#">City Guardian</a></li>
+                <li><a href="#">Travel Companion</a></li>
             </ul>
 
         </div>
@@ -755,11 +754,11 @@
             <h4>Company</h4>
 
             <ul>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">About Us</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Safety & Trust</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Membership Plans</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Join Us</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Blog</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Safety & Trust</a></li>
+                <li><a href="#">Membership Plans</a></li>
+                <li><a href="#">Join Us</a></li>
+                <li><a href="#">Blog</a></li>
             </ul>
 
         </div>
@@ -769,11 +768,11 @@
             <h4>Support</h4>
 
             <ul>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Help Center</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">FAQs</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Care Resources</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Privacy Policy</a></li>
-                <li><a href="https://forms.gle/9W3dz6kwiR4hBZzRA">Terms & Conditions</a></li>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Care Resources</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
             </ul>
 
         </div>
@@ -785,7 +784,7 @@
             <ul>
                 <li><i class="fa-solid fa-phone"></i> 1800 571 1929</li>
                 <li><i class="fa-brands fa-whatsapp"></i> +91 81404 69546</li>
-                <li><i class="fa-solid fa-envelope"></i> info@caringsquad.in</li>
+                <li><i class="fa-solid fa-envelope"></i> support@caringsquad.in</li>
                 <li><i class="fa-solid fa-location-dot"></i> STC, Ambli T Junction, Ambli, Ahmedabad</li>
             </ul>
 

@@ -24,80 +24,6 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 
 }
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
-
-if(isset($_POST['sendInquiry'])){
-
-    $fullname   = $_POST['fullname'];
-    $mobile     = $_POST['mobile'];
-    $email      = $_POST['email'];
-    $city       = $_POST['city'];
-    $address    = $_POST['address'];
-    $whoami     = $_POST['whoami'];
-    $inquiryfor = $_POST['inquiryfor'];
-    $description= $_POST['description'];
-
-    $mail = new PHPMailer(true);
-
-    try{
-
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.hostinger.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'info@caringsquad.in';
-        $mail->Password   = 'YOUR_EMAIL_PASSWORD';
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
-
-        $mail->setFrom('info@caringsquad.in','Caring Squad Website');
-        $mail->addAddress('info@caringsquad.in');
-
-        $mail->isHTML(true);
-        $mail->Subject = 'New Inquiry Received';
-
-        $mail->Body = "
-
-        <h2>New Inquiry</h2>
-
-        <table border='1' cellpadding='10' cellspacing='0'>
-
-        <tr><td><b>Full Name</b></td><td>$fullname</td></tr>
-
-        <tr><td><b>Mobile</b></td><td>$mobile</td></tr>
-
-        <tr><td><b>Email</b></td><td>$email</td></tr>
-
-        <tr><td><b>City</b></td><td>$city</td></tr>
-
-        <tr><td><b>Address</b></td><td>$address</td></tr>
-
-        <tr><td><b>Who Am I</b></td><td>$whoami</td></tr>
-
-        <tr><td><b>Inquiry For</b></td><td>$inquiryfor</td></tr>
-
-        <tr><td><b>Description</b></td><td>$description</td></tr>
-
-        </table>
-
-        ";
-
-        $mail->send();
-
-        echo "<script>alert('Inquiry submitted successfully.');</script>";
-
-    }catch(Exception $e){
-
-        echo "<script>alert('Unable to send inquiry.');</script>";
-
-    }
-
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -802,16 +728,13 @@ FOOTER
 
             <div class="footer-brand">
 
-                <div class="logo footer-logo">
-                    <div class="logo-icon">
-                        <i class="fa-regular fa-heart"></i>
-                    </div>
-
-                    <div class="logo-text">
-                        <h2>CARING SQUAD</h2>
-                        <span>Care | Companions | Guardians</span>
-                    </div>
-                </div>
+                <div class="footer-logo">
+    <a href="index.php">
+        <img src="assets/images/caringsquad-logo.png"
+             alt="Caring Squad Logo"
+             class="footer-logo-img">
+    </a>
+</div>
 
                 <p>
                     A trusted ecosystem designed around care,
@@ -870,7 +793,7 @@ FOOTER
                 <ul>
                     <li><i class="fa-solid fa-phone"></i> 1800 571 1929</li>
                     <li><i class="fa-brands fa-whatsapp"></i>+91 81404 69546</li>
-                    <li><i class="fa-solid fa-envelope"></i> info@caringsquad.in</li>
+                    <li><i class="fa-solid fa-envelope"></i> support@caringsquad.in</li>
                     <li><i class="fa-solid fa-location-dot"></i> STC, Ambli T Junction, Ambli, Ahmedabad</li>
                 </ul>
 

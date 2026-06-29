@@ -772,15 +772,13 @@ href="style.css">
 
                 </div>
 
-                <div class="logo-text">
-
-                    <h2>CARING SQUAD</h2>
-
-                    <span>
-                        Care | Companions | Guardians
-                    </span>
-
-                </div>
+                <div class="footer-logo">
+    <a href="index.php">
+        <img src="assets/images/caringsquad-logo.png"
+             alt="Caring Squad Logo"
+             class="footer-logo-img">
+    </a>
+</div>
 
             </div>
 
@@ -971,7 +969,7 @@ href="style.css">
 
                     <i class="fa-solid fa-envelope"></i>
 
-                    info@caringsquad.in
+                    support@caringsquad.in
 
                 </li>
 

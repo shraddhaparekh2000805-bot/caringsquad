@@ -787,6 +787,19 @@ ul{
     padding-top:40px;
 }
 
+/* Footer Logo */
+
+.footer-logo{
+    margin-bottom: 18px;
+}
+
+.footer-logo-img{
+    width: 250px;     
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
 .footer-grid{
     display:grid;
     grid-template-columns:2fr 1fr 1fr 1fr 1.5fr;

@@ -411,18 +411,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
         <div class="footer-brand">
 
-            <div class="logo footer-logo">
-
-                <div class="logo-icon">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-
-                <div class="logo-text">
-                    <h2>CARING SQUAD</h2>
-                    <span>Care | Companions | Guardians</span>
-                </div>
-
-            </div>
+            <div class="footer-logo">
+    <a href="index.php">
+        <img src="assets/images/caringsquad-logo.png"
+             alt="Caring Squad Logo"
+             class="footer-logo-img">
+    </a>
+</div>
 
             <p>
                 A trusted ecosystem designed around care,
@@ -476,7 +471,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
             <ul>
                 <li><i class="fa-solid fa-phone"></i> 1800 571 1929</li>
                 <li><i class="fa-brands fa-whatsapp"></i> +91 81404 69546</li>
-                <li><i class="fa-solid fa-envelope"></i> info@caringsquad.in</li>
+                <li><i class="fa-solid fa-envelope"></i> support@caringsquad.in</li>
                 <li>
                     <i class="fa-solid fa-location-dot"></i>
                     STC, Ambli T Junction, Ambli, Ahmedabad
