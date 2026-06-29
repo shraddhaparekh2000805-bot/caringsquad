@@ -165,7 +165,7 @@
                         games, hobbies and meaningful interactions.
                     </p>
 
-                    <a href="#">
+                    <a href="blog.php">
                         Learn More →
                     </a>
 
@@ -192,7 +192,7 @@
                         joyful and fulfilling daily routine.
                     </p>
 
-                    <a href="#">
+                    <a href="blog.php">
                         Learn More →
                     </a>
 
@@ -219,7 +219,7 @@
                         encouragement and companionship during life's ups and downs.
                     </p>
 
-                    <a href="#">
+                    <a href="blog.php">
                         Learn More →
                     </a>
 
@@ -246,7 +246,7 @@
                         and being present for everyday needs.
                     </p>
 
-                    <a href="#">
+                    <a href="blog.php">
                         Learn More →
                     </a>
 
@@ -591,7 +591,7 @@
                     Book Consultation
                 </a>
 
-                <a href="#" class="btn btn-secondary">
+                <a href="contactus.php" class="btn btn-secondary">
                     Explore Membership Plans
                 </a>
 

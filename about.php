@@ -99,7 +99,7 @@
 
                 <div class="hero-buttons">
 
-                    <a href="#" class="btn btn-primary">
+                    <a href="blog.php" class="btn btn-primary">
                         Explore Services
                     </a>
 

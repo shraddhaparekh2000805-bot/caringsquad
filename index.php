@@ -128,7 +128,7 @@
 
             <div class="hero-buttons">
 
-                <a href="#" class="btn btn-primary">
+                <a href="blog.php" class="btn btn-primary">
                     Explore Services
                 </a>
 
@@ -366,7 +366,7 @@
                     can always rely on.
                 </p>
 
-                <a href="#" class="btn btn-primary">
+                <a href="contactus.php" class="btn btn-primary">
                     Explore Membership Plans
                 </a>
 
@@ -511,7 +511,7 @@
                 <div class="final-buttons">
                     <a href="booking.php" class="btn btn-primary">Book Consultation</a>
 
-                    <a href="" class="btn btn-whatsapp">
+                    <a href="contactus.php" class="btn btn-whatsapp">
                         <i class="fa-brands fa-whatsapp"></i>
                         WhatsApp Us
                     </a>

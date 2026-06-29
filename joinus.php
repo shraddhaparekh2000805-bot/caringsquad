@@ -164,13 +164,13 @@
 
                     </a>
 
-                    <a href="#" class="btn btn-secondary">
+                    <!--<a href="#" class="btn btn-secondary">
 
                         Learn More
 
                         <i class="fa-regular fa-circle-play"></i>
 
-                    </a>
+                    </a> -->
 
                 </div>
 
@@ -642,7 +642,7 @@
 
             <div class="join-final-buttons">
 
-                <a href="booking.php" class="btn btn-primary">
+                <a href="https://forms.gle/dWUPEMVGmCmFLL8p6" class="btn btn-primary">
 
                     Apply to Join Now
 

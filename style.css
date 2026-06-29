@@ -6142,7 +6142,7 @@ GET IN TOUCH SECTION
     display:grid;
     grid-template-columns:2fr 1fr;
     gap:45px;
-    align-items:start;
+    align-items:start;  
 }
 
 /*==================================================
@@ -6199,6 +6199,7 @@ FORM GRID
 .form-group{
     display:flex;
     flex-direction:column;
+    margin-bottom:10px;
 }
 
 .form-group.full-width{
@@ -6206,10 +6207,11 @@ FORM GRID
 }
 
 .form-group label{
+    display:block;
     font-size:15px;
     font-weight:600;
     color:#07172B;
-    margin-bottom:10px;
+    margin-bottom:14px;
 }
 
 .form-group label span{
@@ -6259,19 +6261,30 @@ INPUT BOX
     box-shadow:0 0 0 4px rgba(184,135,43,.12);
 }
 
+.textarea-box{
+    align-items:flex-start;
+}
+
+.textarea-box i{
+    position:absolute;
+    top:20px;
+    left:18px;
+    z-index:2;
+}
+
 /*==================================================
 TEXTAREA
 ==================================================*/
 
 .form-group textarea{
     width:100%;
-    min-height:170px;
+    min-height:85px;
     resize:none;
     border:1px solid #ddd;
     border-radius:14px;
-    padding:18px 20px;
+    padding:18px 20px 18px 52px; 
     font-size:15px;
-    line-height:28px;
+    line-height:24px;
     font-family:'Montserrat',sans-serif;
     transition:.30s;
     outline:none;
@@ -6328,12 +6341,12 @@ HELP CARD
 
 .help-card{
     position:sticky;
-    top:120px;
+    top:90px;
+    align-self:start;
+    margin-top:-90px; 
     background:linear-gradient(135deg,#07172B 0%,#0A1A33 100%);
     border-radius:28px;
     padding:45px 35px;
-    color:#fff;
-    overflow:hidden;
     box-shadow:0 22px 55px rgba(7,23,43,.25);
 }
 
@@ -6444,19 +6457,6 @@ HELP CARD
 
 .call-btn:hover i{
     transform:rotate(-15deg);
-}
-
-/*==================================================
-FORM + HELP CARD SPACING
-==================================================*/
-
-.contact-form-card,
-.help-card{
-    height:100%;
-}
-
-.contact-wrapper{
-    align-items:stretch;
 }
 
 /*==================================================
@@ -6840,7 +6840,7 @@ Tablet
     }
 
     .form-grid{
-        grid-template-columns:1fr;
+        margin-bottom:8px;
     }
 
     .form-group.full-width{

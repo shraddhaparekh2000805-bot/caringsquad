@@ -121,11 +121,7 @@
 
                 <div class="hero-buttons">
 
-                    <a href="#" class="btn btn-primary">
-                        Find Travel Companion
-                    </a>
-
-                    <a href="#" class="btn btn-secondary">
+                    <a href="contactus.php" class="btn btn-secondary">
                         Speak With Travel Expert
                     </a>
 

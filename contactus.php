@@ -24,6 +24,80 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 
 }
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+if(isset($_POST['sendInquiry'])){
+
+    $fullname   = $_POST['fullname'];
+    $mobile     = $_POST['mobile'];
+    $email      = $_POST['email'];
+    $city       = $_POST['city'];
+    $address    = $_POST['address'];
+    $whoami     = $_POST['whoami'];
+    $inquiryfor = $_POST['inquiryfor'];
+    $description= $_POST['description'];
+
+    $mail = new PHPMailer(true);
+
+    try{
+
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.hostinger.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'info@caringsquad.in';
+        $mail->Password   = 'YOUR_EMAIL_PASSWORD';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
+
+        $mail->setFrom('info@caringsquad.in','Caring Squad Website');
+        $mail->addAddress('info@caringsquad.in');
+
+        $mail->isHTML(true);
+        $mail->Subject = 'New Inquiry Received';
+
+        $mail->Body = "
+
+        <h2>New Inquiry</h2>
+
+        <table border='1' cellpadding='10' cellspacing='0'>
+
+        <tr><td><b>Full Name</b></td><td>$fullname</td></tr>
+
+        <tr><td><b>Mobile</b></td><td>$mobile</td></tr>
+
+        <tr><td><b>Email</b></td><td>$email</td></tr>
+
+        <tr><td><b>City</b></td><td>$city</td></tr>
+
+        <tr><td><b>Address</b></td><td>$address</td></tr>
+
+        <tr><td><b>Who Am I</b></td><td>$whoami</td></tr>
+
+        <tr><td><b>Inquiry For</b></td><td>$inquiryfor</td></tr>
+
+        <tr><td><b>Description</b></td><td>$description</td></tr>
+
+        </table>
+
+        ";
+
+        $mail->send();
+
+        echo "<script>alert('Inquiry submitted successfully.');</script>";
+
+    }catch(Exception $e){
+
+        echo "<script>alert('Unable to send inquiry.');</script>";
+
+    }
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -59,10 +133,6 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     <!-- Main CSS -->
 
     <link rel="stylesheet" href="style.css">
-
-    <!-- Contact Page CSS -->
-
-    <link rel="stylesheet" href="contact.css">
 
 </head>
 
@@ -179,231 +249,179 @@ GET IN TOUCH SECTION
 
         </div>
 
-        <form
-            action=""
-            method="POST"
-            class="contact-form">
-
-            <div class="form-grid">
-
-                <!-- Full Name -->
-
-                <div class="form-group">
-
-                    <label>
-
-                        Full Name
-                        <span>*</span>
-
-                    </label>
-
-                    <div class="input-box">
-
-                        <i class="fa-regular fa-user"></i>
-
-                        <input
-                            type="text"
-                            name="fullname"
-                            placeholder="Enter your full name"
-                            required>
-
-                    </div>
-
-                </div>
-
-                <!-- Mobile -->
-
-                <div class="form-group">
-
-                    <label>
-
-                        Mobile Number
-                        <span>*</span>
-
-                    </label>
-
-                    <div class="input-box">
-
-                        <i class="fa-solid fa-phone"></i>
-
-                        <input
-                            type="tel"
-                            name="mobile"
-                            placeholder="Enter your mobile number"
-                            required>
-
-                    </div>
-
-                </div>
-
-                <!-- Email -->
-
-                <div class="form-group">
-
-                    <label>
-
-                        Email Address
-                        <span>*</span>
-
-                    </label>
-
-                    <div class="input-box">
-
-                        <i class="fa-regular fa-envelope"></i>
-
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            required>
-
-                    </div>
-
-                </div>
-
-                <!-- Service -->
-
-                <div class="form-group">
-
-                    <label>
-
-                        Select Service
-                        <span>*</span>
-
-                    </label>
-
-                    <div class="input-box">
-
-                        <i class="fa-solid fa-stethoscope"></i>
-
-                        <select
-                            name="service"
-                            required>
-
-                            <option value="">
-
-                                Select a service
-
-                            </option>
-
-                            <option>
-
-                                Home Care
-
-                            </option>
-
-                            <option>
-
-                                Doctor Consultation
-
-                            </option>
-
-                            <option>
-
-                                Physiotherapy at Home
-
-                            </option>
-
-                            <option>
-
-                                Elderly Care
-
-                            </option>
-
-                            <option>
-
-                                Nursing Care
-
-                            </option>
-
-                            <option>
-
-                                Companionship
-
-                            </option>
-
-                            <option>
-
-                                Travel Companion
-
-                            </option>
-
-                            <option>
-
-                                City Guardian
-
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
+<form action="" method="POST" class="contact-form">
+
+    <!-- Row 1 : Full Name + Mobile -->
+    <div class="form-grid">
+
+        <!-- Full Name -->
+        <div class="form-group">
+            <label>
+                Full Name <span>*</span>
+            </label>
+
+            <div class="input-box">
+                <i class="fa-regular fa-user"></i>
+                <input
+                    type="text"
+                    name="fullname"
+                    placeholder="Enter your full name"
+                    required>
+            </div>
+        </div>
+
+        <!-- Mobile Number -->
+        <div class="form-group">
+            <label>
+                Mobile Number <span>*</span>
+            </label>
+
+            <div class="input-box">
+                <i class="fa-solid fa-phone"></i>
+                <input
+                    type="tel"
+                    name="mobile"
+                    placeholder="Enter your mobile number"
+                    required>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Row 2 : Email + City -->
+    <div class="form-grid">
+
+        <!-- Email -->
+        <div class="form-group">
+
+            <label>
+                Email <span>*</span>
+            </label>
+
+            <div class="input-box">
+                <i class="fa-regular fa-envelope"></i>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email address"
+                    required>
             </div>
 
-            <!-- City -->
+        </div>
 
-            <div class="form-group">
+        <!-- City -->
+        <div class="form-group">
 
-                <label>
+            <label>
+                City <span>*</span>
+            </label>
 
-                    City
-                    <span>*</span>
-
-                </label>
-
-                <div class="input-box">
-
-                    <i class="fa-solid fa-location-dot"></i>
-
-                    <input
-                        type="text"
-                        name="city"
-                        placeholder="Enter your city"
-                        required>
-
-                </div>
-
+            <div class="input-box">
+                <i class="fa-solid fa-location-dot"></i>
+                <input
+                    type="text"
+                    name="city"
+                    placeholder="Enter your city"
+                    required>
             </div>
 
-            <!-- Message -->
+        </div>
 
-            <div class="form-group">
+    </div>
 
-                <label>
+    <!-- Address -->
+    <div class="form-group">
 
-                    Message
-                    <span>*</span>
+        <label>
+            Address <span>*</span>
+        </label>
 
-                </label>
+        <div class="input-box">
+            <i class="fa-solid fa-house"></i>
+            <input
+                type="text"
+                name="address"
+                placeholder="Enter your complete address"
+                required>
+        </div>
 
-                <div class="input-box textarea-box">
+    </div>
 
-                    <i class="fa-regular fa-comment"></i>
+    <!-- Row 3 : Who Am I + Inquiry For -->
+    <div class="form-grid">
 
-                    <textarea
-                        rows="5"
-                        name="message"
-                        placeholder="Type your message here..."
-                        required></textarea>
+        <!-- Who Am I -->
+        <div class="form-group">
 
-                </div>
+            <label>
+                Who Am I? <span>*</span>
+            </label>
 
+            <div class="input-box">
+                <i class="fa-solid fa-user-tag"></i>
+                <input
+                    type="text"
+                    name="whoami"
+                    placeholder="e.g. Doctor, Student"
+                    required>
             </div>
 
-            <button
-                type="submit"
-                name="sendInquiry"
-                class="contact-btn">
+        </div>
 
-                Send Inquiry
+        <!-- Inquiry For -->
+        <div class="form-group">
 
-                <i class="fa-solid fa-paper-plane"></i>
+            <label>
+                Inquiry For? <span>*</span>
+            </label>
 
-            </button>
+            <div class="input-box">
+                <i class="fa-solid fa-circle-question"></i>
+                <input
+                    type="text"
+                    name="inquiryfor"
+                    placeholder="e.g. Elder Care, Doctor Consultation"
+                    required>
+            </div>
 
-        </form>
+        </div>
+
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+
+        <label>
+            Description <span>*</span>
+        </label>
+
+        <div class="input-box textarea-box">
+
+            <i class="fa-regular fa-comment"></i>
+
+            <textarea
+                rows="4"
+                name="description"
+                placeholder="Please describe your requirement..."
+                required></textarea>
+
+        </div>
+
+    </div>
+
+    <!-- Submit Button -->
+    <button
+        type="submit"
+        name="sendInquiry"
+        class="contact-btn">
+
+        Send Inquiry
+
+        <i class="fa-solid fa-paper-plane"></i>
+
+    </button>
+
+</form>
 
     </div>
 

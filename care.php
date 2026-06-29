@@ -296,13 +296,13 @@
 
             </div>
 
-            <div class="care-btn-center">
+           <!-- <div class="care-btn-center">
 
             <a href="#" class="btn btn-primary">
                 Explore Care Plans →
             </a>
 
-        </div>
+        </div> -->
 
         </div>
 
@@ -481,7 +481,7 @@
                             Book Consultation
                         </a>
 
-                        <a href="#" class="btn btn-secondary">
+                        <a href="contactus.php" class="btn btn-secondary">
                             Explore Membership Plans
                         </a>
 
