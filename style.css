@@ -197,8 +197,17 @@ ul{
     text-decoration:none;
 }
 
+.header-phone{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    white-space:nowrap;
+    flex-shrink:0;
+}
+
 .header-phone i{
     color:var(--gold);
+    flex-shrink:0;
 }
 
 .mobile-menu{
@@ -7297,15 +7306,48 @@ Performance
     .nav-container{
         position:relative;
         height:70px;
-        padding-right:50px;
+        gap:10px;
+        padding-right:0;
+    }
+
+    .logo{
+        flex-shrink:0;
+        max-width:42%;
+    }
+
+    .header-phone{
+        display:flex;
+        align-items:center;
+        gap:6px;
+        margin-left:auto;
+        margin-right:4px;
+        font-size:11px;
+        min-width:0;
+        max-width:calc(100% - 120px);
+    }
+
+    .header-phone span{
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+    .header-right{
+        display:flex;
+        align-items:center;
+        margin-left:auto;
+        min-width:0;
+    }
+
+    .header-right .header-phone{
+        margin-left:0;
+        margin-right:4px;
     }
 
     .mobile-menu{
         display:flex;
-        position:absolute;
-        right:0;
-        top:50%;
-        transform:translateY(-50%);
+        position:static;
+        transform:none;
+        flex-shrink:0;
     }
 
     .navbar{
@@ -7364,11 +7406,6 @@ Performance
         display:flex;
         align-items:center;
         padding:10px 0;
-    }
-
-    .header-right,
-    .header-phone{
-        display:none;
     }
 
 }
@@ -7495,9 +7532,26 @@ Performance
     .city-guardian-hero,
     .join-hero,
     .booking-hero,
-    .doctor-hero{
+    .doctor-hero,
+    .contact-hero{
         min-height:auto;
         padding:100px 0 70px;
+        display:flex;
+        align-items:center;
+    }
+
+    .hero-container,
+    .hero .container,
+    .about-hero .container,
+    .care-hero .container,
+    .travel-hero .container,
+    .companion-hero .container,
+    .city-guardian-hero .container,
+    .join-hero .container,
+    .booking-hero .container,
+    .doctor-hero .container,
+    .contact-hero .container{
+        width:100%;
     }
 
     .hero-content h1,
@@ -7508,10 +7562,21 @@ Performance
     .city-hero-content h1,
     .doctor-hero-content h1,
     .join-hero-content h1,
-    .booking-hero-content h1{
-        font-size:36px;
-        line-height:1.1;
+    .booking-hero-content h1,
+    .contact-hero-content h1{
+        font-size:clamp(28px, 8vw, 36px);
+        line-height:1.15;
         word-wrap:break-word;
+        overflow-wrap:break-word;
+    }
+
+    .hero-content h3{
+        font-size:clamp(16px, 4.5vw, 22px);
+        line-height:1.4;
+    }
+
+    .section-title h2{
+        font-size:clamp(28px, 6vw, 32px);
     }
 
     .hero-content p,
@@ -7567,7 +7632,13 @@ Performance
     .doctor-speciality-grid,
     .why-contact-grid,
     .blog-grid,
-    .blog-related-grid{
+    .blog-related-grid,
+    .mission-story-grid,
+    .about-final-grid,
+    .contact-hero-wrapper,
+    .contact-wrapper,
+    .contact-cta-wrapper,
+    .featured-blog-card{
         grid-template-columns:1fr;
     }
 
@@ -7739,7 +7810,7 @@ Performance
 
     .nav-container{
         height:64px;
-        padding-right:46px;
+        gap:8px;
     }
 
     .navbar{
@@ -7751,8 +7822,10 @@ Performance
         height:44px;
     }
 
-    .section-title h2{
-        font-size:28px;
+    .header-phone{
+        font-size:10px;
+        gap:4px;
+        max-width:calc(100% - 100px);
     }
 
     .hero-content h1,
@@ -7764,8 +7837,9 @@ Performance
     .doctor-hero-content h1,
     .join-hero-content h1,
     .booking-hero-content h1,
+    .contact-hero-content h1,
     .blog-detail-hero h1{
-        font-size:28px;
+        font-size:clamp(26px, 7.5vw, 28px);
     }
 
     .tab-btn{
