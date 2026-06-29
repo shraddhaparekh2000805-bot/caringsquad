@@ -1,5 +1,88 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+if(isset($_POST['sendInquiry']))
+{
+    $fullname    = htmlspecialchars($_POST['fullname']);
+    $mobile      = htmlspecialchars($_POST['mobile']);
+    $email       = htmlspecialchars($_POST['email']);
+    $city        = htmlspecialchars($_POST['city']);
+    $address     = htmlspecialchars($_POST['address']);
+    $whoami      = htmlspecialchars($_POST['whoami']);
+    $inquiryfor  = htmlspecialchars($_POST['inquiryfor']);
+    $description = htmlspecialchars($_POST['description']);
+
+    $mail = new PHPMailer(true);
+
+    try
+    {
+        // SMTP Settings
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.hostinger.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'support@caringsquad.in';
+        $mail->Password   = 'YOUR_MAILBOX_PASSWORD';   // <-- Replace with your Hostinger mailbox password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
+
+        // Sender
+        $mail->setFrom('support@caringsquad.in', 'Caring Squad');
+
+        // Receiver
+        $mail->addAddress('info.caringsquad@gmail.com');
+
+        // Reply to visitor
+        $mail->addReplyTo($email, $fullname);
+
+        $mail->isHTML(true);
+        $mail->Subject = 'New Inquiry from Caring Squad Website';
+
+        $mail->Body = "
+        <h2>New Inquiry Received</h2>
+
+        <table border='1' cellpadding='10' cellspacing='0' width='100%'>
+
+        <tr><td><b>Full Name</b></td><td>$fullname</td></tr>
+
+        <tr><td><b>Mobile</b></td><td>$mobile</td></tr>
+
+        <tr><td><b>Email</b></td><td>$email</td></tr>
+
+        <tr><td><b>City</b></td><td>$city</td></tr>
+
+        <tr><td><b>Address</b></td><td>$address</td></tr>
+
+        <tr><td><b>Who Am I?</b></td><td>$whoami</td></tr>
+
+        <tr><td><b>Inquiry For</b></td><td>$inquiryfor</td></tr>
+
+        <tr><td><b>Description</b></td><td>$description</td></tr>
+
+        </table>
+        ";
+
+        $mail->send();
+
+        echo "<script>
+        alert('Thank you! Your inquiry has been submitted successfully.');
+        window.location='contactus.php';
+        </script>";
+
+    }
+    catch (Exception $e)
+    {
+        echo "<script>
+        alert('Mail Error: ".$mail->ErrorInfo."');
+        </script>";
+    }
+}
+
 /*=========================================
     DATABASE CONNECTION
 =========================================*/
