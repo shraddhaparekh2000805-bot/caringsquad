@@ -107,11 +107,10 @@ HEADER
                     <i class="fa-solid fa-phone"></i>
                     <span>1800 571 1929</span>
                 </div>
-            </div>
 
             <div class="mobile-menu" id="mobileMenuBtn">
-    <i class="fa-solid fa-bars"></i>
-</div>
+                <i class="fa-solid fa-bars"></i>
+            </div>
 
         </div>
     </header>

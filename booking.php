@@ -504,9 +504,36 @@ $query = mysqli_query(
     .filter-sidebar{
         position:static;
     }
+
+    .doctor-card{
+        grid-template-columns:1fr;
+    }
+
+    .doctor-right{
+        border-left:none;
+        border-top:1px solid #ececec;
+        padding-left:0;
+        padding-top:20px;
+    }
 }
 
 @media(max-width:768px){
+
+    .doctor-list-top{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .doctor-list-top h2{
+        font-size:clamp(22px, 5vw, 28px);
+    }
+
+    .doctor-card{
+        grid-template-columns:1fr;
+        gap:20px;
+        padding:18px;
+    }
 
     .doctor-left{
         flex-direction:column;
@@ -515,11 +542,17 @@ $query = mysqli_query(
 
     .doctor-image{
         width:100%;
-        height:240px;
+        height:200px;
+    }
+
+    .doctor-image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
     }
 
     .doctor-name{
-        font-size:28px;
+        font-size:clamp(20px, 5vw, 28px);
     }
 
     .doctor-degree{
@@ -528,6 +561,11 @@ $query = mysqli_query(
 
     .doctor-speciality{
         font-size:18px;
+    }
+
+    .doctor-meta{
+        flex-wrap:wrap;
+        gap:12px;
     }
 
     .doctor-meta span{
@@ -541,7 +579,8 @@ $query = mysqli_query(
     }
 
     .book-btn{
-        font-size:18px;
+        width:100%;
+        font-size:16px;
     }
 }
 </style>
@@ -589,11 +628,10 @@ $query = mysqli_query(
                     <i class="fa-solid fa-phone"></i>
                     <span>1800 571 1929</span>
                 </div>
-            </div>
 
             <div class="mobile-menu" id="mobileMenuBtn">
-    <i class="fa-solid fa-bars"></i>
-</div>
+                <i class="fa-solid fa-bars"></i>
+            </div>
 
         </div>
     </header>
