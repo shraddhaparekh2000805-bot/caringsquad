@@ -6073,20 +6073,34 @@ ul{
 CONTACT HERO
 ======================================================================================================================================================*/
 
-/*==================================================
-CONTACT HERO
-==================================================*/
-
 .contact-hero{
-    background:linear-gradient(135deg,#FFF8F0 0%,#F6EBDD 100%);
-    padding:120px 0 90px;
+    position:relative;
+    min-height:540px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    padding:110px 0 70px;
+    background:
+    linear-gradient(
+        90deg,
+        rgba(255,248,240,.92) 0%,
+        rgba(255,248,240,.85) 40%,
+        rgba(255,248,240,.45) 70%,
+        rgba(255,248,240,.15) 100%
+    ),
+    url("assets/images/contact-hero.png");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 }
 
 .page-hero-wrapper{
     display:grid;
-    grid-template-columns:1fr 520px;
+    grid-template-columns:1.1fr .9fr;
     align-items:center;
-    gap:70px;
+    gap:60px;
+    min-height:420px;
 }
 
 .page-hero-content h1{
@@ -6094,7 +6108,8 @@ CONTACT HERO
     font-size:64px;
     line-height:1.1;
     color:#07172B;
-    margin-bottom:30px;
+    margin-bottom:18px;
+    margin-top:-30px;
 }
 
 .page-hero-content h1 span{
@@ -6110,7 +6125,8 @@ CONTACT HERO
 
 .page-hero-image img{
     width:100%;
-    max-width:520px;
+    max-width:650px;
+    display:block;
 }
 
 /*==================================================

@@ -127,13 +127,10 @@ CONTACT HERO
 
             <div class="page-hero-content">
 
-                <span class="hero-tag">
-                    CONTACT US
-                </span>
-
                 <h1>
                     We're Here to Support You
-                    <span>& Your Loved Ones Anytime</span>
+                    <span>& Your Loved Ones </span>
+                    Anytime
                 </h1>
 
                 <div class="breadcrumb">
@@ -147,13 +144,6 @@ CONTACT HERO
                     <span>Contact Us</span>
 
                 </div>
-
-            </div>
-
-            <div class="page-hero-image">
-
-                <img src="assets/images/contact-hero.jpeg"
-                     alt="Contact Caring Squad">
 
             </div>
 
