@@ -49,7 +49,7 @@
     <ul class="dropdown-menu">
         <li><a href="blog.php">Blog</a></li>
         <li><a href="joinus.php">Join Us</a></li>
-        <li><a href="contact.php">Contact Us</a></li>
+        <li><a href="contactus.php">Contact Us</a></li>
     </ul>
 </li>
                 </ul>

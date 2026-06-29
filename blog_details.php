@@ -143,7 +143,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
                     <ul class="dropdown-menu">
                         <li><a href="blog.php">Blog</a></li>
                         <li><a href="joinus.php">Join Us</a></li>
-                        <li><a href="contact.php">Contact Us</a></li>
+                        <li><a href="contactus.php">Contact Us</a></li>
                     </ul>
                 </li>
             </ul>
@@ -154,6 +154,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
                 <i class="fa-solid fa-phone"></i>
                 <span>1800 571 1929</span>
             </div>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenuBtn">
+            <i class="fa-solid fa-bars"></i>
         </div>
 
     </div>
@@ -496,17 +500,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 </footer>
 
 <script src="script.js"></script>
-
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const mobileMenu = document.getElementById('mobileMenuBtn');
-    if (mobileMenu) {
-        mobileMenu.addEventListener('click', function () {
-            document.querySelector('.navbar').classList.toggle('active');
-        });
-    }
-});
-</script>
 
 </body>
 </html>

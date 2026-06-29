@@ -30,51 +30,48 @@
 <!-- ========================================= -->
 
 <header class="header">
+        <div class="container nav-container">
 
-    <div class="container nav-container">
-
-        <div class="logo">
-
-             <div class="logo">
+            <div class="logo">
                 <img class="site-logo" src="assets/images/caringsquad-logo.png" alt="Caring Squad">
             </div>
 
-        </div>
-
-        <nav class="navbar">
-
-            <ul class="nav-links">
-                <li><a href="index.php">Home</a></li>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">Our Story</a></li>
                     <li><a href="expert_consultation.php">Expert Consultation</a></li>
                     <li><a href="care.php">Care</a></li>
                     <li><a href="companion.php" class="active">Companion</a></li>
                     <li><a href="travel.php">Travel Companion</a></li>
                     <li><a href="cityguardian.php">City Guardian</a></li>
-                    <li><a href="#">Other</a></li>
-            </ul>
+                    <li class="dropdown">
+    <a href="#">
+        Other
+        <i class="fa-solid fa-chevron-down"></i>
+    </a>
 
-        </nav>
+    <ul class="dropdown-menu">
+        <li><a href="blog.php">Blog</a></li>
+        <li><a href="joinus.php">Join Us</a></li>
+        <li><a href="contactus.php">Contact Us</a></li>
+    </ul>
+</li>
+                </ul>
+            </nav>
 
-        <div class="header-right">
-
-            <div class="header-phone">
-
-                <i class="fa-solid fa-phone"></i>
-
-                <span>1800 571 1929</span>
-
+                <div class="header-phone">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>1800 571 1929</span>
+                </div>
             </div>
 
+            <div class="mobile-menu" id="mobileMenuBtn">
+    <i class="fa-solid fa-bars"></i>
+</div>
+
         </div>
-
-        <div class="mobile-menu">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-
-    </div>
-
-</header>
+    </header>
 
 <!-- ========================================= -->
 <!-- HERO -->

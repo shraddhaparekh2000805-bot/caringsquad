@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileMenu.addEventListener("click", () => {
 
             navbar.classList.toggle("show-menu");
+            navbar.classList.toggle("active");
 
         });
 
