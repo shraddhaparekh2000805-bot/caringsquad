@@ -667,32 +667,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-const menuBtn = document.getElementById("mobileMenuBtn");
-const mobileNav = document.getElementById("mobileNav");
-
-menuBtn.addEventListener("click", function () {
-
-    mobileNav.classList.toggle("active");
-
-    this.querySelector("i").classList.toggle("fa-bars");
-    this.querySelector("i").classList.toggle("fa-xmark");
-
-});
-
-document.querySelectorAll(".mobile-nav a").forEach(link => {
-
-    link.addEventListener("click", function(){
-
-        mobileNav.classList.remove("active");
-
-        menuBtn.querySelector("i").classList.remove("fa-xmark");
-
-        menuBtn.querySelector("i").classList.add("fa-bars");
-
-    });
-
-});
-
 </script>
 
 </body>

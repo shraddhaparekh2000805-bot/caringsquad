@@ -9,49 +9,52 @@ document.addEventListener("DOMContentLoaded", () => {
     ===================================== */
 
     const header = document.querySelector(".header");
+    if (header) {
 
     window.addEventListener("scroll", () => {
 
-        if(window.scrollY > 20){
-
-            header.style.boxShadow =
-            "0 10px 30px rgba(0,0,0,0.08)";
-
-        }
-        else{
-
+        if (window.scrollY > 20) {
+            header.style.boxShadow = "0 10px 30px rgba(0,0,0,0.08)";
+        } else {
             header.style.boxShadow = "none";
-
         }
 
     });
+
+}
 
     /* =====================================
        MOBILE MENU
     ===================================== */
 
-    const mobileMenu = document.querySelector(".mobile-menu");
-    const navbar = document.querySelector(".navbar");
-
-    if(mobileMenu){
-
-        mobileMenu.addEventListener("click", () => {
-
-            navbar.classList.toggle("show-menu");
-            navbar.classList.toggle("active");
-
-        });
-
-    }
-
 const mobileBtn = document.getElementById("mobileMenuBtn");
 const mobileNav = document.getElementById("mobileNav");
 
-if(mobileBtn && mobileNav){
+if (mobileBtn && mobileNav) {
 
-    mobileBtn.addEventListener("click", function(){
+    mobileBtn.addEventListener("click", function () {
 
         mobileNav.classList.toggle("active");
+
+        const icon = this.querySelector("i");
+
+        icon.classList.toggle("fa-bars");
+        icon.classList.toggle("fa-xmark");
+
+    });
+
+    document.querySelectorAll(".mobile-nav a").forEach(link => {
+
+        link.addEventListener("click", function () {
+
+            mobileNav.classList.remove("active");
+
+            const icon = mobileBtn.querySelector("i");
+
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+
+        });
 
     });
 
@@ -92,7 +95,7 @@ if(mobileBtn && mobileNav){
    DOCTOR PAGINATION
 ========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+
 
     const doctorCards =
     document.querySelectorAll(".doctor-list-card");
@@ -228,7 +231,5 @@ document.addEventListener("DOMContentLoaded", () => {
     /* INITIAL */
 
     showPage(1);
-
-});
 
 });
