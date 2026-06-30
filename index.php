@@ -67,6 +67,23 @@
         </div>
     </header>
 
+    <!-- MOBILE MENU -->
+
+<nav class="mobile-nav" id="mobileNav">
+
+    <a href="index.php">Home</a>
+    <a href="about.php">Our Story</a>
+    <a href="expert_consultation.php">Expert Consultation</a>
+    <a href="care.php">Care</a>
+    <a href="companion.php">Companion</a>
+    <a href="travel.php">Travel Companion</a>
+    <a href="cityguardian.php">City Guardian</a>
+    <a href="blog.php">Blog</a>
+    <a href="joinus.php">Join Us</a>
+    <a href="contactus.php">Contact Us</a>
+
+</nav>
+
     <!-- ========================= -->
     <!-- HERO SECTION -->
     <!-- ========================= -->
@@ -647,6 +664,32 @@ document.addEventListener("DOMContentLoaded", function(){
         slides[current].classList.add("active");
 
     }, 5000);
+
+});
+
+const menuBtn = document.getElementById("mobileMenuBtn");
+const mobileNav = document.getElementById("mobileNav");
+
+menuBtn.addEventListener("click", function () {
+
+    mobileNav.classList.toggle("active");
+
+    this.querySelector("i").classList.toggle("fa-bars");
+    this.querySelector("i").classList.toggle("fa-xmark");
+
+});
+
+document.querySelectorAll(".mobile-nav a").forEach(link => {
+
+    link.addEventListener("click", function(){
+
+        mobileNav.classList.remove("active");
+
+        menuBtn.querySelector("i").classList.remove("fa-xmark");
+
+        menuBtn.querySelector("i").classList.add("fa-bars");
+
+    });
 
 });
 
