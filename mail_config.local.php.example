@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Copy this file to mail_config.local.php and add your Gmail credentials.
+ * mail_config.local.php is not tracked in git.
+ */
+
+$smtpHost = 'smtp.gmail.com';
+$smtpPort = 587;
+$smtpUsername = 'your-gmail@gmail.com';
+$smtpPassword = 'your-gmail-app-password';
+$mailFromEmail = 'your-gmail@gmail.com';
+$mailFromName = 'Caring Squad';
+$mailToEmail = 'info.caringsquad@gmail.com';
+$mailDevFallback = false;

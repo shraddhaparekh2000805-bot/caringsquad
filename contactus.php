@@ -1,110 +1,96 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+require 'db.php';
+require 'mail_helper.php';
 
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
-
-if(isset($_POST['sendInquiry']))
+function contactUsSanitizeText($value, $maxLength = 500)
 {
-    $fullname    = htmlspecialchars($_POST['fullname']);
-    $mobile      = htmlspecialchars($_POST['mobile']);
-    $email       = htmlspecialchars($_POST['email']);
-    $city        = htmlspecialchars($_POST['city']);
-    $address     = htmlspecialchars($_POST['address']);
-    $whoami      = htmlspecialchars($_POST['whoami']);
-    $inquiryfor  = htmlspecialchars($_POST['inquiryfor']);
-    $description = htmlspecialchars($_POST['description']);
+    $value = trim((string) $value);
+    $value = strip_tags($value);
 
-    $mail = new PHPMailer(true);
-
-    try
-    {
-        // SMTP Settings
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.hostinger.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'support@caringsquad.in';
-        $mail->Password   = 'YOUR_MAILBOX_PASSWORD';   // <-- Replace with your Hostinger mailbox password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
-
-        // Sender
-        $mail->setFrom('support@caringsquad.in', 'Caring Squad');
-
-        // Receiver
-        $mail->addAddress('info.caringsquad@gmail.com');
-
-        // Reply to visitor
-        $mail->addReplyTo($email, $fullname);
-
-        $mail->isHTML(true);
-        $mail->Subject = 'New Inquiry from Caring Squad Website';
-
-        $mail->Body = "
-        <h2>New Inquiry Received</h2>
-
-        <table border='1' cellpadding='10' cellspacing='0' width='100%'>
-
-        <tr><td><b>Full Name</b></td><td>$fullname</td></tr>
-
-        <tr><td><b>Mobile</b></td><td>$mobile</td></tr>
-
-        <tr><td><b>Email</b></td><td>$email</td></tr>
-
-        <tr><td><b>City</b></td><td>$city</td></tr>
-
-        <tr><td><b>Address</b></td><td>$address</td></tr>
-
-        <tr><td><b>Who Am I?</b></td><td>$whoami</td></tr>
-
-        <tr><td><b>Inquiry For</b></td><td>$inquiryfor</td></tr>
-
-        <tr><td><b>Description</b></td><td>$description</td></tr>
-
-        </table>
-        ";
-
-        $mail->send();
-
-        echo "<script>
-        alert('Thank you! Your inquiry has been submitted successfully.');
-        window.location='contactus.php';
-        </script>";
-
+    if (strlen($value) > $maxLength) {
+        $value = substr($value, 0, $maxLength);
     }
-    catch (Exception $e)
-    {
-        echo "<script>
-        alert('Mail Error: ".$mail->ErrorInfo."');
-        </script>";
-    }
+
+    return $value;
 }
 
-/*=========================================
-    DATABASE CONNECTION
-=========================================*/
+function contactUsShowAlert($message, $redirect = false)
+{
+    $safeMessage = json_encode($message, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
 
-if ($_SERVER['SERVER_NAME'] == 'localhost') {
+    if ($redirect) {
+        echo "<script>
+        alert($safeMessage);
+        window.location='contactus.php';
+        </script>";
+        return;
+    }
 
-    $conn = mysqli_connect(
-        "localhost",
-        "root",
-        "",
-        "caringsquad"
-    );
+    echo "<script>alert($safeMessage);</script>";
+}
 
-} else {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sendInquiry'])) {
+    $validationErrors = [];
 
-    $conn = mysqli_connect(
-        "localhost",
-        "u306816562_caringsquad",
-        "Caringsquad@123",
-        "u306816562_caringsquad"
-    );
+    $inquiry = [
+        'fullname'    => contactUsSanitizeText($_POST['fullname'] ?? '', 120),
+        'mobile'      => contactUsSanitizeText($_POST['mobile'] ?? '', 20),
+        'email'       => filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL),
+        'city'        => contactUsSanitizeText($_POST['city'] ?? '', 100),
+        'address'     => contactUsSanitizeText($_POST['address'] ?? '', 300),
+        'whoami'      => contactUsSanitizeText($_POST['whoami'] ?? '', 120),
+        'inquiryfor'  => contactUsSanitizeText($_POST['inquiryfor'] ?? '', 200),
+        'description' => contactUsSanitizeText($_POST['description'] ?? '', 2000),
+    ];
 
+    if ($inquiry['fullname'] === '') {
+        $validationErrors[] = 'Full name is required.';
+    }
+
+    if ($inquiry['mobile'] === '') {
+        $validationErrors[] = 'Mobile number is required.';
+    } elseif (!preg_match('/^[0-9+\-\s()]{7,20}$/', $inquiry['mobile'])) {
+        $validationErrors[] = 'Please enter a valid mobile number.';
+    }
+
+    if ($inquiry['email'] === '' || !filter_var($inquiry['email'], FILTER_VALIDATE_EMAIL)) {
+        $validationErrors[] = 'Please enter a valid email address.';
+    }
+
+    if ($inquiry['city'] === '') {
+        $validationErrors[] = 'City is required.';
+    }
+
+    if ($inquiry['address'] === '') {
+        $validationErrors[] = 'Address is required.';
+    }
+
+    if ($inquiry['whoami'] === '') {
+        $validationErrors[] = 'Please tell us who you are.';
+    }
+
+    if ($inquiry['inquiryfor'] === '') {
+        $validationErrors[] = 'Please tell us what your inquiry is for.';
+    }
+
+    if ($inquiry['description'] === '') {
+        $validationErrors[] = 'Description is required.';
+    }
+
+    if (!empty($validationErrors)) {
+        contactUsShowAlert(implode(' ', $validationErrors));
+    } else {
+        saveContactInquiry($conn, $inquiry);
+        $mailResult = sendContactInquiryEmail($inquiry);
+
+        if ($mailResult['success']) {
+            contactUsShowAlert($mailResult['message'], true);
+            exit;
+        }
+
+        contactUsShowAlert($mailResult['message']);
+    }
 }
 
 ?>
@@ -160,7 +146,7 @@ HEADER
 
             <nav class="navbar">
                 <ul class="nav-links">
-                    <li><a href="index.php" class="active">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">Our Story</a></li>
                     <li><a href="expert_consultation.php">Expert Consultation</a></li>
                     <li><a href="care.php">Care</a></li>
@@ -176,7 +162,7 @@ HEADER
     <ul class="dropdown-menu">
         <li><a href="blog.php">Blog</a></li>
         <li><a href="joinus.php">Join Us</a></li>
-        <li><a href="contactus.php">Contact Us</a></li>
+        <li><a href="contactus.php"  class="active">Contact Us</a></li>
     </ul>
 </li>
                 </ul>

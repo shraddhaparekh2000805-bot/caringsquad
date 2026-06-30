@@ -1,0 +1,75 @@
+------------------------------------------------------------
+Time: 2026-06-30 06:56:57
+To: info.caringsquad@gmail.com
+Mode: localhost dev fallback (SMTP not configured or failed)
+New Inquiry Received
+
+Full Name: Test User
+Mobile: 9876543210
+Email: test@example.com
+City: Ahmedabad
+Address: Test Address
+Who Am I?: Student
+Inquiry For: Elder Care
+Description: Test inquiry message
+
+------------------------------------------------------------
+Time: 2026-06-30 06:59:24
+To: info.caringsquad@gmail.com
+Mode: localhost dev fallback (SMTP not configured or failed)
+New Inquiry Received
+
+Full Name: mudra bhanvadiya
+Mobile: 8799434640
+Email: mudrabhanvadiya@gmail.com
+City: ahmedabad
+Address: 707 stc
+Who Am I?: tester
+Inquiry For: testing
+Description: im mudra bhanvaadiya.
+
+------------------------------------------------------------
+Time: 2026-06-30 06:59:35
+To: info.caringsquad@gmail.com
+Mode: localhost dev fallback (SMTP not configured or failed)
+New Inquiry Received
+
+Full Name: mudra bhanvadiya
+Mobile: 8799434640
+Email: mudrabhanvadiya@gmail.com
+City: ahmedabad
+Address: 707 stc
+Who Am I?: student
+Inquiry For: travel companion
+Description: im mudra bhanvadiya. looking for travel companion
+
+------------------------------------------------------------
+Time: 2026-06-30 07:00:17
+To: info.caringsquad@gmail.com
+Mode: localhost dev fallback (SMTP not configured or failed)
+New Inquiry Received
+
+Full Name: Shruti Parekh
+Mobile: 9773246009
+Email: itsshrutiparekh@gmail.com
+City: ahmedabad
+Address: 707 stc
+Who Am I?: student
+Inquiry For: travel companion
+Description: im shraddha parekh.
+
+------------------------------------------------------------
+Time: 2026-06-30 07:04:56
+To: info.caringsquad@gmail.com
+Mode: localhost dev fallback (SMTP not configured or failed)
+New Inquiry Received
+
+Full Name: Shruti Parekh
+Mobile: 9773246009
+Email: itsshrutiparekh@gmail.com
+City: ahmedabad
+Address: 707 stc
+Who Am I?: student
+Inquiry For: travel companion
+Description: helloooo
+

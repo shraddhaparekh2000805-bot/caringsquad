@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 25, 2026 at 12:25 PM
+-- Generation Time: Jun 30, 2026 at 07:15 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -43,13 +43,6 @@ CREATE TABLE `blogs` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `blogs`
---
-
-INSERT INTO `blogs` (`id`, `title`, `slug`, `category_id`, `featured_image`, `excerpt`, `content`, `author`, `read_time`, `status`, `featured`, `views`, `created_at`) VALUES
-(4, 'Elder Care', 'elder-care', 3, 'care1.jpeg', 'Okay\r\nexpert care network\r\nelder care\r\ncompanionship\r\ntravel support\r\n', '<p><i><strong>No</strong></i></p>', 'Caring Squad', '3 min read', 'Published', 1, 0, '2026-06-25 09:09:11');
-
 -- --------------------------------------------------------
 
 --
@@ -69,7 +62,7 @@ CREATE TABLE `blog_categories` (
 INSERT INTO `blog_categories` (`id`, `category_name`, `status`) VALUES
 (1, 'Health & Wellness', 1),
 (2, 'Elder Care', 1),
-(3, 'Companionship', 0),
+(3, 'Companionship', 1),
 (5, 'News & Updates', 1);
 
 -- --------------------------------------------------------
@@ -437,6 +430,36 @@ INSERT INTO `cities` (`id`, `state_id`, `city_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `contact_inquiries`
+--
+
+CREATE TABLE `contact_inquiries` (
+  `id` int(11) NOT NULL,
+  `fullname` varchar(120) NOT NULL,
+  `mobile` varchar(20) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `city` varchar(100) NOT NULL,
+  `address` varchar(300) NOT NULL,
+  `whoami` varchar(120) NOT NULL,
+  `inquiryfor` varchar(200) NOT NULL,
+  `description` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact_inquiries`
+--
+
+INSERT INTO `contact_inquiries` (`id`, `fullname`, `mobile`, `email`, `city`, `address`, `whoami`, `inquiryfor`, `description`, `created_at`) VALUES
+(1, 'Test User', '9876543210', 'test@example.com', 'Ahmedabad', 'Test Address', 'Student', 'Elder Care', 'Test inquiry message', '2026-06-30 04:56:57'),
+(2, 'mudra bhanvadiya', '8799434640', 'mudrabhanvadiya@gmail.com', 'ahmedabad', '707 stc', 'tester', 'testing', 'im mudra bhanvaadiya.', '2026-06-30 04:59:24'),
+(3, 'mudra bhanvadiya', '8799434640', 'mudrabhanvadiya@gmail.com', 'ahmedabad', '707 stc', 'student', 'travel companion', 'im mudra bhanvadiya. looking for travel companion', '2026-06-30 04:59:35'),
+(4, 'Shruti Parekh', '9773246009', 'itsshrutiparekh@gmail.com', 'ahmedabad', '707 stc', 'student', 'travel companion', 'im shraddha parekh.', '2026-06-30 05:00:17'),
+(5, 'Shruti Parekh', '9773246009', 'itsshrutiparekh@gmail.com', 'ahmedabad', '707 stc', 'student', 'travel companion', 'helloooo', '2026-06-30 05:04:56');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctors`
 --
 
@@ -616,6 +639,12 @@ ALTER TABLE `cities`
   ADD KEY `state_id` (`state_id`);
 
 --
+-- Indexes for table `contact_inquiries`
+--
+ALTER TABLE `contact_inquiries`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `doctors`
 --
 ALTER TABLE `doctors`
@@ -644,7 +673,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `blogs`
 --
 ALTER TABLE `blogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `blog_categories`
@@ -657,6 +686,12 @@ ALTER TABLE `blog_categories`
 --
 ALTER TABLE `cities`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=345;
+
+--
+-- AUTO_INCREMENT for table `contact_inquiries`
+--
+ALTER TABLE `contact_inquiries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `doctors`
