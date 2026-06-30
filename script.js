@@ -23,9 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 }
 
-    /* =====================================
-       MOBILE MENU
-    ===================================== */
+/* =====================================
+   MOBILE MENU
+===================================== */
 
 const mobileBtn = document.getElementById("mobileMenuBtn");
 const mobileNav = document.getElementById("mobileNav");
@@ -36,10 +36,12 @@ if (mobileBtn && mobileNav) {
 
         mobileNav.classList.toggle("active");
 
-        const icon = this.querySelector("i");
+        const icon = mobileBtn.querySelector("i");
 
-        icon.classList.toggle("fa-bars");
-        icon.classList.toggle("fa-xmark");
+        if (icon) {
+            icon.classList.toggle("fa-bars");
+            icon.classList.toggle("fa-xmark");
+        }
 
     });
 
@@ -51,8 +53,10 @@ if (mobileBtn && mobileNav) {
 
             const icon = mobileBtn.querySelector("i");
 
-            icon.classList.remove("fa-xmark");
-            icon.classList.add("fa-bars");
+            if (icon) {
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+            }
 
         });
 
@@ -75,6 +79,7 @@ if (mobileBtn && mobileNav) {
             if(entry.isIntersecting){
 
                 entry.target.classList.add("show-item");
+                 observer.unobserve(entry.target);
 
             }
 
@@ -95,99 +100,91 @@ if (mobileBtn && mobileNav) {
    DOCTOR PAGINATION
 ========================================= */
 
+const doctorCards = document.querySelectorAll(".doctor-list-card");
 
+if (doctorCards.length > 0) {
 
-    const doctorCards =
-    document.querySelectorAll(".doctor-list-card");
+    const paginationContainer = document.getElementById("paginationNumbers");
+    const prevBtn = document.getElementById("prevPage");
+    const nextBtn = document.getElementById("nextPage");
+    const doctorListMain = document.querySelector(".doctor-list-main");
 
-    const paginationContainer =
-    document.getElementById("paginationNumbers");
-
-    const prevBtn =
-    document.getElementById("prevPage");
-
-    const nextBtn =
-    document.getElementById("nextPage");
-
-    /* HOW MANY DOCTORS PER PAGE */
+    // Safety check
+    if (!paginationContainer || !prevBtn || !nextBtn) {
+        return;
+    }
 
     const doctorsPerPage = 4;
-
     let currentPage = 1;
 
-    const totalPages =
-    Math.ceil(doctorCards.length / doctorsPerPage);
+    const totalPages = Math.ceil(doctorCards.length / doctorsPerPage);
 
-    /* SHOW PAGE */
-
-    function showPage(page){
+    function showPage(page) {
 
         currentPage = page;
 
-        /* HIDE ALL */
-
-        doctorCards.forEach((card) => {
-
+        doctorCards.forEach(card => {
             card.style.display = "none";
-
         });
 
-        /* SHOW CURRENT PAGE */
+        const start = (page - 1) * doctorsPerPage;
+        const end = start + doctorsPerPage;
 
-        const start =
-        (page - 1) * doctorsPerPage;
+        doctorCards.forEach((card, index) => {
 
-        const end =
-        start + doctorsPerPage;
-
-        doctorCards.forEach((card,index) => {
-
-            if(index >= start && index < end){
-
+            if (index >= start && index < end) {
                 card.style.display = "grid";
-
             }
 
         });
 
-        /* UPDATE BUTTONS */
-
         renderPagination();
+    }
+
+    function scrollToDoctors(){
+
+    if(doctorListMain){
+
+        window.scrollTo({
+            top:doctorListMain.offsetTop-120,
+            behavior:"smooth"
+        });
 
     }
 
-    /* PAGINATION BUTTONS */
+}
 
-    function renderPagination(){
+showPage(currentPage-1);
+scrollToDoctors();
+
+showPage(currentPage+1);
+scrollToDoctors();
+
+    function renderPagination() {
 
         paginationContainer.innerHTML = "";
 
-        for(let i = 1; i <= totalPages; i++){
+        for (let i = 1; i <= totalPages; i++) {
 
-            const button =
-            document.createElement("button");
+            const button = document.createElement("button");
 
-            button.classList.add("page-number");
+            button.className = "page-number";
+            button.textContent = i;
 
-            button.innerText = i;
-
-            if(i === currentPage){
-
+            if (i === currentPage) {
                 button.classList.add("active");
-
             }
 
             button.addEventListener("click", () => {
 
                 showPage(i);
 
-                window.scrollTo({
-                    top:
-                    document.querySelector(".doctor-list-main")
-                    .offsetTop - 120,
-
-                    behavior: "smooth"
-                });
+                if (doctorListMain) {
+                    window.scrollTo({
+                        top: doctorListMain.offsetTop - 120,
+                        behavior: "smooth"
+                    });
+                }
 
             });
 
@@ -195,41 +192,27 @@ if (mobileBtn && mobileNav) {
 
         }
 
-        /* PREV/NEXT DISABLE */
-
         prevBtn.disabled = currentPage === 1;
-
-        nextBtn.disabled =
-        currentPage === totalPages;
+        nextBtn.disabled = currentPage === totalPages;
 
     }
 
-    /* PREVIOUS */
-
     prevBtn.addEventListener("click", () => {
 
-        if(currentPage > 1){
-
+        if (currentPage > 1) {
             showPage(currentPage - 1);
-
         }
 
     });
-
-    /* NEXT */
 
     nextBtn.addEventListener("click", () => {
 
-        if(currentPage < totalPages){
-
+        if (currentPage < totalPages) {
             showPage(currentPage + 1);
-
         }
 
     });
 
-    /* INITIAL */
-
     showPage(1);
 
-});
+}
